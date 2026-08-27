@@ -727,19 +727,37 @@
         let games = [];
         const STORAGE_KEY = 'starGN_games';
 
-        function loadData() {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) {
-        try {
-            games = JSON.parse(saved);
-            console.log('✅ 数据读取成功，共 ' + games.length + ' 款');
-            renderGames();  // ← 加这行！
-            return true;
-        } catch (e) {
-            console.warn('数据解析失败', e);
+        // ===== 数据加载：优先从 data.json 获取 =====
+async function loadData() {
+    try {
+        // 尝试从同目录下的 data.json 文件加载
+        const response = await fetch('data.json');
+        if (!response.ok) throw new Error('网络请求失败');
+        const data = await response.json();
+        games = data;
+        // 存入 localStorage 作为缓存
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(games));
+        renderGames();
+        console.log('✅ 从 data.json 加载数据成功，共 ' + games.length + ' 款');
+    } catch (e) {
+        console.warn('从 data.json 加载失败，尝试从 localStorage 读取', e);
+        // 如果网络失败，尝试从 localStorage 读取
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+            try {
+                games = JSON.parse(saved);
+                renderGames();
+                console.log('✅ 从 localStorage 加载缓存数据成功，共 ' + games.length + ' 款');
+            } catch (parseError) {
+                console.error('缓存数据解析失败', parseError);
+                games = [];
+                renderGames();
+            }
+        } else {
+            games = [];
+            renderGames();
         }
     }
-    return false;
 }
 
         
