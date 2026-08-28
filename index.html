@@ -823,51 +823,62 @@
         }
 
         function openModal(game) {
-            const tagClass = tagClassMap[game.tag] || 'tag-npc';
-            const coverUrl = game.cover || game.cover_thumb || '';
-            const coverHtml = coverUrl ? `<img src="${coverUrl}" alt="${game.name}" />` :
-                `<div class="placeholder">🎮</div>`;
+    const tagClass = tagClassMap[game.tag] || 'tag-npc';
+    const coverUrl = game.cover || game.cover_thumb || '';
+    const coverHtml = coverUrl ? `<img src="${coverUrl}" alt="${game.name}" />` :
+        `<div class="placeholder">🎮</div>`;
 
-            let rightHtml = '';
-            DIM_CONFIG.forEach((cfg, idx) => {
-                const dimScore = (game.dims && game.dims[idx] !== undefined) ? game.dims[idx] : 0;
-                const subScores = (game.subDims && game.subDims[idx]) ? game.subDims[idx] : [];
-                let subHtml = '';
-                if (cfg.hasSub && subScores.length > 0) {
-                    subHtml = subScores.map((s, si) => {
-                        const label = cfg.subLabels[si] || '子项';
-                        let cls = 'sub-score';
-                        if (s >= 8) cls += ' high';
-                        else if (s >= 6) cls += ' mid';
-                        else cls += ' low';
-                        return `<span class="sub-item"><span class="sub-label">${label}</span> <span class="${cls}">${typeof s === 'number' ? s.toFixed(1) : s}</span></span>`;
-                    }).join('');
-                }
-                const finalDisplay = typeof dimScore === 'number' ? dimScore.toFixed(1) : dimScore;
-                rightHtml += `
-                        <div class="dimension-block">
-                            <span class="dim-label">${cfg.label}</span>
-                            <div class="sub-items">${subHtml}</div>
-                            ${cfg.hasSub ? `<span class="dim-final">${finalDisplay}</span>` : `<span class="dim-final-only">${finalDisplay}</span>`}
-                        </div>
-                    `;
-            });
+    // ⭐ 关键修复：安全获取 subDims
+    const subDims = game.subDims || game.sub_dims || [[], [], [], [], [], [], [], []];
+    while (subDims.length < 8) subDims.push([]);
 
-            modalBody.innerHTML = `
-                    <div class="modal-left">
-                        <div class="game-title">${game.name}</div>
-                        <div class="game-cover-wrap">${coverHtml}</div>
-                        <div class="game-footer">
-                            <span class="score-label">星GN评分： <strong>${game.score.toFixed(2)}</strong></span>
-                            <span class="game-tag-big ${tagClass}">${game.tag}</span>
-                        </div>
-                    </div>
-                    <div class="modal-right">${rightHtml}</div>
-                `;
+    let rightHtml = '';
+    DIM_CONFIG.forEach((cfg, idx) => {
+        const dimScore = (game.dims && game.dims[idx] !== undefined) ? game.dims[idx] : 0;
+        const subScores = (subDims[idx] && Array.isArray(subDims[idx])) ? subDims[idx] : [];
 
-            modalOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
+        let subHtml = '';
+        if (cfg.hasSub) {
+            const hasValidData = subScores.length > 0 && subScores.some(s => s !== 0 && s !== undefined && s !== null);
+            if (hasValidData) {
+                subHtml = subScores.map((s, si) => {
+                    const label = cfg.subLabels[si] || '子项';
+                    let cls = 'sub-score';
+                    if (s >= 8) cls += ' high';
+                    else if (s >= 6) cls += ' mid';
+                    else cls += ' low';
+                    return `<span class="sub-item"><span class="sub-label">${label}</span> <span class="${cls}">${typeof s === 'number' ? s.toFixed(1) : s}</span></span>`;
+                }).join('');
+            } else {
+                subHtml = `<span class="sub-item" style="color:#94a3b8;font-size:12px;">—</span>`;
+            }
         }
+
+        const finalDisplay = typeof dimScore === 'number' ? dimScore.toFixed(1) : dimScore;
+        rightHtml += `
+            <div class="dimension-block">
+                <span class="dim-label">${cfg.label}</span>
+                <div class="sub-items">${subHtml}</div>
+                ${cfg.hasSub ? `<span class="dim-final">${finalDisplay}</span>` : `<span class="dim-final-only">${finalDisplay}</span>`}
+            </div>
+        `;
+    });
+
+    modalBody.innerHTML = `
+        <div class="modal-left">
+            <div class="game-title">${game.name}</div>
+            <div class="game-cover-wrap">${coverHtml}</div>
+            <div class="game-footer">
+                <span class="score-label">星GN评分： <strong>${game.score.toFixed(2)}</strong></span>
+                <span class="game-tag-big ${tagClass}">${game.tag}</span>
+            </div>
+        </div>
+        <div class="modal-right">${rightHtml}</div>
+    `;
+
+    modalOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
 
         function closeModal() {
             modalOverlay.classList.remove('active');
