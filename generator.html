@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🎮 星GN · 评分生成器</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js">
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f1f5f9;
+            color: #0f172a;
+            padding: 24px 20px 60px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+
+        /* ===== 顶部导航 ===== */
+        .app-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 16px;
+            margin-bottom: 28px;
+            gap: 12px;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            border-radius: 14px;
+            flex-shrink: 0;
+        }
+        .brand-logo svg {
+            width: 26px;
+            height: 26px;
+            fill: none;
+            stroke: #fbbf24;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .brand-text .name {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #1e293b, #334155);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .brand-text .sub {
+            font-size: 14px;
+            color: #94a3b8;
+            -webkit-text-fill-color: #94a3b8;
+        }
+        .nav-links {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+        .nav-links a {
+            color: #64748b;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 6px 16px;
+            border-radius: 30px;
+            transition: 0.2s;
+        }
+        .nav-links a:hover {
+            background: #e2e8f0;
+            color: #0f172a;
+        }
+        .nav-links a.active {
+            background: #0f172a;
+            color: white;
+        }
+
+        /* ===== 两栏布局 ===== */
+        .generator-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        @media (max-width: 1024px) {
+            .generator-grid {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+        }
+
+        /* ===== 左栏：表单 ===== */
+        .form-panel {
+            background: white;
+            border-radius: 20px;
+            border: 1px solid #eef2f6;
+            padding: 32px 36px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+        }
+        .form-panel h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .form-panel .hint {
+            font-size: 14px;
+            color: #94a3b8;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: #0f172a;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="number"] {
+            width: 100%;
+            padding: 11px 16px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+            transition: 0.2s;
+            background: #fafcff;
+        }
+        .form-group input:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        .form-group input[type="file"] {
+            padding: 8px 12px;
+            border: 1.5px dashed #d1d5db;
+            border-radius: 10px;
+            background: #fafcff;
+            font-size: 13px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .form-group input[type="file"]:hover {
+            border-color: #94a3b8;
+        }
+
+        .dim-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+        .dim-row .dim-label {
+            font-weight: 600;
+            font-size: 14px;
+            color: #0f172a;
+            width: 96px;
+            flex-shrink: 0;
+        }
+        .dim-row .sub-item {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            font-size: 13px;
+            color: #94a3b8;
+        }
+        .dim-row .sub-item input {
+            width: 56px;
+            padding: 6px 4px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 6px;
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 15px;
+            font-weight: 600;
+            background: #fafcff;
+            outline: none;
+        }
+        .dim-row .sub-item input:focus {
+            border-color: #3b82f6;
+        }
+        .dim-row .sub-item input:out-of-range {
+            border-color: #ef4444 !important;
+            background: #fef2f2 !important;
+        }
+        .dim-row .dim-final-preview {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 18px;
+            color: #0f172a;
+            margin-left: auto;
+            background: #f1f5f9;
+            padding: 0 14px;
+            border-radius: 6px;
+            min-width: 48px;
+            text-align: center;
+        }
+
+        .btn-generate {
+            width: 100%;
+            padding: 16px;
+            background: #0f172a;
+            color: white;
+            border: none;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 17px;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 8px;
+        }
+        .btn-generate:hover {
+            background: #1e293b;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.2);
+        }
+
+        /* ===== 右栏：卡片预览 ===== */
+        .preview-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .preview-panel .toolbar {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .preview-panel .toolbar button {
+            padding: 10px 24px;
+            border-radius: 30px;
+            border: none;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.2s;
+            background: #e2e8f0;
+            color: #0f172a;
+        }
+        .preview-panel .toolbar button:hover {
+            background: #cbd5e1;
+        }
+        .preview-panel .toolbar button.primary {
+            background: #0f172a;
+            color: white;
+        }
+        .preview-panel .toolbar button.primary:hover {
+            background: #1e293b;
+        }
+        .preview-panel .toolbar .mode-toggle {
+            display: flex;
+            gap: 4px;
+            background: #e2e8f0;
+            border-radius: 30px;
+            padding: 4px;
+        }
+        .preview-panel .toolbar .mode-toggle button {
+            background: transparent;
+            padding: 6px 20px;
+            border-radius: 30px;
+            font-size: 13px;
+        }
+        .preview-panel .toolbar .mode-toggle button.active {
+            background: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        /* ===== 卡片预览包装 ===== */
+        .card-preview-wrapper {
+            background: white;
+            border-radius: 20px;
+            border: 1px solid #eef2f6;
+            padding: 32px;
+            display: flex;
+            justify-content: center;
+            min-height: 360px;
+            align-items: center;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+        }
+
+        /* ===== 评分卡 ===== */
+        .score-card {
+            background: #ffffff;
+            border-radius: 18px;
+            border: 1px solid #eef2f6;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            max-width: 780px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+        .score-card.detail-mode {
+            max-width: 780px;
+        }
+
+        .score-card .card-body {
+            display: flex;
+            align-items: stretch;
+            min-height: 160px;
+        }
+
+        /* 封面图容器 - 由 JS 控制宽高 */
+        .score-card .card-cover {
+            flex-shrink: 0;
+            background: #0f172a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            transition: width 0.3s ease, height 0.3s ease, aspect-ratio 0.3s ease;
+        }
+
+        /* 详情模式：宽度始终 100% */
+        .score-card.detail-mode .card-cover {
+            width: 100% !important;
+            min-height: 180px;
+            aspect-ratio: auto !important;
+        }
+
+        /* 图片样式 */
+        .score-card .card-cover .cover-thumb,
+        .score-card .card-cover .cover-hero {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* 速览模式：显示竖版，隐藏横版 */
+        .score-card .card-cover .cover-hero {
+            display: none;
+        }
+        .score-card .card-cover .cover-thumb {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* 横版图：完整显示 */
+.score-card .card-cover .cover-hero {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
+/* 速览模式：显示竖版，隐藏横版 */
+.score-card .card-cover .cover-hero {
+    display: none;
+}
+.score-card .card-cover .cover-thumb {
+    display: block;
+}
+
+/* 详情模式：显示横版，隐藏竖版 */
+.score-card.detail-mode .card-cover .cover-thumb {
+    display: none;
+}
+.score-card.detail-mode .card-cover .cover-hero {
+    display: block;
+}
+
+        /* 如果只有一张图，强制显示它 */
+        .score-card .card-cover .cover-thumb:only-child,
+        .score-card .card-cover .cover-hero:only-child {
+            display: block !important;
+        }
+
+        /* 占位符 */
+        .score-card .card-cover .placeholder {
+            font-size: 56px;
+            color: #64748b;
+            z-index: 1;
+        }
+
+        /* 信息区 */
+        .score-card .card-info {
+            flex: 1;
+            padding: 22px 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+        .score-card .card-info .game-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: #0f172a;
+            line-height: 1.2;
+        }
+        .score-card .card-info .score-big {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 44px;
+            font-weight: 700;
+            color: #0f172a;
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+        }
+        .score-card .card-info .tag-badge {
+            position: absolute;
+            right: 22px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+            font-weight: 700;
+            padding: 8px 24px;
+            border-radius: 40px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 2px solid transparent;
+        }
+
+        /* 标签颜色 */
+        .tag-hang {
+            background: #fbbf24;
+            border-color: #f59e0b;
+        }
+        .tag-dingji {
+            background: #60a5fa;
+            border-color: #3b82f6;
+        }
+        .tag-renshangren {
+            background: #34d399;
+            border-color: #10b981;
+        }
+        .tag-npc {
+            background: #e9edf2;
+            border-color: #cbd5e1;
+        }
+        .tag-la {
+            background: #f87171;
+            border-color: #ef4444;
+        }
+        .tag-lawanle {
+            background: #c4a35a;
+            border-color: #a8893a;
+        }
+
+        /* ===== 详情模式 ===== */
+        .score-card.detail-mode .card-body {
+            flex-direction: column;
+            min-height: auto;
+        }
+        .score-card.detail-mode .card-info {
+            padding: 22px 28px;
+        }
+        .score-card.detail-mode .card-info .tag-badge {
+            position: static;
+            transform: none;
+            display: inline-block;
+            margin-top: 6px;
+            align-self: flex-start;
+        }
+        .score-card.detail-mode .card-info .score-big {
+            font-size: 38px;
+        }
+
+        /* ===== 维度详情 ===== */
+        .score-card .dim-details {
+            display: none;
+            padding: 0 28px 22px 28px;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 16px;
+        }
+        .score-card.detail-mode .dim-details {
+            display: block;
+        }
+        .score-card .dim-details .dim-row-detail {
+            display: flex;
+            align-items: center;
+            padding: 4px 0;
+            font-size: 15px;
+            gap: 10px;
+        }
+        .score-card .dim-details .dim-row-detail .dd-label {
+            font-weight: 600;
+            color: #0f172a;
+            width: 86px;
+            flex-shrink: 0;
+        }
+        .score-card .dim-details .dim-row-detail .dd-subs {
+            display: flex;
+            gap: 12px;
+            flex: 1;
+            color: #64748b;
+            font-size: 14px;
+            flex-wrap: wrap;
+        }
+        .score-card .dim-details .dim-row-detail .dd-subs span {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+        }
+        .score-card .dim-details .dim-row-detail .dd-final {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 18px;
+            color: #0f172a;
+            background: #f1f5f9;
+            padding: 0 14px;
+            border-radius: 4px;
+            min-width: 44px;
+            text-align: center;
+        }
+
+        .score-card .watermark {
+            text-align: center;
+            font-size: 12px;
+            color: #cbd5e1;
+            padding: 8px 0 12px 0;
+            letter-spacing: 0.5px;
+            border-top: 1px solid #f1f5f9;
+            margin: 0 28px;
+        }
+
+        /* ===== 空状态 ===== */
+        .empty-preview {
+            text-align: center;
+            color: #94a3b8;
+            padding: 40px 20px;
+        }
+        .empty-preview .icon {
+            font-size: 56px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 820px) {
+            .score-card {
+                max-width: 100%;
+            }
+            .score-card.detail-mode {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 12px 10px 40px;
+            }
+            .form-panel {
+                padding: 16px 16px 20px;
+            }
+            .dim-row .dim-label {
+                width: 72px;
+                font-size: 13px;
+            }
+            .dim-row .sub-item input {
+                width: 44px;
+                font-size: 13px;
+            }
+            .card-preview-wrapper {
+                padding: 12px;
+            }
+            .score-card .card-cover {
+                min-height: 120px;
+            }
+            .score-card .card-info .game-name {
+                font-size: 17px;
+            }
+            .score-card .card-info .score-big {
+                font-size: 30px;
+            }
+            .score-card .card-info .tag-badge {
+                font-size: 12px;
+                padding: 4px 14px;
+                right: 12px;
+            }
+            .score-card.detail-mode .card-cover {
+                min-height: 140px;
+            }
+            .score-card.detail-mode .card-info .score-big {
+                font-size: 28px;
+            }
+            .score-card .dim-details .dim-row-detail {
+                font-size: 13px;
+                flex-wrap: wrap;
+            }
+            .score-card .dim-details .dim-row-detail .dd-label {
+                width: 64px;
+            }
+            .preview-panel .toolbar {
+                justify-content: center;
+            }
+            .score-card.detail-mode {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- ===== 顶部导航 ===== -->
+        <header class="app-header">
+            <div class="brand">
+                <div class="brand-logo">
+                    <svg viewBox="0 0 24 24">
+                        <polygon points="12,2 15,9 22,9 16,14 18,21 12,17 6,21 8,14 2,9 9,9" />
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <div class="name">星 GN · 评分生成器</div>
+                    <div class="sub">评分卡</div>
+                </div>
+            </div>
+            <div class="nav-links">
+                <a href="https://yanxingr.github.io/star-gamenotes/" target="_blank" rel="noopener noreferrer">🏠 星GN</a>
+                <a href="generator.html" class="active">🎮 评分生成器</a>
+            </div>
+        </header>
+
+        <!-- ===== 主体 ===== -->
+        <div class="generator-grid">
+            <!-- 左栏：表单 -->
+            <div class="form-panel">
+                <h2>📝 填写评分</h2>
+                <p class="hint">填写游戏名称和各维度评分，实时生成评分卡</p>
+
+                <div class="form-group">
+                    <label>🎮 游戏名称</label>
+                    <input type="text" id="gameNameInput" placeholder="例如：艾尔登法环" />
+                </div>
+
+                <!-- 竖版封面图 -->
+                <div class="form-group">
+                    <label>📱 竖版封面图 <span style="font-weight:400;color:#94a3b8;font-size:13px;">（速览用，推荐 2:3）</span></label>
+                    <input type="text" id="coverThumbInput" placeholder="输入竖版图片 URL" oninput="onCoverInputChange()" />
+                </div>
+                <div class="form-group" style="margin-top:-10px;">
+                    <label style="font-weight:400;font-size:13px;color:#94a3b8;">或 本地上传（竖版）</label>
+                    <input type="file" id="coverThumbUpload" accept="image/*" onchange="onCoverUpload('thumb', event)" />
+                </div>
+
+                <!-- 横版封面图 -->
+                <div class="form-group" style="margin-top:8px;">
+                    <label>🖥️ 横版封面图 <span style="font-weight:400;color:#94a3b8;font-size:13px;">（详情用，推荐 16:9）</span></label>
+                    <input type="text" id="coverHeroInput" placeholder="输入横版图片 URL" oninput="onCoverInputChange()" />
+                </div>
+                <div class="form-group" style="margin-top:-10px;">
+                    <label style="font-weight:400;font-size:13px;color:#94a3b8;">或 本地上传（横版）</label>
+                    <input type="file" id="coverHeroUpload" accept="image/*" onchange="onCoverUpload('hero', event)" />
+                </div>
+
+                <div id="dimensionForm">
+                    <!-- 由 JS 动态渲染 -->
+                </div>
+
+                <button class="btn-generate" onclick="generateCard()">✨ 生成评分卡</button>
+            </div>
+
+            <!-- 右栏：预览 -->
+            <div class="preview-panel">
+                <div class="toolbar">
+                    <div class="mode-toggle">
+                        <button class="active" onclick="setMode('compact')" id="modeCompact">⚡ 速览</button>
+                        <button onclick="setMode('detail')" id="modeDetail">🔍 详情</button>
+                    </div>
+                    <button class="primary" onclick="exportPNG()">⬇️ 导出 PNG</button>
+                    <button onclick="resetCard()">🔄 重置</button>
+                </div>
+
+                <div class="card-preview-wrapper" id="cardWrapper">
+                    <div class="empty-preview">
+                        <span class="icon">🎴</span>
+                        <p>填写左侧表单，点击「生成评分卡」</p>
+                        <p style="font-size:12px;color:#cbd5e1;margin-top:4px;">支持 速览 / 详情 两种模式</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ============================================================
+        // 1. 维度配置
+        // ============================================================
+        const DIM_CONFIG = [{
+            key: '制作水准',
+            label: '制作水准',
+            subLabels: ['客观制作水准', '设计巧思'],
+            hasSub: true,
+            calc: (subs) => subs[0] * 0.4 + subs[1] * 0.6
+        }, {
+            key: '内容饱满度',
+            label: '内容饱满度',
+            subLabels: ['客观体量', '内容质量系数'],
+            hasSub: true,
+            calc: (subs) => {
+                const effective = Math.min(subs[0], subs[0] * subs[1] / 8.5);
+                const raw = effective * 0.4 + (subs[0] * subs[1] / 8.5) * 0.6;
+                return Math.min(raw, 10);
+            }
+        }, {
+            key: '游戏性',
+            label: '游戏性',
+            subLabels: [],
+            hasSub: false,
+            calc: (subs) => subs[0] || 0
+        }, {
+            key: '故事性',
+            label: '故事性',
+            subLabels: ['剧本内容', '叙事'],
+            hasSub: true,
+            calc: (subs) => {
+                const raw = subs[0] * 0.6 + (subs[0] * subs[1] / 8.5) * 0.4;
+                return Math.min(raw, 10);
+            }
+        }, {
+            key: '代入感/沉浸感',
+            label: '代入感/沉浸感',
+            subLabels: ['代入感', '沉浸感'],
+            hasSub: true,
+            calc: (subs) => Math.max(subs[0] || 0, subs[1] || 0)
+        }, {
+            key: '美术',
+            label: '美术',
+            subLabels: [],
+            hasSub: false,
+            calc: (subs) => subs[0] || 0
+        }, {
+            key: '视听',
+            label: '视听',
+            subLabels: ['音乐', '演出'],
+            hasSub: true,
+            calc: (subs) => subs[0] * 0.6 + subs[1] * 0.4
+        }, {
+            key: '爱之力',
+            label: '爱之力',
+            subLabels: [],
+            hasSub: false,
+            calc: (subs) => subs[0] || 0
+        }];
+
+        const WEIGHTS = {
+            '制作水准': 0.15,
+            '内容饱满度': 0.10,
+            '游戏性': 0.30,
+            '故事性': 0.18,
+            '代入感/沉浸感': 0.07,
+            '美术': 0.075,
+            '视听': 0.075,
+            '爱之力': 0.05
+        };
+
+        const TAG_MAP = {
+            '夯': 'tag-hang',
+            '顶级': 'tag-dingji',
+            '人上人': 'tag-renshangren',
+            'NPC': 'tag-npc',
+            '拉': 'tag-la',
+            '拉完了': 'tag-lawanle'
+        };
+
+        function getTag(score) {
+            if (score >= 9.0) return '夯';
+            if (score >= 8.5) return '顶级';
+            if (score >= 8.0) return '人上人';
+            if (score >= 7.5) return 'NPC';
+            if (score >= 7.0) return '拉';
+            return '拉完了';
+        }
+
+        // ============================================================
+        // 2. 状态
+        // ============================================================
+        let currentMode = 'compact';
+        let currentData = null;
+        let dimValues = {};
+
+        // ============================================================
+        // 3. 渲染表单
+        // ============================================================
+        function renderForm() {
+            const container = document.getElementById('dimensionForm');
+            let html = '';
+            DIM_CONFIG.forEach((cfg, idx) => {
+                html += `<div class="form-group" style="margin-bottom:10px;">`;
+                html += `<div class="dim-row">`;
+                html += `<span class="dim-label">${cfg.label}</span>`;
+
+                if (cfg.hasSub) {
+                    cfg.subLabels.forEach((label, si) => {
+                        const val = dimValues[`${idx}_${si}`] ?? '';
+                        html += `
+                            <span class="sub-item">
+                                <span style="color:#94a3b8;font-size:11px;">${label}</span>
+                                <input type="number" step="0.1" min="0" max="10"
+                                    data-dim="${idx}" data-sub="${si}"
+                                    value="${val}"
+                                    oninput="onFormChange()" />
+                            </span>
+                        `;
+                    });
+                } else {
+                    const val = dimValues[`${idx}_0`] ?? '';
+                    html += `
+                        <span class="sub-item">
+                            <span style="color:#94a3b8;font-size:11px;">数值</span>
+                            <input type="number" step="0.1" min="0" max="10"
+                                data-dim="${idx}" data-sub="0"
+                                value="${val}"
+                                oninput="onFormChange()" />
+                        </span>
+                    `;
+                }
+
+                html += `<span class="dim-final-preview" id="dimPreview_${idx}">-</span>`;
+                html += `</div></div>`;
+            });
+            container.innerHTML = html;
+        }
+
+        // ============================================================
+        // 4. 表单变化
+        // ============================================================
+        function onFormChange() {
+            document.querySelectorAll('#dimensionForm input[type="number"]').forEach(inp => {
+                let val = parseFloat(inp.value);
+                if (isNaN(val)) return;
+                if (val < 0) inp.value = 0;
+                if (val > 10) inp.value = 10;
+            });
+
+            const dims = [];
+            DIM_CONFIG.forEach((cfg, idx) => {
+                if (cfg.hasSub) {
+                    const vals = [];
+                    cfg.subLabels.forEach((_, si) => {
+                        const inp = document.querySelector(
+                            `#dimensionForm input[data-dim="${idx}"][data-sub="${si}"]`);
+                        vals.push(Math.min(10, Math.max(0, parseFloat(inp?.value) || 0)));
+                    });
+                    const result = cfg.calc(vals);
+                    dims[idx] = Math.min(10, Math.max(0, Math.round(result * 100) / 100));
+                } else {
+                    const inp = document.querySelector(`#dimensionForm input[data-dim="${idx}"][data-sub="0"]`);
+                    const val = Math.min(10, Math.max(0, parseFloat(inp?.value) || 0));
+                    dims[idx] = Math.round(val * 100) / 100;
+                }
+                const preview = document.getElementById(`dimPreview_${idx}`);
+                if (preview) preview.textContent = dims[idx].toFixed(1);
+            });
+
+            let total = 0;
+            DIM_CONFIG.forEach((cfg, idx) => {
+                total += (dims[idx] || 0) * (WEIGHTS[cfg.key] || 0);
+            });
+            total = Math.min(10, Math.round(total * 100) / 100);
+
+            if (currentData) {
+                generateCard();
+            }
+        }
+
+        // ============================================================
+        // 5. 封面上传
+        // ============================================================
+        function onCoverInputChange() {
+            const thumbInput = document.getElementById('coverThumbInput');
+            const heroInput = document.getElementById('coverHeroInput');
+            if (thumbInput.value) document.getElementById('coverThumbUpload').value = '';
+            if (heroInput.value) document.getElementById('coverHeroUpload').value = '';
+        }
+
+        function onCoverUpload(type, event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const base64 = e.target.result;
+                if (type === 'thumb') {
+                    document.getElementById('coverThumbInput').value = base64;
+                } else {
+                    document.getElementById('coverHeroInput').value = base64;
+                }
+                if (currentData) generateCard();
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // ============================================================
+        // 6. 生成评分卡
+        // ============================================================
+        function generateCard() {
+            const name = document.getElementById('gameNameInput').value.trim() || '未命名游戏';
+            const coverThumb = document.getElementById('coverThumbInput').value.trim();
+            const coverHero = document.getElementById('coverHeroInput').value.trim();
+
+            const dims = [];
+            const subDims = [];
+            DIM_CONFIG.forEach((cfg, idx) => {
+                if (cfg.hasSub) {
+                    const vals = [];
+                    cfg.subLabels.forEach((_, si) => {
+                        const inp = document.querySelector(
+                            `#dimensionForm input[data-dim="${idx}"][data-sub="${si}"]`);
+                        vals.push(Math.min(10, Math.max(0, parseFloat(inp?.value) || 0)));
+                    });
+                    subDims[idx] = vals;
+                    dims[idx] = Math.min(10, Math.max(0, Math.round(cfg.calc(vals) * 100) / 100));
+                } else {
+                    const inp = document.querySelector(`#dimensionForm input[data-dim="${idx}"][data-sub="0"]`);
+                    const val = Math.min(10, Math.max(0, parseFloat(inp?.value) || 0));
+                    subDims[idx] = [val];
+                    dims[idx] = Math.round(val * 100) / 100;
+                }
+            });
+
+            let total = 0;
+            DIM_CONFIG.forEach((cfg, idx) => {
+                total += (dims[idx] || 0) * (WEIGHTS[cfg.key] || 0);
+            });
+            total = Math.min(10, Math.round(total * 100) / 100);
+
+            const tag = getTag(total);
+            const tagClass = TAG_MAP[tag] || 'tag-npc';
+
+            currentData = { name, coverThumb, coverHero, dims, subDims, total, tag, tagClass };
+            renderCard(currentData);
+        }
+
+        // ============================================================
+        // 7. 渲染卡片
+        // ============================================================
+        function renderCard(data) {
+            const wrapper = document.getElementById('cardWrapper');
+
+            const isDetail = currentMode === 'detail';
+            const thumbImg = data.coverThumb || '';
+            const heroImg = data.coverHero || '';
+
+            // 构建封面 HTML
+            let coverHtml = '';
+            if (thumbImg || heroImg) {
+                if (thumbImg) {
+                    coverHtml += `<img class="cover-thumb" src="${thumbImg}" alt="${data.name}" crossorigin="anonymous" />`;
+                }
+                if (heroImg) {
+                    coverHtml += `<img class="cover-hero" src="${heroImg}" alt="${data.name}" crossorigin="anonymous" />`;
+                }
+            } else {
+                coverHtml = `<span class="placeholder">🎮</span>`;
+            }
+
+            let dimDetailsHtml = '';
+            DIM_CONFIG.forEach((cfg, idx) => {
+                const dimScore = data.dims[idx] ?? 0;
+                const subs = data.subDims[idx] ?? [];
+                let subsHtml = '';
+                if (cfg.hasSub && subs.length > 0) {
+                    subsHtml = subs.map((s, si) => {
+                        const label = cfg.subLabels[si] || '';
+                        return `<span>${label} <strong>${typeof s === 'number' ? s.toFixed(1) : s}</strong></span>`;
+                    }).join(' · ');
+                } else if (!cfg.hasSub) {
+                    subsHtml = `<span style="color:#94a3b8;">—</span>`;
+                } else {
+                    subsHtml = `<span style="color:#94a3b8;">—</span>`;
+                }
+                dimDetailsHtml += `
+                    <div class="dim-row-detail">
+                        <span class="dd-label">${cfg.label}</span>
+                        <div class="dd-subs">${subsHtml}</div>
+                        <span class="dd-final">${dimScore.toFixed(1)}</span>
+                    </div>
+                `;
+            });
+
+            const cardHTML = `
+                <div class="score-card ${isDetail ? 'detail-mode' : ''}" id="scoreCard">
+                    <div class="card-body">
+                        <div class="card-cover" id="cardCover">${coverHtml}</div>
+                        <div class="card-info">
+                            <div class="game-name">${data.name}</div>
+                            <div class="score-big">${data.total.toFixed(2)}</div>
+                            <span class="tag-badge ${data.tagClass}">${data.tag}</span>
+                        </div>
+                    </div>
+                    <div class="dim-details">
+                        ${dimDetailsHtml}
+                    </div>
+                    <div class="watermark">✦ 星 GameNotes · 评分生成器 ✦</div>
+                </div>
+            `;
+
+            wrapper.innerHTML = cardHTML;
+
+            // 图片加载完成后自适应尺寸
+            const cover = document.getElementById('cardCover');
+            if (!cover) return;
+            const imgs = cover.querySelectorAll('img');
+            if (imgs.length === 0) {
+                // 无图，设置默认尺寸
+                if (isDetail) {
+                    cover.style.width = '100%';
+                    cover.style.minHeight = '200px';
+                    cover.style.aspectRatio = '16/9';
+                } else {
+                    cover.style.width = '140px';
+                    cover.style.height = '210px';
+                }
+                return;
+            }
+
+            // 找到当前模式实际显示的图片
+            let activeImg = null;
+            if (isDetail) {
+                activeImg = cover.querySelector('.cover-hero') || cover.querySelector('.cover-thumb');
+            } else {
+                activeImg = cover.querySelector('.cover-thumb') || cover.querySelector('.cover-hero');
+            }
+
+            if (!activeImg) return;
+
+            // 如果图片已加载完成，直接调整
+            if (activeImg.complete && activeImg.naturalWidth > 0) {
+                adjustCoverSize(cover, activeImg, isDetail);
+            } else {
+                activeImg.onload = function() {
+                    adjustCoverSize(cover, activeImg, isDetail);
+                };
+                // 如果图片加载失败，使用默认尺寸
+                activeImg.onerror = function() {
+                    if (isDetail) {
+                        cover.style.width = '100%';
+                        cover.style.minHeight = '200px';
+                        cover.style.aspectRatio = '16/9';
+                    } else {
+                        cover.style.width = '140px';
+                        cover.style.height = '210px';
+                    }
+                };
+            }
+        }
+
+        // ============================================================
+        // 8. 自适应尺寸函数
+        // ============================================================
+        function adjustCoverSize(cover, img, isDetail) {
+            const w = img.naturalWidth;
+            const h = img.naturalHeight;
+            if (w === 0 || h === 0) {
+                // 无效尺寸，使用默认
+                if (isDetail) {
+                    cover.style.width = '100%';
+                    cover.style.minHeight = '200px';
+                    cover.style.aspectRatio = '16/9';
+                } else {
+                    cover.style.width = '140px';
+                    cover.style.height = '210px';
+                }
+                return;
+            }
+
+            const ratio = w / h;
+
+            if (isDetail) {
+                // 详情模式：宽度100%，高度根据图片比例自适应
+                cover.style.width = '100%';
+                cover.style.aspectRatio = `${w} / ${h}`;
+                cover.style.minHeight = 'auto';
+                // 限制极端比例
+                if (ratio > 3) {
+                    cover.style.minHeight = '140px';
+                } else if (ratio < 0.5) {
+                    cover.style.minHeight = '340px';
+                } else {
+                    cover.style.minHeight = '200px';
+                }
+                // 移除可能冲突的 height 设置
+                cover.style.height = 'auto';
+            } else {
+                // 速览模式：高度固定，宽度根据图片比例自适应
+                const baseHeight = 210;
+                let targetWidth = Math.round(baseHeight * ratio);
+                // 限制宽度范围
+                if (targetWidth < 80) targetWidth = 80;
+                if (targetWidth > 320) targetWidth = 320;
+                cover.style.height = `${baseHeight}px`;
+                cover.style.minHeight = `${baseHeight}px`;
+                cover.style.width = `${targetWidth}px`;
+                cover.style.minWidth = '80px';
+                cover.style.maxWidth = '320px';
+                cover.style.aspectRatio = 'auto';
+            }
+        }
+
+        // ============================================================
+        // 9. 模式切换
+        // ============================================================
+        function setMode(mode) {
+            currentMode = mode;
+            document.querySelectorAll('.mode-toggle button').forEach(b => b.classList.remove('active'));
+            if (mode === 'compact') {
+                document.getElementById('modeCompact').classList.add('active');
+            } else {
+                document.getElementById('modeDetail').classList.add('active');
+            }
+            if (currentData) {
+                generateCard();
+            }
+        }
+
+        // ============================================================
+        // 10. 导出 PNG
+        // ============================================================
+        function exportPNG() {
+            const card = document.getElementById('scoreCard');
+            if (!card) {
+                alert('请先生成评分卡');
+                return;
+            }
+
+            const imgs = card.querySelectorAll('.card-cover img');
+            let hasExternal = false;
+            imgs.forEach(img => {
+                if (img.src && img.src.startsWith('http') && !img.src.startsWith('https://yanxingr.github.io')) {
+                    hasExternal = true;
+                }
+            });
+            if (hasExternal) {
+                if (!confirm('⚠️ 当前封面图为外部链接，可能无法导出。\n建议使用「本地上传」功能替代。\n\n仍要尝试导出吗？')) {
+                    return;
+                }
+            }
+
+            html2canvas(card, {
+                scale: 2.5,
+                backgroundColor: '#ffffff',
+                useCORS: true,
+                logging: false,
+                allowTaint: false,
+            }).then(canvas => {
+                const link = document.createElement('a');
+                const name = document.getElementById('gameNameInput').value.trim() || '未命名';
+                link.download = `评分卡_${name}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            }).catch(err => {
+                console.error('导出失败:', err);
+                alert('导出失败：' + err.message + '\n请尝试使用「本地上传」图片');
+            });
+        }
+
+        // ============================================================
+        // 11. 重置
+        // ============================================================
+        function resetCard() {
+            document.getElementById('gameNameInput').value = '';
+            document.getElementById('coverThumbInput').value = '';
+            document.getElementById('coverHeroInput').value = '';
+            document.getElementById('coverThumbUpload').value = '';
+            document.getElementById('coverHeroUpload').value = '';
+            document.querySelectorAll('#dimensionForm input[type="number"]').forEach(inp => inp.value = '');
+            document.querySelectorAll('.dim-final-preview').forEach(el => el.textContent = '-');
+            document.getElementById('cardWrapper').innerHTML = `
+                <div class="empty-preview">
+                    <span class="icon">🎴</span>
+                    <p>填写左侧表单，点击「生成评分卡」</p>
+                    <p style="font-size:12px;color:#cbd5e1;margin-top:4px;">支持 速览 / 详情 两种模式</p>
+                </div>
+            `;
+            currentData = null;
+        }
+
+        // ============================================================
+        // 12. 初始化
+        // ============================================================
+        renderForm();
+    </script>
+
+</body>
+</html>

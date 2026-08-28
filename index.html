@@ -120,6 +120,26 @@
             border-color: #94a3b8;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
         }
+        .controls .btn-generator {
+    font-family: 'Inter', sans-serif;
+    padding: 6px 16px;
+    border-radius: 30px;
+    border: none;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.2s;
+    background: #e2e8f0;
+    color: #0f172a;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+.controls .btn-generator:hover {
+    background: #cbd5e1;
+}
         .controls input {
             width: 210px;
         }
@@ -544,6 +564,10 @@
             body {
                 padding: 16px 12px 40px;
             }
+            .controls .btn-generator {
+    font-size: 12px;
+    padding: 6px 14px;
+}
             .brand-logo {
                 width: 36px;
                 height: 36px;
@@ -637,37 +661,39 @@
                 min-width: 42px;
                 padding: 0 6px;
             }
+            
         }
     </style>
 </head>
 <body>
 
     <header class="app-header">
-        <div class="brand">
-            <div class="brand-logo">
-                <svg viewBox="0 0 24 24">
-                    <polygon points="12,2 15,9 22,9 16,14 18,21 12,17 6,21 8,14 2,9 9,9" />
-                </svg>
+    <div class="brand">
+        <div class="brand-logo">
+            <svg viewBox="0 0 24 24">
+                <polygon points="12,2 15,9 22,9 16,14 18,21 12,17 6,21 8,14 2,9 9,9" />
+            </svg>
+        </div>
+        <div class="brand-text">
+            <div class="name">
+                星 GameNotes
+                <span class="badge" id="gameCount">0 款</span>
             </div>
-            <div class="brand-text">
-                <div class="name">
-                    星 GameNotes
-                    <span class="badge" id="gameCount">0 款</span>
-                </div>
-                <div class="sub">
-                    游戏手札 · 评分档案馆
-                </div>
+            <div class="sub">
+                游戏手札 · 评分档案馆
             </div>
         </div>
-        <div class="controls">
-            <input type="text" id="searchInput" placeholder="🔍 搜索游戏..." />
-            <select id="sortSelect">
-                <option value="default">📋 默认顺序</option>
-                <option value="high-to-low">⬇️ 最高分优先</option>
-                <option value="low-to-high">⬆️ 最低分优先</option>
-            </select>
-        </div>
-    </header>
+    </div>
+    <div class="controls">
+        <a href="generator.html" target="_blank" class="btn-generator">🎮 评分生成器</a>
+        <input type="text" id="searchInput" placeholder="🔍 搜索游戏..." />
+        <select id="sortSelect">
+            <option value="default">📋 默认顺序</option>
+            <option value="high-to-low">⬇️ 最高分优先</option>
+            <option value="low-to-high">⬆️ 最低分优先</option>
+        </select>
+    </div>
+</header>
 
     <div class="card-grid" id="cardContainer"></div>
 
