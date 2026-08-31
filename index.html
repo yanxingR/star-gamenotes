@@ -808,11 +808,22 @@
 }
 
         function renderGames() {
-            const keyword = searchInput.value.trim().toLowerCase();
-            let filtered = games.filter(g => g.name.toLowerCase().includes(keyword));
-            const sortMode = sortSelect.value;
-            if (sortMode === 'high-to-low') filtered.sort((a, b) => b.score - a.score);
-            else if (sortMode === 'low-to-high') filtered.sort((a, b) => a.score - b.score);
+    const keyword = searchInput.value.trim().toLowerCase();
+    let filtered = games.filter(g => g.name.toLowerCase().includes(keyword));
+    
+    // 🆕 默认随机打乱
+    const sortMode = sortSelect.value;
+    if (sortMode === 'default') {
+        // Fisher-Yates 洗牌算法
+        for (let i = filtered.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [filtered[i], filtered[j]] = [filtered[j], filtered[i]];
+        }
+    } else if (sortMode === 'high-to-low') {
+        filtered.sort((a, b) => b.score - a.score);
+    } else if (sortMode === 'low-to-high') {
+        filtered.sort((a, b) => a.score - b.score);
+    }
 
             if (filtered.length === 0) {
                 container.innerHTML = `<div class="empty-state">🔍 没有找到匹配的游戏</div>`;
