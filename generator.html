@@ -451,31 +451,63 @@
             border: 2px solid transparent;
         }
 
-        /* 标签颜色 */
-        .tag-hang {
-            background: #fbbf24;
-            border-color: #f59e0b;
-        }
-        .tag-dingji {
-            background: #60a5fa;
-            border-color: #3b82f6;
-        }
-        .tag-renshangren {
-            background: #34d399;
-            border-color: #10b981;
-        }
-        .tag-npc {
-            background: #e9edf2;
-            border-color: #cbd5e1;
-        }
-        .tag-la {
-            background: #f87171;
-            border-color: #ef4444;
-        }
-        .tag-lawanle {
-            background: #c4a35a;
-            border-color: #a8893a;
-        }
+        /* 标签颜色 - 与 index 保持一致 */
+.tag-hang {
+    background: #fbbf24 !important;      /* 亮金色 */
+    border-color: #f59e0b !important;
+    box-shadow: 0 2px 12px rgba(251, 191, 36, 0.35) !important;
+    color: #0f172a !important;
+}
+.tag-dingji {
+    background: #ef4444 !important;      /* 亮红色 */
+    border-color: #dc2626 !important;
+    box-shadow: 0 2px 12px rgba(239, 68, 68, 0.35) !important;
+    color: #ffffff !important;
+}
+.tag-renshangren {
+    background: #a855f7 !important;      /* 紫色 */
+    border-color: #9333ea !important;
+    box-shadow: 0 2px 12px rgba(168, 85, 247, 0.35) !important;
+    color: #ffffff !important;
+}
+.tag-npc {
+    background: #3b82f6 !important;      /* 蓝色 */
+    border-color: #2563eb !important;
+    box-shadow: 0 2px 12px rgba(59, 130, 246, 0.35) !important;
+    color: #ffffff !important;
+}
+.tag-la {
+    background: #22c55e !important;      /* 绿色 */
+    border-color: #16a34a !important;
+    box-shadow: 0 2px 12px rgba(34, 197, 94, 0.3) !important;
+    color: #ffffff !important;
+}
+.tag-lawanle {
+    background: #c4a35a !important;      /* 暗金色 */
+    border-color: #a8893a !important;
+    box-shadow: 0 2px 12px rgba(196, 163, 90, 0.3) !important;
+    color: #ffffff !important;
+}
+
+/* 评分数字颜色 - 与标签保持一致 */
+.score-card .card-info .score-big.hang {
+    color: #fbbf24 !important;
+}
+.score-card .card-info .score-big.dingji {
+    color: #ef4444 !important;
+}
+.score-card .card-info .score-big.renshangren {
+    color: #a855f7 !important;
+}
+.score-card .card-info .score-big.npc {
+    color: #3b82f6 !important;
+}
+.score-card .card-info .score-big.la {
+    color: #22c55e !important;
+}
+.score-card .card-info .score-big.lawanle {
+    color: #c4a35a !important;
+}
 
         /* ===== 详情模式 ===== */
         .score-card.detail-mode .card-body {
@@ -958,7 +990,13 @@
             const tag = getTag(total);
             const tagClass = TAG_MAP[tag] || 'tag-npc';
 
-            currentData = { name, coverThumb, coverHero, dims, subDims, total, tag, tagClass };
+            const scoreClass = tag === '夯' ? 'hang' : 
+                   tag === '顶级' ? 'dingji' : 
+                   tag === '人上人' ? 'renshangren' : 
+                   tag === 'NPC' ? 'npc' : 
+                   tag === '拉' ? 'la' : 'lawanle';
+
+currentData = { name, coverThumb, coverHero, dims, subDims, total, tag, tagClass, scoreClass };
             renderCard(currentData);
         }
 
@@ -1015,7 +1053,7 @@
                         <div class="card-cover" id="cardCover">${coverHtml}</div>
                         <div class="card-info">
                             <div class="game-name">${data.name}</div>
-                            <div class="score-big">${data.total.toFixed(2)}</div>
+                            <div class="score-big ${data.scoreClass}">${data.total.toFixed(2)}</div>
                             <span class="tag-badge ${data.tagClass}">${data.tag}</span>
                         </div>
                     </div>
