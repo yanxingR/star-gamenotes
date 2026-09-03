@@ -121,47 +121,75 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
         }
         .controls .btn-generator {
-    font-family: 'Inter', sans-serif;
-    padding: 6px 16px;
-    border-radius: 30px;
-    border: none;
-    font-weight: 500;
-    font-size: 14px;
-    cursor: pointer;
-    transition: 0.2s;
-    background: #e2e8f0;
-    color: #0f172a;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    white-space: nowrap;
-}
-.controls .btn-generator:hover {
-    background: #cbd5e1;
-}
-.controls .btn-random {
-    font-family: 'Inter', sans-serif;
-    padding: 6px 16px;
-    border-radius: 30px;
-    border: none;
-    font-weight: 500;
-    font-size: 14px;
-    cursor: pointer;
-    transition: 0.2s;
-    background: #e2e8f0;
-    color: #0f172a;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    white-space: nowrap;
-}
-.controls .btn-random:hover {
-    background: #cbd5e1;
-}
+            font-family: 'Inter', sans-serif;
+            padding: 6px 16px;
+            border-radius: 30px;
+            border: none;
+            font-weight: 500;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.2s;
+            background: #e2e8f0;
+            color: #0f172a;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+        }
+        .controls .btn-generator:hover {
+            background: #cbd5e1;
+        }
+        .controls .btn-random {
+            font-family: 'Inter', sans-serif;
+            padding: 6px 16px;
+            border-radius: 30px;
+            border: none;
+            font-weight: 500;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.2s;
+            background: #e2e8f0;
+            color: #0f172a;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+        }
+        .controls .btn-random:hover {
+            background: #cbd5e1;
+        }
         .controls input {
             width: 210px;
+        }
+
+        .filter-banner {
+            display: none;
+            background: #f1f5f9;
+            border-radius: 40px;
+            padding: 6px 18px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #0f172a;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+        .filter-banner .clear-filter {
+            cursor: pointer;
+            color: #94a3b8;
+            font-weight: 600;
+            transition: 0.2s;
+            background: none;
+            border: none;
+            font-size: 14px;
+        }
+        .filter-banner .clear-filter:hover {
+            color: #ef4444;
+        }
+        .filter-banner.show {
+            display: inline-flex;
         }
 
         .card-grid {
@@ -216,22 +244,33 @@
             color: #94a3b8;
             z-index: 1;
         }
+
+        /* ===== info 容器：垂直居中 ===== */
         .game-card .info {
             flex: 1;
-            padding: 16px 20px;
+            padding: 16px 20px 32px 20px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             min-width: 0;
             position: relative;
         }
+
+        /* ===== 主内容包裹（游戏名 + 分数）：占据中间空间 ===== */
+        .game-card .info .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
         .game-card .info .name {
             font-family: 'Inter', sans-serif;
-            font-size: 18px;
-            font-weight: 600;
+            font-size: 22px;
+            font-weight: 700;
             color: #0f172a;
             line-height: 1.3;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
         .game-card .info .score {
             font-family: 'JetBrains Mono', monospace;
@@ -241,6 +280,8 @@
             letter-spacing: -0.5px;
             line-height: 1.2;
         }
+
+        /* ===== 主标签（右上角） ===== */
         .game-card .info .tag {
             position: absolute;
             right: 16px;
@@ -259,61 +300,92 @@
             color: #0f172a;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
             transition: all 0.2s ease;
+            cursor: pointer;
         }
         .game-card:hover .info .tag {
             transform: translateY(-50%) scale(1.05);
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
         }
-        /* 标签颜色 - 新配色 */
-.tag-hang {
-    background: #fbbf24 !important;      /* 亮金色 */
-    border-color: #f59e0b !important;
-    box-shadow: 0 2px 12px rgba(251, 191, 36, 0.35) !important;
+
+        /* ===== 小标签：缩在底部 ===== */
+        .game-card .info .game-tags {
+    position: absolute;
+    bottom: 6px;
+    left: 20px;
+    right: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: -1px -10px 0 0;  /* 负 margin 收紧容器 */
 }
-.tag-dingji {
-    background: #ef4444 !important;      /* 亮红色 */
-    border-color: #dc2626 !important;
-    box-shadow: 0 2px 12px rgba(239, 68, 68, 0.35) !important;
+
+.game-card .info .game-tags .tag-chip {
+    font-size: 10px;
+    font-weight: 500;
+    color: #64748b;
+    background: #f1f5f9;
+    padding: 0px 8px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.2s;
+    white-space: nowrap;
+    letter-spacing: 0.2px;
+    line-height: 1.6;
+    zoom: 0.75;              /* 替代 transform: scale() */
+    margin: 1px 2px 1px 0;   /* 正常间距，zoom 会等比缩放 */
 }
-.tag-renshangren {
-    background: #a855f7 !important;      /* 紫色 */
-    border-color: #9333ea !important;
-    box-shadow: 0 2px 12px rgba(168, 85, 247, 0.35) !important;
-}
-.tag-npc {
-    background: #3b82f6 !important;      /* 蓝色 */
-    border-color: #2563eb !important;
-    box-shadow: 0 2px 12px rgba(59, 130, 246, 0.35) !important;
-}
-.tag-la {
-    background: #22c55e !important;      /* 绿色 */
-    border-color: #16a34a !important;
-    box-shadow: 0 2px 12px rgba(34, 197, 94, 0.3) !important;
-}
-.tag-lawanle {
-    background: #c4a35a !important;      /* 保持不变 */
-    border-color: #a8893a !important;
-    box-shadow: 0 2px 12px rgba(196, 163, 90, 0.3) !important;
-}
-/* 评分数字颜色 - 与标签保持一致 */
-.game-card .info .score.hang {
-    color: #fbbf24 !important;
-}
-.game-card .info .score.dingji {
-    color: #ef4444 !important;
-}
-.game-card .info .score.renshangren {
-    color: #a855f7 !important;
-}
-.game-card .info .score.npc {
-    color: #3b82f6 !important;
-}
-.game-card .info .score.la {
-    color: #22c55e !important;
-}
-.game-card .info .score.lawanle {
-    color: #c4a35a !important;
-}
+        .game-card .info .game-tags .tag-chip:hover {
+            background: #e2e8f0;
+            color: #0f172a;
+        }
+
+        .tag-hang {
+            background: #fbbf24 !important;
+            border-color: #f59e0b !important;
+            box-shadow: 0 2px 12px rgba(251, 191, 36, 0.35) !important;
+        }
+        .tag-dingji {
+            background: #ef4444 !important;
+            border-color: #dc2626 !important;
+            box-shadow: 0 2px 12px rgba(239, 68, 68, 0.35) !important;
+        }
+        .tag-renshangren {
+            background: #a855f7 !important;
+            border-color: #9333ea !important;
+            box-shadow: 0 2px 12px rgba(168, 85, 247, 0.35) !important;
+        }
+        .tag-npc {
+            background: #3b82f6 !important;
+            border-color: #2563eb !important;
+            box-shadow: 0 2px 12px rgba(59, 130, 246, 0.35) !important;
+        }
+        .tag-la {
+            background: #22c55e !important;
+            border-color: #16a34a !important;
+            box-shadow: 0 2px 12px rgba(34, 197, 94, 0.3) !important;
+        }
+        .tag-lawanle {
+            background: #c4a35a !important;
+            border-color: #a8893a !important;
+            box-shadow: 0 2px 12px rgba(196, 163, 90, 0.3) !important;
+        }
+        .game-card .info .score.hang {
+            color: #fbbf24 !important;
+        }
+        .game-card .info .score.dingji {
+            color: #ef4444 !important;
+        }
+        .game-card .info .score.renshangren {
+            color: #a855f7 !important;
+        }
+        .game-card .info .score.npc {
+            color: #3b82f6 !important;
+        }
+        .game-card .info .score.la {
+            color: #22c55e !important;
+        }
+        .game-card .info .score.lawanle {
+            color: #c4a35a !important;
+        }
         .empty-state {
             grid-column: 1 / -1;
             text-align: center;
@@ -321,6 +393,45 @@
             color: #94a3b8;
             font-size: 18px;
         }
+
+        /* ===== 详情模态框小标签 ===== */
+.detail-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 6px;
+    justify-content: center;
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.detail-tags .tag-chip {
+    font-size: 10px;
+    font-weight: 500;
+    color: #64748b;
+    background: #f1f5f9;
+    padding: 0px 6px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.2s;
+    white-space: nowrap;
+    letter-spacing: 0.2px;
+    line-height: 1.6;
+    zoom: 0.65;
+}
+.detail-tags .tag-chip:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+}
+
+/* 简介样式保持不变 */
+.game-description {
+    font-size: 14px;
+    color: #64748b;
+    text-align: center;
+    padding: 6px 4px 4px 4px;
+    line-height: 1.5;
+}
 
         .modal-overlay {
             display: none;
@@ -354,87 +465,83 @@
             height: auto;
             animation: modalFadeIn 0.35s ease forwards;
         }
-        /* ===== 观星 · 星光涟漪动画 ===== */
-@keyframes starPulse {
-    0% {
-        opacity: 0;
-        transform: scale(0.3) rotate(0deg);
-    }
-    20% {
-        opacity: 1;
-        transform: scale(1.2) rotate(20deg);
-    }
-    40% {
-        transform: scale(0.9) rotate(-10deg);
-    }
-    60% {
-        transform: scale(1.1) rotate(5deg);
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-        transform: scale(1.5) rotate(0deg);
-    }
-}
+        @keyframes starPulse {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) rotate(0deg);
+            }
+            20% {
+                opacity: 1;
+                transform: scale(1.2) rotate(20deg);
+            }
+            40% {
+                transform: scale(0.9) rotate(-10deg);
+            }
+            60% {
+                transform: scale(1.1) rotate(5deg);
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: scale(1.5) rotate(0deg);
+            }
+        }
 
-@keyframes rippleStar {
-    0% {
-        opacity: 0.8;
-        transform: translate(-50%, -50%) scale(0);
-        box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.6);
-    }
-    100% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(4);
-        box-shadow: 0 0 60px 40px rgba(251, 191, 36, 0);
-    }
-}
+        @keyframes rippleStar {
+            0% {
+                opacity: 0.8;
+                transform: translate(-50%, -50%) scale(0);
+                box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.6);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(4);
+                box-shadow: 0 0 60px 40px rgba(251, 191, 36, 0);
+            }
+        }
 
-@keyframes sparkleFade {
-    0% {
-        opacity: 1;
-        transform: scale(1);
-    }
-    100% {
-        opacity: 0;
-        transform: scale(0);
-    }
-}
+        @keyframes sparkleFade {
+            0% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+        }
 
-/* 主星星 */
-.star-glow {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-    pointer-events: none;
-    font-size: 72px;
-    animation: starPulse 1s ease-out forwards;
-    text-shadow: 0 0 40px rgba(251, 191, 36, 0.8), 0 0 80px rgba(251, 191, 36, 0.4);
-}
+        .star-glow {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            pointer-events: none;
+            font-size: 72px;
+            animation: starPulse 1s ease-out forwards;
+            text-shadow: 0 0 40px rgba(251, 191, 36, 0.8), 0 0 80px rgba(251, 191, 36, 0.4);
+        }
 
-/* 星光涟漪（一圈圈扩散） */
-.ripple-ring {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    z-index: 9998;
-    pointer-events: none;
-    border-radius: 50%;
-    border: 2px solid rgba(251, 191, 36, 0.8);
-    animation: rippleStar 1.2s ease-out forwards;
-}
+        .ripple-ring {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            z-index: 9998;
+            pointer-events: none;
+            border-radius: 50%;
+            border: 2px solid rgba(251, 191, 36, 0.8);
+            animation: rippleStar 1.2s ease-out forwards;
+        }
 
-/* 闪烁小星（散落的粒子） */
-.sparkle-dot {
-    position: fixed;
-    z-index: 9997;
-    pointer-events: none;
-    border-radius: 50%;
-    background: #fbbf24;
-    animation: sparkleFade 0.8s ease-out forwards;
-}
+        .sparkle-dot {
+            position: fixed;
+            z-index: 9997;
+            pointer-events: none;
+            border-radius: 50%;
+            background: #fbbf24;
+            animation: sparkleFade 0.8s ease-out forwards;
+        }
 
         @keyframes modalFadeIn {
             from {
@@ -551,6 +658,7 @@
             letter-spacing: 0.5px;
             border: 1px solid transparent;
             flex-shrink: 0;
+            cursor: pointer;
         }
 
         .modal-right {
@@ -685,9 +793,29 @@
                 padding: 16px 12px 40px;
             }
             .controls .btn-generator {
-    font-size: 12px;
-    padding: 6px 14px;
-}
+                font-size: 12px;
+                padding: 6px 14px;
+            }
+            .controls .btn-random {
+                font-size: 12px;
+                padding: 6px 14px;
+            }
+            .controls input {
+                width: 140px;
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+            .controls select {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+            .filter-banner {
+                font-size: 12px;
+                padding: 4px 12px;
+            }
+            .filter-banner .clear-filter {
+                font-size: 12px;
+            }
             .brand-logo {
                 width: 36px;
                 height: 36px;
@@ -721,16 +849,30 @@
             .game-card .info {
                 padding: 12px 14px;
             }
-            .game-card .info .score {
-                font-size: 24px;
-            }
             .game-card .info .name {
-                font-size: 14px;
+                font-size: 15px;
+            }
+            .game-card .info .score {
+                font-size: 18px;
             }
             .game-card .info .tag {
                 font-size: 10px;
                 padding: 1px 12px;
             }
+            @media (max-width: 640px) {
+    .game-card .info .game-tags {
+        bottom: 4px;
+        left: 14px;
+        right: 14px;
+        gap: 1px 2px;
+    }
+    .game-card .info .game-tags .tag-chip {
+        font-size: 11px;
+        padding: 0px 4px;
+        zoom: 0.5;
+        line-height: 1.8;
+    }
+}
 
             .modal-content {
                 padding: 16px 14px;
@@ -781,40 +923,50 @@
                 min-width: 42px;
                 padding: 0 6px;
             }
-            
+            .game-description {
+                font-size: 12px;
+            }
+            .detail-tags .tag-chip {
+                font-size: 10px;
+                padding: 1px 10px;
+            }
         }
     </style>
 </head>
 <body>
 
     <header class="app-header">
-    <div class="brand">
-        <div class="brand-logo">
-            <svg viewBox="0 0 24 24">
-                <polygon points="12,2 15,9 22,9 16,14 18,21 12,17 6,21 8,14 2,9 9,9" />
-            </svg>
-        </div>
-        <div class="brand-text">
-            <div class="name">
-                星 GameNotes
-                <span class="badge" id="gameCount">0 款</span>
+        <div class="brand">
+            <div class="brand-logo">
+                <svg viewBox="0 0 24 24">
+                    <polygon points="12,2 15,9 22,9 16,14 18,21 12,17 6,21 8,14 2,9 9,9" />
+                </svg>
             </div>
-            <div class="sub">
-                游戏手札 · 评分档案馆
+            <div class="brand-text">
+                <div class="name">
+                    星 GameNotes
+                    <span class="badge" id="gameCount">0 款</span>
+                </div>
+                <div class="sub">
+                    游戏手札 · 评分档案馆
+                </div>
             </div>
         </div>
-    </div>
-    <div class="controls">
-        <a href="#" onclick="randomGame(); return false;" class="btn-random">🔭 观星</a>
-        <a href="generator.html" target="_blank" class="btn-generator">🎮 评分生成器</a>
-        <input type="text" id="searchInput" placeholder="🔍 搜索游戏..." />
-        <select id="sortSelect">
-            <option value="default">📋 默认顺序</option>
-            <option value="high-to-low">⬇️ 最高分优先</option>
-            <option value="low-to-high">⬆️ 最低分优先</option>
-        </select>
-    </div>
-</header>
+        <div class="controls">
+            <a href="#" onclick="randomGame(); return false;" class="btn-random">🔭 观星</a>
+            <a href="generator.html" target="_blank" class="btn-generator">🎮 评分生成器</a>
+            <span class="filter-banner" id="filterBanner">
+                🏷️ 当前筛选：<span id="filterTagName"></span>
+                <button class="clear-filter" onclick="clearFilter()">✕ 清除</button>
+            </span>
+            <input type="text" id="searchInput" placeholder="🔍 搜索游戏..." />
+            <select id="sortSelect">
+                <option value="default">📋 默认顺序</option>
+                <option value="high-to-low">⬇️ 最高分优先</option>
+                <option value="low-to-high">⬆️ 最低分优先</option>
+            </select>
+        </div>
+    </header>
 
     <div class="card-grid" id="cardContainer"></div>
 
@@ -870,9 +1022,6 @@
 
         let games = [];
 
-        // ============================================================
-        // Supabase 配置
-        // ============================================================
         const SUPABASE_URL = 'https://vgdralqjppxshwbqqzum.supabase.co';
         const SUPABASE_KEY = 'sb_publishable_f76ssYCjHRIlQ5TnP3VqKA_hjoX-NhS';
         const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
@@ -895,119 +1044,94 @@
         const modalBody = document.getElementById('modalBody');
         const modalClose = document.getElementById('modalClose');
 
+        let activeTag = null;
+
+        function splitTags(value) {
+            if (!value) return [];
+            return String(value).split('/').map(s => s.trim()).filter(Boolean);
+        }
+
         async function loadData() {
-    // ✅ 强制清空，防止数据堆积
-    games = [];
-    localStorage.removeItem(STORAGE_KEY);
-
-    try {
-        const { data, error } = await supabaseClient
-            .from('games')
-            .select('*')
-            .order('id', { ascending: true });
-
-        if (error) {
-            console.error('Supabase 查询失败:', error);
-            renderGames();
-            return;
-        }
-
-        if (data && data.length > 0) {
-            games = data;
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(games));
-            renderGames();
-            console.log('✅ 加载成功，共 ' + games.length + ' 款');
-        } else {
             games = [];
+            localStorage.removeItem(STORAGE_KEY);
+
+            try {
+                const { data, error } = await supabaseClient
+                    .from('games')
+                    .select('*')
+                    .order('id', { ascending: true });
+
+                if (error) {
+                    console.error('Supabase 查询失败:', error);
+                    renderGames();
+                    return;
+                }
+
+                if (data && data.length > 0) {
+                    games = data;
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(games));
+                    renderGames();
+                    console.log('✅ 加载成功，共 ' + games.length + ' 款');
+                } else {
+                    games = [];
+                    renderGames();
+                }
+            } catch (e) {
+                console.error('加载失败:', e);
+                games = [];
+                renderGames();
+            }
+        }
+
+        function filterByTag(tag) {
+            activeTag = tag;
+            const banner = document.getElementById('filterBanner');
+            const tagName = document.getElementById('filterTagName');
+            if (activeTag) {
+                banner.classList.add('show');
+                tagName.textContent = activeTag;
+            } else {
+                banner.classList.remove('show');
+            }
+            renderGames();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function clearFilter() {
+            activeTag = null;
+            document.getElementById('filterBanner').classList.remove('show');
             renderGames();
         }
-    } catch (e) {
-        console.error('加载失败:', e);
-        games = [];
-        renderGames();
-    }
-}
-function randomGame() {
-    if (games.length === 0) return;
-    
-    // 触发流星动画
-    triggerStarEffect();
-    
-    // 延迟弹出游戏（让动画先播放）
-    setTimeout(() => {
-        const random = games[Math.floor(Math.random() * games.length)];
-        openModal(random);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 400);
-}
 
-function triggerStarEffect() {
-    // 1. 中央主星
-    const star = document.createElement('div');
-    star.className = 'star-glow';
-    star.textContent = '✦';
-    document.body.appendChild(star);
-
-    // 2. 涟漪光环（3圈，依次扩散）
-    for (let i = 0; i < 4; i++) {
-        setTimeout(() => {
-            const ring = document.createElement('div');
-            ring.className = 'ripple-ring';
-            const size = 40 + i * 30;
-            ring.style.width = size + 'px';
-            ring.style.height = size + 'px';
-            ring.style.marginLeft = -(size / 2) + 'px';
-            ring.style.marginTop = -(size / 2) + 'px';
-            ring.style.borderColor = i === 0 ? '#fbbf24' : i === 1 ? '#fcd34d' : '#fde68a';
-            ring.style.animationDuration = (1.0 + i * 0.2) + 's';
-            document.body.appendChild(ring);
-            setTimeout(() => ring.remove(), 1000);
-        }, i * 150);
-    }
-
-    // 3. 闪烁星点（随机散落）
-    const colors = ['#fbbf24', '#fcd34d', '#fde68a', '#93c5fd', '#fff'];
-    for (let i = 0; i < 50; i++) {
-        setTimeout(() => {
-            const dot = document.createElement('div');
-            dot.className = 'sparkle-dot';
-            const angle = Math.random() * Math.PI * 2;
-            const distance = 80 + Math.random() * 180;
-            const x = 50 + (Math.cos(angle) * distance) / window.innerWidth * 100;
-            const y = 50 + (Math.sin(angle) * distance) / window.innerHeight * 100;
-            dot.style.left = x + '%';
-            dot.style.top = y + '%';
-            const size = 3 + Math.random() * 6;
-            dot.style.width = size + 'px';
-            dot.style.height = size + 'px';
-            dot.style.background = colors[Math.floor(Math.random() * colors.length)];
-            dot.style.boxShadow = `0 0 ${6 + Math.random() * 10}px ${dot.style.background}`;
-            dot.style.animationDuration = (0.5 + Math.random() * 0.4) + 's';
-            document.body.appendChild(dot);
-            setTimeout(() => dot.remove(), 1200);
-        }, i * 60);
-    }
-
-    // 清除主星
-    setTimeout(() => star.remove(), 1200);
-}
         function renderGames() {
-    const keyword = searchInput.value.trim().toLowerCase();
-    let filtered = games.filter(g => g.name.toLowerCase().includes(keyword));
-    
-    // 🆕 默认随机打乱
-    const sortMode = sortSelect.value;
-    if (sortMode === 'default') {
-        // Fisher-Yates 洗牌算法
-        for (let i = filtered.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [filtered[i], filtered[j]] = [filtered[j], filtered[i]];
-        }
-    } else if (sortMode === 'high-to-low') {
-        filtered.sort((a, b) => b.score - a.score);
-    } else if (sortMode === 'low-to-high') {
-        filtered.sort((a, b) => a.score - b.score);
-    }
+            const keyword = searchInput.value.trim().toLowerCase();
+            let filtered = games.filter(g => g.name.toLowerCase().includes(keyword));
+
+            if (activeTag) {
+                filtered = filtered.filter(g => {
+                    const allTags = [
+                        ...splitTags(g.genre),
+                        ...splitTags(g.playtime),
+                        ...splitTags(g.developer),
+                        ...splitTags(g.platform),
+                        ...splitTags(g.tag),
+                    ];
+                    if (g.release_year) allTags.push(String(g.release_year));
+                    return allTags.includes(activeTag);
+                });
+            }
+
+            const sortMode = sortSelect.value;
+            if (sortMode === 'high-to-low') {
+                filtered.sort((a, b) => b.score - a.score);
+            } else if (sortMode === 'low-to-high') {
+                filtered.sort((a, b) => a.score - b.score);
+            } else {
+                for (let i = filtered.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [filtered[i], filtered[j]] = [filtered[j], filtered[i]];
+                }
+            }
 
             if (filtered.length === 0) {
                 container.innerHTML = `<div class="empty-state">🔍 没有找到匹配的游戏</div>`;
@@ -1017,22 +1141,39 @@ function triggerStarEffect() {
 
             const html = filtered.map((game, index) => {
                 const tagClass = tagClassMap[game.tag] || 'tag-npc';
-// 提取标签名（去掉 'tag-' 前缀）作为分数颜色 class
-const tagName = game.tag ? game.tag : 'npc';
-const scoreClass = tagName === '夯' ? 'hang' : 
-                   tagName === '顶级' ? 'dingji' : 
-                   tagName === '人上人' ? 'renshangren' : 
-                   tagName === 'NPC' ? 'npc' : 
-                   tagName === '拉' ? 'la' : 'lawanle';
+                const tagName = game.tag ? game.tag : 'npc';
+                const scoreClass = tagName === '夯' ? 'hang' :
+                    tagName === '顶级' ? 'dingji' :
+                    tagName === '人上人' ? 'renshangren' :
+                    tagName === 'NPC' ? 'npc' :
+                    tagName === '拉' ? 'la' : 'lawanle';
                 const coverUrl = game.cover_thumb || game.cover || '';
                 const coverHtml = coverUrl ? `<img src="${coverUrl}" alt="${game.name}" />` :
                     `<span class="placeholder">🎮</span>`;
+
+                const tagItems = [
+                    ...splitTags(game.genre),
+                    ...splitTags(game.playtime),
+                    ...splitTags(game.developer),
+                    ...splitTags(game.platform),
+                ];
+                if (game.release_year) {
+                    tagItems.push(String(game.release_year));
+                }
+
+                const tagsHtml = tagItems.length > 0 ?
+                    `<div class="game-tags">${tagItems.map(t => `<span class="tag-chip" data-tag="${t}">${t}</span>`).join(' ')}</div>` :
+                    '';
+
                 return `
                         <div class="game-card" data-index="${index}">
                             <div class="cover">${coverHtml}</div>
                             <div class="info">
-                                <div class="name">${game.name}</div>
-                                <div class="score ${scoreClass}">${game.score}</div>
+                                <div class="main-content">
+                                    <div class="name">${game.name}</div>
+                                    <div class="score ${scoreClass}">${game.score}</div>
+                                </div>
+                                ${tagsHtml}
                                 <span class="tag ${tagClass}">${game.tag}</span>
                             </div>
                         </div>
@@ -1041,6 +1182,22 @@ const scoreClass = tagName === '夯' ? 'hang' :
 
             container.innerHTML = html;
             countBadge.textContent = `${filtered.length} 款`;
+
+            container.querySelectorAll('.tag-chip').forEach(el => {
+                el.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    filterByTag(this.dataset.tag);
+                });
+            });
+
+            container.querySelectorAll('.game-card .info .tag').forEach(el => {
+                el.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const tag = this.textContent.trim();
+                    if (tag) filterByTag(tag);
+                });
+            });
+
             container.querySelectorAll('.game-card').forEach(el => {
                 el.addEventListener('click', function() {
                     const idx = parseInt(this.dataset.index);
@@ -1051,66 +1208,167 @@ const scoreClass = tagName === '夯' ? 'hang' :
         }
 
         function openModal(game) {
-    const tagClass = tagClassMap[game.tag] || 'tag-npc';
-    const coverUrl = game.cover || game.cover_thumb || '';
-    const coverHtml = coverUrl ? `<img src="${coverUrl}" alt="${game.name}" />` :
-        `<div class="placeholder">🎮</div>`;
+            const tagClass = tagClassMap[game.tag] || 'tag-npc';
+            const coverUrl = game.cover || game.cover_thumb || '';
+            const coverHtml = coverUrl ? `<img src="${coverUrl}" alt="${game.name}" />` :
+                `<div class="placeholder">🎮</div>`;
 
-    // ⭐ 关键修复：安全获取 subDims
-    const subDims = game.subDims || game.sub_dims || [[], [], [], [], [], [], [], []];
-    while (subDims.length < 8) subDims.push([]);
-
-    let rightHtml = '';
-    DIM_CONFIG.forEach((cfg, idx) => {
-        const dimScore = (game.dims && game.dims[idx] !== undefined) ? game.dims[idx] : 0;
-        const subScores = (subDims[idx] && Array.isArray(subDims[idx])) ? subDims[idx] : [];
-
-        let subHtml = '';
-        if (cfg.hasSub) {
-            const hasValidData = subScores.length > 0 && subScores.some(s => s !== 0 && s !== undefined && s !== null);
-            if (hasValidData) {
-                subHtml = subScores.map((s, si) => {
-                    const label = cfg.subLabels[si] || '子项';
-                    let cls = 'sub-score';
-                    if (s >= 8) cls += ' high';
-                    else if (s >= 6) cls += ' mid';
-                    else cls += ' low';
-                    return `<span class="sub-item"><span class="sub-label">${label}</span> <span class="${cls}">${typeof s === 'number' ? s.toFixed(1) : s}</span></span>`;
-                }).join('');
-            } else {
-                subHtml = `<span class="sub-item" style="color:#94a3b8;font-size:12px;">—</span>`;
+            const detailItems = [
+                ...splitTags(game.genre),
+                ...splitTags(game.playtime),
+                ...splitTags(game.developer),
+                ...splitTags(game.platform),
+            ];
+            if (game.release_year) {
+                detailItems.push(String(game.release_year));
             }
-        }
 
-        const finalDisplay = typeof dimScore === 'number' ? dimScore.toFixed(1) : dimScore;
-        rightHtml += `
-            <div class="dimension-block">
-                <span class="dim-label">${cfg.label}</span>
-                <div class="sub-items">${subHtml}</div>
-                ${cfg.hasSub ? `<span class="dim-final">${finalDisplay}</span>` : `<span class="dim-final-only">${finalDisplay}</span>`}
-            </div>
-        `;
-    });
+            const detailTagsHtml = detailItems.length > 0 ?
+                `<div class="detail-tags">${detailItems.map(t => `<span class="tag-chip" data-tag="${t}">${t}</span>`).join(' ')}</div>` :
+                '';
 
-    modalBody.innerHTML = `
-        <div class="modal-left">
-            <div class="game-title">${game.name}</div>
-            <div class="game-cover-wrap">${coverHtml}</div>
-            <div class="game-footer">
-                <span class="score-label">星GN评分： <strong>${game.score.toFixed(2)}</strong></span>
-                <span class="game-tag-big ${tagClass}">${game.tag}</span>
-            </div>
+            const descriptionHtml = game.description ?
+                `<div class="game-description">📝 ${game.description}</div>` :
+                '';
+
+            const subDims = game.subDims || game.sub_dims || [
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ];
+            while (subDims.length < 8) subDims.push([]);
+
+            let rightHtml = '';
+            DIM_CONFIG.forEach((cfg, idx) => {
+                const dimScore = (game.dims && game.dims[idx] !== undefined) ? game.dims[idx] : 0;
+                const subScores = (subDims[idx] && Array.isArray(subDims[idx])) ? subDims[idx] : [];
+
+                let subHtml = '';
+                if (cfg.hasSub) {
+                    const hasValidData = subScores.length > 0 && subScores.some(s => s !== 0 && s !== undefined &&
+                    s !== null);
+                    if (hasValidData) {
+                        subHtml = subScores.map((s, si) => {
+                            const label = cfg.subLabels[si] || '子项';
+                            let cls = 'sub-score';
+                            if (s >= 8) cls += ' high';
+                            else if (s >= 6) cls += ' mid';
+                            else cls += ' low';
+                            return `<span class="sub-item"><span class="sub-label">${label}</span> <span class="${cls}">${typeof s === 'number' ? s.toFixed(1) : s}</span></span>`;
+                        }).join('');
+                    } else {
+                        subHtml = `<span class="sub-item" style="color:#94a3b8;font-size:12px;">—</span>`;
+                    }
+                }
+
+                const finalDisplay = typeof dimScore === 'number' ? dimScore.toFixed(1) : dimScore;
+                rightHtml += `
+                        <div class="dimension-block">
+                            <span class="dim-label">${cfg.label}</span>
+                            <div class="sub-items">${subHtml}</div>
+                            ${cfg.hasSub ? `<span class="dim-final">${finalDisplay}</span>` : `<span class="dim-final-only">${finalDisplay}</span>`}
+                        </div>
+                    `;
+            });
+
+            modalBody.innerHTML = `
+    <div class="modal-left">
+        <div class="game-title">${game.name}</div>
+        <div class="game-cover-wrap">${coverHtml}</div>
+        ${descriptionHtml}
+        <div class="game-footer">
+            <span class="score-label">星GN评分： <strong>${game.score.toFixed(2)}</strong></span>
+            <span class="game-tag-big ${tagClass}">${game.tag}</span>
         </div>
-        <div class="modal-right">${rightHtml}</div>
-    `;
+        ${detailTagsHtml}
+    </div>
+    <div class="modal-right">${rightHtml}</div>
+`;
 
-    modalOverlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            document.querySelectorAll('.detail-tags .tag-chip').forEach(el => {
+                el.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    closeModal();
+                    setTimeout(() => filterByTag(this.dataset.tag), 200);
+                });
+            });
+
+            document.querySelector('.game-tag-big')?.addEventListener('click', function() {
+                const tag = this.textContent.trim();
+                if (tag) {
+                    closeModal();
+                    setTimeout(() => filterByTag(tag), 200);
+                }
+            });
+        }
 
         function closeModal() {
             modalOverlay.classList.remove('active');
             document.body.style.overflow = '';
+        }
+
+        function randomGame() {
+            if (games.length === 0) return;
+            triggerStarEffect();
+            setTimeout(() => {
+                const random = games[Math.floor(Math.random() * games.length)];
+                openModal(random);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 400);
+        }
+
+        function triggerStarEffect() {
+            const star = document.createElement('div');
+            star.className = 'star-glow';
+            star.textContent = '✦';
+            document.body.appendChild(star);
+
+            for (let i = 0; i < 4; i++) {
+                setTimeout(() => {
+                    const ring = document.createElement('div');
+                    ring.className = 'ripple-ring';
+                    const size = 40 + i * 30;
+                    ring.style.width = size + 'px';
+                    ring.style.height = size + 'px';
+                    ring.style.marginLeft = -(size / 2) + 'px';
+                    ring.style.marginTop = -(size / 2) + 'px';
+                    ring.style.borderColor = i === 0 ? '#fbbf24' : i === 1 ? '#fcd34d' : '#fde68a';
+                    ring.style.animationDuration = (1.0 + i * 0.2) + 's';
+                    document.body.appendChild(ring);
+                    setTimeout(() => ring.remove(), 1000);
+                }, i * 150);
+            }
+
+            const colors = ['#fbbf24', '#fcd34d', '#fde68a', '#93c5fd', '#fff'];
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const dot = document.createElement('div');
+                    dot.className = 'sparkle-dot';
+                    const angle = Math.random() * Math.PI * 2;
+                    const distance = 80 + Math.random() * 180;
+                    const x = 50 + (Math.cos(angle) * distance) / window.innerWidth * 100;
+                    const y = 50 + (Math.sin(angle) * distance) / window.innerHeight * 100;
+                    dot.style.left = x + '%';
+                    dot.style.top = y + '%';
+                    const size = 3 + Math.random() * 6;
+                    dot.style.width = size + 'px';
+                    dot.style.height = size + 'px';
+                    dot.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    dot.style.boxShadow = `0 0 ${6 + Math.random() * 10}px ${dot.style.background}`;
+                    dot.style.animationDuration = (0.5 + Math.random() * 0.4) + 's';
+                    document.body.appendChild(dot);
+                    setTimeout(() => dot.remove(), 1200);
+                }, i * 60);
+            }
+            setTimeout(() => star.remove(), 1200);
         }
 
         modalClose.addEventListener('click', closeModal);
@@ -1124,11 +1382,15 @@ const scoreClass = tagName === '夯' ? 'hang' :
         searchInput.addEventListener('input', renderGames);
         sortSelect.addEventListener('change', renderGames);
 
-        // ===== 启动 =====
         loadData();
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var script = document.createElement('script');
+            script.src = 'https://js.users.51.la/22229501.js';
+            script.async = true;
+            document.body.appendChild(script);
+        });
     </script>
-    <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
-<script>LA.init({id:"3R3y3V3WUsYlhwH8",ck:"3R3y3V3WUsYlhwH8"})</script>
 
 </body>
 </html>
