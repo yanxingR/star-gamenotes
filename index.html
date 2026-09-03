@@ -878,62 +878,71 @@
     }
 }
 
-            .modal-content {
-                padding: 16px 14px;
-                border-radius: 18px;
-                height: auto;
-            }
-            .modal-left .game-title {
-                font-size: 17px;
-            }
-            .modal-left .game-cover-wrap {
-                min-height: 120px;
-            }
-            .modal-left .game-cover-wrap .placeholder {
-                font-size: 32px;
-            }
-            .modal-left .game-footer {
-                flex-direction: column;
-                gap: 6px;
-                align-items: center;
-            }
-            .modal-left .game-footer .score-label {
-                font-size: 13px;
-            }
-            .modal-left .game-footer .score-label strong {
-                font-size: 15px;
-            }
-            .modal-left .game-tag-big {
-                font-size: 12px;
-                padding: 2px 16px;
-            }
-            .modal-right .dimension-block .dim-label {
-                width: 52px;
-                font-size: 11px;
-            }
-            .modal-right .dimension-block .sub-item {
-                font-size: 11px;
-                gap: 0px;
-            }
-            .modal-right .dimension-block .sub-item .sub-label {
-                font-size: 10px;
-            }
-            .modal-right .dimension-block .sub-item .sub-score {
-                font-size: 11px;
-            }
-            .modal-right .dimension-block .dim-final,
-            .modal-right .dimension-block .dim-final-only {
-                font-size: 15px;
-                min-width: 42px;
-                padding: 0 6px;
-            }
-            .game-description {
-                font-size: 12px;
-            }
-            .detail-tags .tag-chip {
-                font-size: 10px;
-                padding: 1px 10px;
-            }
+            /* 详情模态框 - 让内容可滚动 */
+    .modal-content {
+        max-height: 95vh;
+        overflow-y: auto;           /* 内容超出时滚动 */
+        padding: 16px 12px;
+    }
+
+    /* 标签行强制换行 */
+    .detail-tags {
+        gap: 3px 4px;
+        justify-content: center;
+    }
+    .detail-tags .tag-chip {
+        font-size: 9px;
+        padding: 1px 8px;
+        white-space: nowrap;
+    }
+
+    /* 右侧维度区域缩小字体，防止溢出 */
+    .modal-right .dimension-block {
+        flex-wrap: wrap;            /* 允许换行 */
+        min-height: 28px;
+        padding: 2px 0;
+    }
+    .modal-right .dimension-block .dim-label {
+        width: 44px;
+        font-size: 10px;
+    }
+    .modal-right .dimension-block .sub-item {
+        font-size: 10px;
+    }
+    .modal-right .dimension-block .sub-item .sub-label {
+        font-size: 9px;
+    }
+    .modal-right .dimension-block .sub-item .sub-score {
+        font-size: 10px;
+    }
+    .modal-right .dimension-block .dim-final,
+    .modal-right .dimension-block .dim-final-only {
+        font-size: 13px;
+        min-width: 36px;
+        padding: 0 4px;
+    }
+
+    /* 左侧简介文字缩小 */
+    .game-description {
+        font-size: 12px;
+        padding: 4px 2px;
+    }
+
+    /* 评分和标签区域 */
+    .modal-left .game-footer {
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+    .modal-left .game-footer .score-label {
+        font-size: 12px;
+    }
+    .modal-left .game-footer .score-label strong {
+        font-size: 14px;
+    }
+    .modal-left .game-tag-big {
+        font-size: 11px;
+        padding: 2px 14px;
+    }
         }
     </style>
 </head>
