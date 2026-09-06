@@ -319,19 +319,19 @@
 }
 
 .game-card .info .game-tags .tag-chip {
-    font-size: 10px;
+    font-size: clamp(6px, 0.6vw, 10px);
     font-weight: 500;
     color: #64748b;
     background: #f1f5f9;
-    padding: 0px 8px;
+    padding: 0px 4px;
     border-radius: 30px;
     cursor: pointer;
     transition: 0.2s;
     white-space: nowrap;
     letter-spacing: 0.2px;
     line-height: 1.6;
-    zoom: 0.75;              /* 替代 transform: scale() */
-    margin: 1px 2px 1px 0;   /* 正常间距，zoom 会等比缩放 */
+    zoom: clamp(0.45, 0.8vw, 0.7);
+    margin: 1px 0px 1px 0;
 }
         .game-card .info .game-tags .tag-chip:hover {
             background: #e2e8f0;
@@ -398,7 +398,7 @@
 .detail-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 4px 6px;
+    gap: 2px 4px;
     justify-content: center;
     margin-top: 6px;
     padding-top: 6px;
@@ -406,7 +406,7 @@
 }
 
 .detail-tags .tag-chip {
-    font-size: 10px;
+    font-size: clamp(6px, 0.6vw, 10px);
     font-weight: 500;
     color: #64748b;
     background: #f1f5f9;
@@ -417,7 +417,8 @@
     white-space: nowrap;
     letter-spacing: 0.2px;
     line-height: 1.6;
-    zoom: 0.65;
+    zoom: clamp(0.45, 0.8vw, 0.7);
+    margin: 1px 2px 1px 0;
 }
 .detail-tags .tag-chip:hover {
     background: #e2e8f0;
