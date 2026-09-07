@@ -1398,12 +1398,12 @@
 
         loadData();
 
-        document.addEventListener('DOMContentLoaded', function() {
-            var script = document.createElement('script');
-            script.src = 'https://js.users.51.la/22229501.js';
-            script.async = true;
-            document.body.appendChild(script);
-        });
+                // 51.la 统计
+        var script = document.createElement('script');
+        script.src = 'https://sdk.51.la/js-sdk-pro.min.js';
+        script.async = true;
+        document.body.appendChild(script);
+        LA.init({id:"3R3y3V3WUsYlhwH8",ck:"3R3y3V3WUsYlhwH8"});
     </script>
 
 </body>
