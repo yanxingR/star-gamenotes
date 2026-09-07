@@ -1402,8 +1402,10 @@
         var script = document.createElement('script');
         script.src = 'https://sdk.51.la/js-sdk-pro.min.js';
         script.async = true;
+        script.onload = function() {
+            LA.init({id:"3R3y3V3WUsYlhwH8",ck:"3R3y3V3WUsYlhwH8"});
+        };
         document.body.appendChild(script);
-        LA.init({id:"3R3y3V3WUsYlhwH8",ck:"3R3y3V3WUsYlhwH8"});
     </script>
 
 </body>
