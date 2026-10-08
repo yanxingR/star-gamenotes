@@ -1138,24 +1138,43 @@
             }
 
             const sortMode = sortSelect.value;
+
+// 辅助：从 playtime 字符串里提取数字
+const parseHours = (str) => {
+    if (!str) return null;
+    const match = String(str).match(/(\d+(?:\.\d+)?)/);
+    return match ? parseFloat(match[1]) : null;
+};
+
 if (sortMode === 'high-to-low') {
     filtered.sort((a, b) => b.score - a.score);
 } else if (sortMode === 'low-to-high') {
     filtered.sort((a, b) => a.score - b.score);
-} else if (sortMode === 'playtime') {
-    const parseHours = (str) => {
-        if (!str) return 999;
-        const match = str.match(/(\d+(?:\.\d+)?)/);
-        return match ? parseFloat(match[1]) : 999;
-    };
-    filtered.sort((a, b) => parseHours(a.playtime) - parseHours(b.playtime));
-} else if (sortMode === 'year') {
+} else if (sortMode === 'playtime-asc') {
+    filtered.sort((a, b) => {
+        const ha = parseHours(a.playtime);
+        const hb = parseHours(b.playtime);
+        if (ha === null && hb === null) return 0;
+        if (ha === null) return 1;
+        if (hb === null) return -1;
+        return ha - hb;
+    });
+} else if (sortMode === 'playtime-desc') {
+    filtered.sort((a, b) => {
+        const ha = parseHours(a.playtime);
+        const hb = parseHours(b.playtime);
+        if (ha === null && hb === null) return 0;
+        if (ha === null) return 1;
+        if (hb === null) return -1;
+        return hb - ha;
+    });
+} else if (sortMode === 'year-desc') {
+    filtered.sort((a, b) => (b.release_year || 0) - (a.release_year || 0));
+} else if (sortMode === 'year-asc') {
     filtered.sort((a, b) => (a.release_year || 0) - (b.release_year || 0));
 } else {
-    for (let i = filtered.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [filtered[i], filtered[j]] = [filtered[j], filtered[i]];
-    }
+    // 默认：按 id 升序排列
+    filtered.sort((a, b) => (a.id || 0) - (b.id || 0));
 }
 
             if (filtered.length === 0) {
