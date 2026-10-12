@@ -1120,11 +1120,15 @@
         }
 
         function renderGames() {
-    const keyword = searchInput.value.trim().toLowerCase();
+        const keyword = searchInput.value.trim().toLowerCase();
+
+    // ===== 第一步：搜索过滤（匹配游戏名 + 所有标签） =====
     let filtered = games.filter(g => {
+        if (!keyword) return true; // 搜索词为空，全部通过
+
         // 匹配游戏名
         if (g.name.toLowerCase().includes(keyword)) return true;
-        
+
         // 匹配所有标签字段
         const allTags = [
             ...splitTags(g.genre),
@@ -1134,10 +1138,24 @@
             ...splitTags(g.tag),
         ];
         if (g.release_year) allTags.push(String(g.release_year));
-        
-        // 任一标签包含关键词即匹配
+
         return allTags.some(t => t.toLowerCase().includes(keyword));
     });
+
+    // ===== 第二步：标签筛选（关键！这段你之前漏掉了） =====
+    if (activeTag) {
+        filtered = filtered.filter(g => {
+            const allTags = [
+                ...splitTags(g.genre),
+                ...splitTags(g.playtime),
+                ...splitTags(g.developer),
+                ...splitTags(g.platform),
+                ...splitTags(g.tag),
+            ];
+            if (g.release_year) allTags.push(String(g.release_year));
+            return allTags.includes(activeTag);
+        });
+    }
 
             const sortMode = sortSelect.value;
 
