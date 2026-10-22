@@ -776,7 +776,8 @@
             subLabels: ['剧本内容', '叙事'],
             hasSub: true,
             calc: (subs) => {
-                const raw = subs[0] * 0.6 + (subs[0] * subs[1] / 8.5) * 0.4;
+                // 故事性 = 剧本 × 0.4 + (剧本 × 叙事 / 8.5) × 0.6
+                const raw = subs[0] * 0.4 + (subs[0] * subs[1] / 8.5) * 0.6;
                 return Math.min(raw, 10);
             }
         }, {
