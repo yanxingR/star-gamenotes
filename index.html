@@ -964,6 +964,7 @@
                 <div class="sub">
                     游戏手札 · 评分档案馆
                 </div>
+                <div class="data-status" id="dataStatus" style="display:none;font-size:11px;line-height:1.4;margin-top:3px;"></div>
             </div>
         </div>
         <div class="controls">
@@ -1040,8 +1041,12 @@
 
         const SUPABASE_URL = 'https://vgdralqjppxshwbqqzum.supabase.co';
         const SUPABASE_KEY = 'sb_publishable_f76ssYCjHRIlQ5TnP3VqKA_hjoX-NhS';
-        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        // supabase-js 若被 CDN 拦截，不能让它把整段脚本带崩，后面会走缓存/静态兜底
+        const supabaseClient = (typeof supabase !== 'undefined')
+            ? supabase.createClient(SUPABASE_URL, SUPABASE_KEY)
+            : null;
         const STORAGE_KEY = 'starGN_games';
+        const STORAGE_TIME = 'starGN_synced_at';
 
         const tagClassMap = {
             '夯': 'tag-hang',
@@ -1067,36 +1072,120 @@
             return String(value).split('/').map(s => s.trim()).filter(Boolean);
         }
 
+        // ===== 数据加载：线上 → 本地缓存 → 静态 data.json =====
+        // 国内网络经常对 *.supabase.co 做连接重置，这里保证页面永远不会白屏
+
+        function withTimeout(promise, ms) {
+            return Promise.race([
+                promise,
+                new Promise((_, reject) => setTimeout(() => reject(new Error('请求超时')), ms))
+            ]);
+        }
+
+        async function fetchLiveGames() {
+            if (!supabaseClient) {
+                console.warn('supabase-js 未加载，跳过线上请求');
+                return null;
+            }
+            for (let attempt = 1; attempt <= 2; attempt++) {
+                try {
+                    const { data, error } = await withTimeout(
+                        supabaseClient.from('games').select('*').order('id', { ascending: true }),
+                        7000
+                    );
+                    if (error) throw error;
+                    return data || [];
+                } catch (e) {
+                    console.warn(`Supabase 第 ${attempt} 次加载失败:`, (e && e.message) ? e.message : e);
+                    if (attempt < 2) await new Promise(r => setTimeout(r, 800));
+                }
+            }
+            return null;
+        }
+
+        function readCachedGames() {
+            try {
+                const raw = localStorage.getItem(STORAGE_KEY);
+                if (!raw) return null;
+                const data = JSON.parse(raw);
+                return (Array.isArray(data) && data.length) ? data : null;
+            } catch (e) {
+                return null;
+            }
+        }
+
+        function setDataStatus(kind, extra) {
+            const el = document.getElementById('dataStatus');
+            if (!el) return;
+            const savedAt = Number(localStorage.getItem(STORAGE_TIME) || 0);
+            const timeText = savedAt
+                ? new Date(savedAt).toLocaleString('zh-CN', { hour12: false })
+                : '未知时间';
+            const map = {
+                live: ['', '#22c55e'],
+                cache: [`⚠️ 数据库连不上，正在显示本地缓存（同步于 ${timeText}）`, '#f59e0b'],
+                static: [`⚠️ 数据库连不上，正在显示静态备份 data.json${extra ? '（更新于 ' + extra + '）' : ''}`, '#f59e0b'],
+                empty: ['⚠️ 数据库连不上，且没有可用缓存，请检查网络', '#ef4444']
+            };
+            const [text, color] = map[kind] || map.empty;
+            el.textContent = text;
+            el.style.color = color;
+            el.style.display = text ? 'block' : 'none';
+        }
+
         async function loadData() {
             games = [];
-            localStorage.removeItem(STORAGE_KEY);
+            setDataStatus('live');
 
-            try {
-                const { data, error } = await supabaseClient
-                    .from('games')
-                    .select('*')
-                    .order('id', { ascending: true });
-
-                if (error) {
-                    console.error('Supabase 查询失败:', error);
-                    renderGames();
-                    return;
-                }
-
-                if (data && data.length > 0) {
-                    games = data;
+            // 1) 线上数据库
+            const live = await fetchLiveGames();
+            if (live && live.length) {
+                games = live;
+                try {
                     localStorage.setItem(STORAGE_KEY, JSON.stringify(games));
-                    renderGames();
-                    console.log('✅ 加载成功，共 ' + games.length + ' 款');
-                } else {
-                    games = [];
-                    renderGames();
+                    localStorage.setItem(STORAGE_TIME, String(Date.now()));
+                } catch (e) { /* 缓存写不下就跳过 */ }
+                setDataStatus('live');
+                renderGames();
+                console.log('✅ 线上加载成功，共 ' + games.length + ' 款');
+                return;
+            }
+
+            // 2) 本地缓存
+            const cached = readCachedGames();
+            if (cached) {
+                games = cached;
+                setDataStatus('cache');
+                renderGames();
+                console.log('⚠️ 使用本地缓存，共 ' + games.length + ' 款');
+                return;
+            }
+
+            // 3) 同源静态备份
+            try {
+                const res = await fetch('data.json?v=' + Date.now(), { cache: 'no-store' });
+                if (res.ok) {
+                    const data = await res.json();
+                    if (Array.isArray(data) && data.length) {
+                        games = data;
+                        const lastMod = res.headers.get('last-modified');
+                        const modText = lastMod
+                            ? new Date(lastMod).toLocaleString('zh-CN', { hour12: false })
+                            : '';
+                        setDataStatus('static', modText);
+                        renderGames();
+                        console.log('⚠️ 使用 data.json 静态备份，共 ' + games.length + ' 款');
+                        return;
+                    }
                 }
             } catch (e) {
-                console.error('加载失败:', e);
-                games = [];
-                renderGames();
+                console.warn('data.json 兜底失败:', e);
             }
+
+            // 4) 彻底失败
+            setDataStatus('empty');
+            renderGames();
+            console.error('❌ 所有数据源都不可用');
         }
 
         function filterByTag(tag) {
