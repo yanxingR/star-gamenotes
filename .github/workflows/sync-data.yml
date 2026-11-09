@@ -1,0 +1,44 @@
+name: Sync data.json from Supabase
+
+# GitHub 的服务器能正常访问 supabase.co，这里定时把数据导出成静态文件，
+# 让 Pages 在数据库被墙/重置时也有数据可显示。
+on:
+  schedule:
+    - cron: '0 */6 * * *'   # 每 6 小时（UTC）
+  workflow_dispatch:         # 也可以在 Actions 页面手动点一下
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Export games from Supabase
+        run: |
+          curl -sS --fail --retry 3 --retry-delay 5 \
+            "https://vgdralqjppxshwbqqzum.supabase.co/rest/v1/games?select=*&order=id.asc" \
+            -H "apikey: sb_publishable_f76ssYCjHRIlQ5TnP3VqKA_hjoX-NhS" \
+            -H "Accept: application/json" \
+            -o data.json
+          python3 - <<'PY'
+          import json
+          with open('data.json', encoding='utf-8') as f:
+              data = json.load(f)
+          assert isinstance(data, list) and data, 'empty or invalid data.json'
+          print('rows:', len(data))
+          PY
+
+      - name: Commit if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- data.json; then
+            echo "data.json 无变化"
+          else
+            git add data.json
+            git commit -m "chore: sync data.json ($(date -u +%Y-%m-%dT%H:%MZ))"
+            git push
+          fi
