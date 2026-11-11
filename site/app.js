@@ -564,8 +564,8 @@
           <div class="row-meta">${meta}</div>
         </div>
         <div class="dim-strip" title="八维评分">${strip}</div>
-        <div class="total-cell">
-          <span class="total-num" style="--total-c:${g.score >= 9 ? "var(--gold)" : "#e9eefc"}">${fmt(g.score)}</span>
+        <div class="total-cell" style="--tag-c:${TAG_COLORS[g.tag] || "#60a5fa"}" title="${esc(g.tag)} · 总分 ${fmt(g.score)}">
+          <span class="total-num">${fmt(g.score)}</span>
           <span class="total-cap">TOTAL</span>
         </div>
       </article>`;

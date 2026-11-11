@@ -1104,27 +1104,41 @@ main {
 .total-cell {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  gap: 2px;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  min-height: 48px;
+  padding: 6px 8px 5px;
+  border-radius: 12px;
+  background:
+    linear-gradient(155deg, rgba(255, 255, 255, 0.32), rgba(255, 255, 255, 0) 50%),
+    var(--tag-c, #60a5fa);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow:
+    0 9px 22px -12px var(--tag-c, #60a5fa),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transition: transform 0.25s var(--ease), filter 0.25s;
 }
 
 .total-num {
   font-family: var(--mono);
-  font-size: 21px;
-  font-weight: 600;
+  font-size: 22px;
+  font-weight: 700;
   line-height: 1;
   letter-spacing: -0.03em;
-  color: var(--total-c, #fff);
+  color: #10131c;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.18);
 }
 
 .total-cap {
-  font-size: 9px;
+  font-size: 8.5px;
+  font-weight: 700;
   letter-spacing: 0.16em;
-  color: var(--muted-2);
+  color: rgba(14, 17, 26, 0.6);
   text-transform: uppercase;
 }
 
-.rank-row:hover .total-num { text-shadow: 0 0 24px var(--glow, transparent); }
+.rank-row:hover .total-cell { transform: translateY(-1px); filter: brightness(1.06); }
 
 /* ---------- grid view ---------- */
 .rank-list.grid {
@@ -1213,16 +1227,19 @@ main {
   right: 10px;
   z-index: 2;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
   gap: 0;
-  padding: 4px 8px 5px;
+  min-height: 0;
+  padding: 3px 7px 4px;
   border-radius: 8px;
-  background: rgba(6, 12, 24, 0.68);
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background:
+    linear-gradient(155deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 55%),
+    var(--tag-c, #60a5fa);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 6px 16px -9px var(--tag-c, #60a5fa);
 }
 
-.rank-list.grid .total-num { font-size: 16px; color: var(--gold); }
+.rank-list.grid .total-num { font-size: 15px; color: #10131c; text-shadow: none; }
 .rank-list.grid .total-cap { display: none; }
 
 /* ---------- empty ---------- */
@@ -2142,6 +2159,7 @@ main {
   .rank-row::before { background: var(--row-c, transparent); opacity: 0.5; width: 3px; }
   .rank-row:hover::before { opacity: 1; }
   .tag-pill { height: 16px; font-size: 9.5px; padding: 0 5px; }
+  .total-cell { min-height: 32px; padding: 4px 5px; border-radius: 8px; }
   .total-num { font-size: 17px; }
   .total-cap { display: none; }
   .rank-row.top .rank-no { width: 26px; height: 26px; font-size: 12px; }
