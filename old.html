@@ -1,0 +1,1637 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>星 GameNotes · 游戏档案馆</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f1f5f9;
+            color: #0f172a;
+            padding: 32px 24px 60px;
+            min-height: 100vh;
+        }
+        .app-header {
+            max-width: 1400px;
+            margin: 0 auto 28px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 16px;
+            gap: 12px;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            border-radius: 14px;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+            flex-shrink: 0;
+        }
+        .brand-logo svg {
+            width: 26px;
+            height: 26px;
+            fill: none;
+            stroke: #fbbf24;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+        .brand-text .name {
+            font-family: 'Inter', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .brand-text .name .badge {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            background: #1e293b;
+            color: #ffffff;
+            padding: 1px 14px;
+            border-radius: 40px;
+            -webkit-text-fill-color: #ffffff;
+            letter-spacing: 0.2px;
+        }
+        /* 数据源状态：只显示一个小黄点，悬停/聚焦才展开说明 */
+        .brand-text .name .data-status {
+            display: none;
+            flex: 0 0 auto;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #f59e0b;
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.16);
+            cursor: help;
+            position: relative;
+            transition: box-shadow 0.2s ease;
+            -webkit-text-fill-color: initial;
+        }
+        .brand-text .name .data-status.show {
+            display: inline-block;
+        }
+        .brand-text .name .data-status:hover,
+        .brand-text .name .data-status:focus-visible {
+            box-shadow: 0 0 0 5px rgba(245, 158, 11, 0.26);
+            outline: none;
+        }
+        .brand-text .name .data-status.is-error {
+            background: #ef4444;
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.16);
+        }
+        .brand-text .name .data-status::after {
+            content: attr(data-tip);
+            position: absolute;
+            top: calc(100% + 12px);
+            left: -8px;
+            width: max-content;
+            max-width: 280px;
+            background: #1e293b;
+            color: #ffffff;
+            -webkit-text-fill-color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 1.55;
+            letter-spacing: 0;
+            white-space: normal;
+            padding: 7px 11px;
+            border-radius: 8px;
+            box-shadow: 0 10px 24px rgba(15, 23, 42, 0.22);
+            opacity: 0;
+            transform: translateY(-4px);
+            pointer-events: none;
+            transition: opacity 0.15s ease, transform 0.15s ease;
+            z-index: 60;
+        }
+        .brand-text .name .data-status:hover::after,
+        .brand-text .name .data-status:focus-visible::after {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @media (max-width: 640px) {
+            .brand-text .name .data-status::after {
+                left: auto;
+                right: -8px;
+            }
+        }
+        .brand-text .sub {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            color: #94a3b8;
+            -webkit-text-fill-color: #94a3b8;
+            margin-top: 1px;
+        }
+        .controls {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .controls input,
+        .controls select {
+            font-family: 'Inter', sans-serif;
+            padding: 9px 16px;
+            border-radius: 40px;
+            border: 1.5px solid #e2e8f0;
+            background: #ffffff;
+            font-size: 14px;
+            font-weight: 500;
+            color: #0f172a;
+            outline: none;
+            transition: 0.2s;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+        }
+        .controls input:focus,
+        .controls select:focus {
+            border-color: #94a3b8;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        }
+        .controls .btn-generator {
+            font-family: 'Inter', sans-serif;
+            padding: 6px 16px;
+            border-radius: 30px;
+            border: none;
+            font-weight: 500;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.2s;
+            background: #e2e8f0;
+            color: #0f172a;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+        }
+        .controls .btn-generator:hover {
+            background: #cbd5e1;
+        }
+        .controls .btn-random {
+            font-family: 'Inter', sans-serif;
+            padding: 6px 16px;
+            border-radius: 30px;
+            border: none;
+            font-weight: 500;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.2s;
+            background: #e2e8f0;
+            color: #0f172a;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+        }
+        .controls .btn-random:hover {
+            background: #cbd5e1;
+        }
+        .controls .btn-version {
+            font-family: 'Inter', sans-serif;
+            padding: 6px 16px;
+            border-radius: 30px;
+            border: none;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.2s;
+            background: #0f172a;
+            color: #ffffff;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.18);
+        }
+        .controls .btn-version:hover {
+            background: #1e293b;
+            transform: translateY(-1px);
+        }
+        .controls input {
+            width: 210px;
+        }
+
+        .filter-banner {
+            display: none;
+            background: #f1f5f9;
+            border-radius: 40px;
+            padding: 6px 18px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #0f172a;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+        .filter-banner .clear-filter {
+            cursor: pointer;
+            color: #94a3b8;
+            font-weight: 600;
+            transition: 0.2s;
+            background: none;
+            border: none;
+            font-size: 14px;
+        }
+        .filter-banner .clear-filter:hover {
+            color: #ef4444;
+        }
+        .filter-banner.show {
+            display: inline-flex;
+        }
+
+        .card-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+        .game-card {
+            background: #ffffff;
+            border-radius: 18px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+            border: 1px solid #eef2f6;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: stretch;
+            overflow: hidden;
+            cursor: pointer;
+            min-height: 160px;
+            position: relative;
+        }
+        .game-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.18);
+            border-color: #cbd5e1;
+        }
+        .game-card .cover {
+            width: 140px;
+            min-height: 160px;
+            flex-shrink: 0;
+            background: #e9edf2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            color: #94a3b8;
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 2 / 3;
+        }
+        .game-card .cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .game-card .cover .placeholder {
+            font-size: 36px;
+            color: #94a3b8;
+            z-index: 1;
+        }
+
+        /* ===== info 容器：垂直居中 ===== */
+        .game-card .info {
+            flex: 1;
+            padding: 16px 20px 32px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-width: 0;
+            position: relative;
+        }
+
+        /* ===== 主内容包裹（游戏名 + 分数）：占据中间空间 ===== */
+        .game-card .info .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .game-card .info .name {
+            font-family: 'Inter', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: #0f172a;
+            line-height: 1.3;
+            margin-bottom: 2px;
+        }
+        .game-card .info .score {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 34px;
+            font-weight: 700;
+            color: #0f172a;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        /* ===== 主标签（右上角） ===== */
+        .game-card .info .tag {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-family: 'Inter', sans-serif;
+            display: inline-block;
+            font-size: 16px;
+            font-weight: 700;
+            padding: 6px 18px;
+            border-radius: 40px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            border: 2px solid transparent;
+            background: #e9edf2;
+            color: #0f172a;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .game-card:hover .info .tag {
+            transform: translateY(-50%) scale(1.05);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        /* ===== 小标签：缩在底部 ===== */
+        .game-card .info .game-tags {
+    position: absolute;
+    bottom: 6px;
+    left: 20px;
+    right: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: -1px -10px 0 0;  /* 负 margin 收紧容器 */
+}
+
+.game-card .info .game-tags .tag-chip {
+    font-size: clamp(6px, 0.6vw, 10px);
+    font-weight: 500;
+    color: #64748b;
+    background: #f1f5f9;
+    padding: 0px 4px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.2s;
+    white-space: nowrap;
+    letter-spacing: 0.2px;
+    line-height: 1.6;
+    zoom: clamp(0.45, 0.8vw, 0.7);
+    margin: 1px 0px 1px 0;
+}
+        .game-card .info .game-tags .tag-chip:hover {
+            background: #e2e8f0;
+            color: #0f172a;
+        }
+
+        .tag-hang {
+            background: #fbbf24 !important;
+            border-color: #f59e0b !important;
+            box-shadow: 0 2px 12px rgba(251, 191, 36, 0.35) !important;
+        }
+        .tag-dingji {
+            background: #ef4444 !important;
+            border-color: #dc2626 !important;
+            box-shadow: 0 2px 12px rgba(239, 68, 68, 0.35) !important;
+        }
+        .tag-renshangren {
+            background: #a855f7 !important;
+            border-color: #9333ea !important;
+            box-shadow: 0 2px 12px rgba(168, 85, 247, 0.35) !important;
+        }
+        .tag-npc {
+            background: #3b82f6 !important;
+            border-color: #2563eb !important;
+            box-shadow: 0 2px 12px rgba(59, 130, 246, 0.35) !important;
+        }
+        .tag-la {
+            background: #22c55e !important;
+            border-color: #16a34a !important;
+            box-shadow: 0 2px 12px rgba(34, 197, 94, 0.3) !important;
+        }
+        .tag-lawanle {
+            background: #c4a35a !important;
+            border-color: #a8893a !important;
+            box-shadow: 0 2px 12px rgba(196, 163, 90, 0.3) !important;
+        }
+        .game-card .info .score.hang {
+            color: #fbbf24 !important;
+        }
+        .game-card .info .score.dingji {
+            color: #ef4444 !important;
+        }
+        .game-card .info .score.renshangren {
+            color: #a855f7 !important;
+        }
+        .game-card .info .score.npc {
+            color: #3b82f6 !important;
+        }
+        .game-card .info .score.la {
+            color: #22c55e !important;
+        }
+        .game-card .info .score.lawanle {
+            color: #c4a35a !important;
+        }
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            color: #94a3b8;
+            font-size: 18px;
+        }
+
+        /* ===== 详情模态框小标签 ===== */
+.detail-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px 4px;
+    justify-content: center;
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.detail-tags .tag-chip {
+    font-size: clamp(6px, 0.6vw, 10px);
+    font-weight: 500;
+    color: #64748b;
+    background: #f1f5f9;
+    padding: 0px 6px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.2s;
+    white-space: nowrap;
+    letter-spacing: 0.2px;
+    line-height: 1.6;
+    zoom: clamp(0.45, 0.8vw, 0.7);
+    margin: 1px 2px 1px 0;
+}
+.detail-tags .tag-chip:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+}
+
+/* 简介样式保持不变 */
+.game-description {
+    font-size: 14px;
+    color: #64748b;
+    text-align: center;
+    padding: 6px 4px 4px 4px;
+    line-height: 1.5;
+}
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 32px;
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            border-radius: 28px;
+            max-width: 1400px;
+            width: 100%;
+            max-height: 92vh;
+            padding: 28px 32px;
+            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.4);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            animation: modalFadeIn 0.35s ease forwards;
+        }
+        @keyframes starPulse {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) rotate(0deg);
+            }
+            20% {
+                opacity: 1;
+                transform: scale(1.2) rotate(20deg);
+            }
+            40% {
+                transform: scale(0.9) rotate(-10deg);
+            }
+            60% {
+                transform: scale(1.1) rotate(5deg);
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: scale(1.5) rotate(0deg);
+            }
+        }
+
+        @keyframes rippleStar {
+            0% {
+                opacity: 0.8;
+                transform: translate(-50%, -50%) scale(0);
+                box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.6);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(4);
+                box-shadow: 0 0 60px 40px rgba(251, 191, 36, 0);
+            }
+        }
+
+        @keyframes sparkleFade {
+            0% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+        }
+
+        .star-glow {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            pointer-events: none;
+            font-size: 72px;
+            animation: starPulse 1s ease-out forwards;
+            text-shadow: 0 0 40px rgba(251, 191, 36, 0.8), 0 0 80px rgba(251, 191, 36, 0.4);
+        }
+
+        .ripple-ring {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            z-index: 9998;
+            pointer-events: none;
+            border-radius: 50%;
+            border: 2px solid rgba(251, 191, 36, 0.8);
+            animation: rippleStar 1.2s ease-out forwards;
+        }
+
+        .sparkle-dot {
+            position: fixed;
+            z-index: 9997;
+            pointer-events: none;
+            border-radius: 50%;
+            background: #fbbf24;
+            animation: sparkleFade 0.8s ease-out forwards;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            font-size: 30px;
+            font-weight: 300;
+            color: #94a3b8;
+            cursor: pointer;
+            transition: 0.2s;
+            background: none;
+            border: none;
+            line-height: 1;
+            z-index: 10;
+        }
+        .modal-close:hover {
+            color: #0f172a;
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            display: flex;
+            gap: 24px;
+            width: 100%;
+            flex: 1;
+            min-height: 0;
+            align-items: stretch;
+        }
+
+        .modal-left {
+            flex: 0 0 60%;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            min-width: 0;
+        }
+        .modal-left .game-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: #0f172a;
+            letter-spacing: -0.3px;
+            line-height: 1.2;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .modal-left .game-cover-wrap {
+            flex: 1;
+            min-height: 0;
+            width: 100%;
+            border-radius: 16px;
+            background: #0f172a;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 920 / 430;
+        }
+        .modal-left .game-cover-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .modal-left .game-cover-wrap .placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 56px;
+            color: #64748b;
+        }
+        .modal-left .game-footer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-shrink: 0;
+        }
+        .modal-left .game-footer .score-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            color: #475569;
+        }
+        .modal-left .game-footer .score-label strong {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 18px;
+            color: #0f172a;
+            margin-left: 4px;
+        }
+        .modal-left .game-tag-big {
+            display: inline-block;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 4px 28px;
+            border-radius: 40px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 1px solid transparent;
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+
+        .modal-right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            min-width: 0;
+            min-height: 0;
+        }
+        .modal-right .dimension-block {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            min-height: 0;
+            padding: 0.5px 0;
+            border-bottom: 1px solid #f1f5f9;
+            width: 100%;
+            flex-wrap: nowrap;
+        }
+        .modal-right .dimension-block:last-child {
+            border-bottom: none;
+        }
+        .modal-right .dimension-block .dim-label {
+            font-weight: 600;
+            color: #0f172a;
+            width: 78px;
+            flex-shrink: 0;
+            font-size: 14px;
+            text-align: left;
+        }
+        .modal-right .dimension-block .sub-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1px 8px;
+            flex: 1;
+            justify-content: flex-start;
+            align-items: center;
+            min-width: 0;
+        }
+        .modal-right .dimension-block .sub-item {
+            display: flex;
+            align-items: center;
+            gap: 1px;
+            font-size: 14px;
+            color: #475569;
+            white-space: nowrap;
+        }
+        .modal-right .dimension-block .sub-item .sub-label {
+            color: #94a3b8;
+            font-weight: 400;
+            font-size: 12px;
+        }
+        .modal-right .dimension-block .sub-item .sub-score {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            font-size: 14px;
+            color: #0f172a;
+        }
+        .modal-right .dimension-block .sub-item .sub-score.high {
+            color: #10b981;
+        }
+        .modal-right .dimension-block .sub-item .sub-score.mid {
+            color: #f59e0b;
+        }
+        .modal-right .dimension-block .sub-item .sub-score.low {
+            color: #ef4444;
+        }
+        .modal-right .dimension-block .dim-final,
+        .modal-right .dimension-block .dim-final-only {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 20px;
+            color: #0f172a;
+            flex-shrink: 0;
+            min-width: 60px;
+            text-align: right;
+            margin-left: auto;
+            padding: 0 12px;
+            border-radius: 6px;
+            line-height: 1.5;
+            background: #f1f5f9;
+        }
+
+        @media (max-width: 820px) {
+            .modal-content {
+                padding: 20px 18px;
+                height: auto;
+            }
+            .modal-body {
+                flex-direction: column;
+                gap: 16px;
+                height: auto;
+            }
+            .modal-left {
+                flex: unset;
+                width: 100%;
+                height: auto;
+                gap: 8px;
+            }
+            .modal-left .game-cover-wrap {
+                min-height: 180px;
+                flex: unset;
+                height: auto;
+                aspect-ratio: 16 / 9;
+            }
+            .modal-right {
+                height: auto;
+            }
+            .modal-right .dimension-block {
+                flex: unset;
+                min-height: 36px;
+                padding: 2px 0;
+            }
+            .modal-right .dimension-block .dim-label {
+                width: 60px;
+                font-size: 12px;
+            }
+            .modal-right .dimension-block .sub-item {
+                font-size: 12px;
+            }
+            .modal-right .dimension-block .dim-final,
+            .modal-right .dimension-block .dim-final-only {
+                font-size: 16px;
+                min-width: 48px;
+                padding: 0 8px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 16px 12px 40px;
+            }
+            .controls .btn-generator {
+                font-size: 12px;
+                padding: 6px 14px;
+            }
+            .controls .btn-random {
+                font-size: 12px;
+                padding: 6px 14px;
+            }
+            .controls input {
+                width: 140px;
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+            .controls select {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+            .filter-banner {
+                font-size: 12px;
+                padding: 4px 12px;
+            }
+            .filter-banner .clear-filter {
+                font-size: 12px;
+            }
+            .brand-logo {
+                width: 36px;
+                height: 36px;
+                border-radius: 10px;
+            }
+            .brand-logo svg {
+                width: 20px;
+                height: 20px;
+            }
+            .brand-text .name {
+                font-size: 20px;
+            }
+            .brand-text .sub {
+                font-size: 12px;
+            }
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            .game-card {
+                min-height: 140px;
+                border-radius: 14px;
+            }
+            .game-card .cover {
+                width: 80px;
+                min-height: 120px;
+            }
+            .game-card .cover .placeholder {
+                font-size: 24px;
+            }
+            .game-card .info {
+                padding: 14px 14px 14px 14px;   /* 右侧内边距加大，给标签腾地方 */
+                padding-right: 72px;
+            }
+            .game-card .info .name {
+                font-size: 15px;
+                line-height: 1.3;
+                max-width: 85%;
+            }
+            .game-card .info .score {
+                font-size: 18px;
+            }
+            .game-card .info .tag {
+                font-size: 10px;
+                padding: 2px 10px;
+                right: 12px;
+            }
+            @media (max-width: 640px) {
+    .game-card .info .game-tags {
+        bottom: 4px;
+        left: 14px;
+        right: 14px;
+        gap: 1px 2px;
+    }
+    .game-card .info .game-tags .tag-chip {
+        font-size: 11px;
+        padding: 0px 4px;
+        zoom: 0.5;
+        line-height: 1.8;
+    }
+}
+
+            /* 详情模态框 - 让内容可滚动 */
+    .modal-content {
+        max-height: 95vh;
+        overflow-y: auto;           /* 内容超出时滚动 */
+        padding: 16px 12px;
+    }
+
+    /* 标签行强制换行 */
+    .detail-tags {
+        gap: 3px 4px;
+        justify-content: center;
+    }
+    .detail-tags .tag-chip {
+        font-size: 9px;
+        padding: 1px 8px;
+        white-space: nowrap;
+    }
+
+    /* 右侧维度区域缩小字体，防止溢出 */
+    .modal-right .dimension-block {
+        flex-wrap: wrap;            /* 允许换行 */
+        min-height: 28px;
+        padding: 2px 0;
+    }
+    .modal-right .dimension-block .dim-label {
+        width: 44px;
+        font-size: 10px;
+    }
+    .modal-right .dimension-block .sub-item {
+        font-size: 10px;
+    }
+    .modal-right .dimension-block .sub-item .sub-label {
+        font-size: 9px;
+    }
+    .modal-right .dimension-block .sub-item .sub-score {
+        font-size: 10px;
+    }
+    .modal-right .dimension-block .dim-final,
+    .modal-right .dimension-block .dim-final-only {
+        font-size: 13px;
+        min-width: 36px;
+        padding: 0 4px;
+    }
+
+    /* 左侧简介文字缩小 */
+    .game-description {
+        font-size: 12px;
+        padding: 4px 2px;
+    }
+
+    /* 评分和标签区域 */
+    .modal-left .game-footer {
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+    .modal-left .game-footer .score-label {
+        font-size: 12px;
+    }
+    .modal-left .game-footer .score-label strong {
+        font-size: 14px;
+    }
+    .modal-left .game-tag-big {
+        font-size: 11px;
+        padding: 2px 14px;
+    }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="brand">
+            <div class="brand-logo">
+                <svg viewBox="0 0 24 24">
+                    <polygon points="12,2 15,9 22,9 16,14 18,21 12,17 6,21 8,14 2,9 9,9" />
+                </svg>
+            </div>
+            <div class="brand-text">
+                <div class="name">
+                    星 GameNotes
+                    <span class="badge" id="gameCount">0 款</span>
+                    <span class="data-status" id="dataStatus" role="status" tabindex="0"></span>
+                </div>
+                <div class="sub">
+                    游戏手札 · 评分档案馆
+                </div>
+            </div>
+        </div>
+        <div class="controls">
+            <a href="site/index.html" class="btn-version">🌌 新版</a>
+            <a href="#" onclick="randomGame(); return false;" class="btn-random">🔭 观星</a>
+            <a href="generator.html" target="_blank" class="btn-generator">🎮 评分生成器</a>
+            <span class="filter-banner" id="filterBanner">
+                🏷️ 当前筛选：<span id="filterTagName"></span>
+                <button class="clear-filter" onclick="clearFilter()">✕ 清除</button>
+            </span>
+            <input type="text" id="searchInput" placeholder="🔍 搜索游戏..." />
+            <select id="sortSelect">
+    <option value="default">📋 默认顺序</option>
+    <option value="high-to-low">⬇️ 最高分优先</option>
+    <option value="low-to-high">⬆️ 最低分优先</option>
+    <option value="playtime-asc">⏱️ 通关时长</option>
+    <option value="year-asc">📅 发售年份</option>
+</select>
+        </div>
+    </header>
+
+    <div class="card-grid" id="cardContainer"></div>
+
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">×</button>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <script>
+        const DIM_CONFIG = [{
+            key: '制作水准',
+            label: '制作水准',
+            subLabels: ['客观制作水准', '设计巧思'],
+            hasSub: true
+        }, {
+            key: '内容饱满度',
+            label: '内容饱满度',
+            subLabels: ['客观体量', '内容质量系数'],
+            hasSub: true
+        }, {
+            key: '游戏性',
+            label: '游戏性',
+            subLabels: [],
+            hasSub: false
+        }, {
+            key: '故事性',
+            label: '故事性',
+            subLabels: ['剧本内容', '叙事'],
+            hasSub: true
+        }, {
+            key: '代入感/沉浸感',
+            label: '代入感/沉浸感',
+            subLabels: ['代入感', '沉浸感'],
+            hasSub: true
+        }, {
+            key: '美术',
+            label: '美术',
+            subLabels: [],
+            hasSub: false
+        }, {
+            key: '视听',
+            label: '视听',
+            subLabels: ['音乐', '演出'],
+            hasSub: true
+        }, {
+            key: '爱之力',
+            label: '爱之力',
+            subLabels: [],
+            hasSub: false
+        }];
+
+        let games = [];
+
+        const SUPABASE_URL = 'https://vgdralqjppxshwbqqzum.supabase.co';
+        const SUPABASE_KEY = 'sb_publishable_f76ssYCjHRIlQ5TnP3VqKA_hjoX-NhS';
+        // supabase-js 若被 CDN 拦截，不能让它把整段脚本带崩，后面会走缓存/静态兜底
+        const supabaseClient = (typeof supabase !== 'undefined')
+            ? supabase.createClient(SUPABASE_URL, SUPABASE_KEY)
+            : null;
+        const STORAGE_KEY = 'starGN_games';
+        const STORAGE_TIME = 'starGN_synced_at';
+
+        const tagClassMap = {
+            '夯': 'tag-hang',
+            '顶级': 'tag-dingji',
+            '人上人': 'tag-renshangren',
+            'NPC': 'tag-npc',
+            '拉': 'tag-la',
+            '拉完了': 'tag-lawanle'
+        };
+
+        const container = document.getElementById('cardContainer');
+        const countBadge = document.getElementById('gameCount');
+        const searchInput = document.getElementById('searchInput');
+        const sortSelect = document.getElementById('sortSelect');
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalBody = document.getElementById('modalBody');
+        const modalClose = document.getElementById('modalClose');
+
+        let activeTag = null;
+
+        function splitTags(value) {
+            if (!value) return [];
+            return String(value).split('/').map(s => s.trim()).filter(Boolean);
+        }
+
+        // ===== 数据加载：线上 → 本地缓存 → 静态 data.json =====
+        // 国内网络经常对 *.supabase.co 做连接重置，这里保证页面永远不会白屏
+
+        function withTimeout(promise, ms) {
+            return Promise.race([
+                promise,
+                new Promise((_, reject) => setTimeout(() => reject(new Error('请求超时')), ms))
+            ]);
+        }
+
+        async function fetchLiveGames() {
+            if (!supabaseClient) {
+                console.warn('supabase-js 未加载，跳过线上请求');
+                return null;
+            }
+            for (let attempt = 1; attempt <= 2; attempt++) {
+                try {
+                    const { data, error } = await withTimeout(
+                        supabaseClient.from('games').select('*').order('id', { ascending: true }),
+                        7000
+                    );
+                    if (error) throw error;
+                    return data || [];
+                } catch (e) {
+                    console.warn(`Supabase 第 ${attempt} 次加载失败:`, (e && e.message) ? e.message : e);
+                    if (attempt < 2) await new Promise(r => setTimeout(r, 800));
+                }
+            }
+            return null;
+        }
+
+        function readCachedGames() {
+            try {
+                const raw = localStorage.getItem(STORAGE_KEY);
+                if (!raw) return null;
+                const data = JSON.parse(raw);
+                return (Array.isArray(data) && data.length) ? data : null;
+            } catch (e) {
+                return null;
+            }
+        }
+
+        function setDataStatus(kind, extra) {
+            const el = document.getElementById('dataStatus');
+            if (!el) return;
+            const savedAt = Number(localStorage.getItem(STORAGE_TIME) || 0);
+            const timeText = savedAt
+                ? new Date(savedAt).toLocaleString('zh-CN', { hour12: false })
+                : '未知时间';
+            const map = {
+                live: [''],
+                cache: [`⚠️ 数据库连不上，正在显示本地缓存（同步于 ${timeText}）`],
+                static: [`⚠️ 数据库连不上，正在显示静态备份 data.json${extra ? '（更新于 ' + extra + '）' : ''}`],
+                empty: ['⚠️ 数据库连不上，且没有可用缓存，请检查网络']
+            };
+            const text = (map[kind] || map.empty)[0];
+            el.dataset.tip = text;
+            el.setAttribute('aria-label', text || '数据加载正常');
+            el.classList.toggle('show', !!text);
+            el.classList.toggle('is-error', kind === 'empty');
+        }
+
+        async function loadData() {
+            games = [];
+            setDataStatus('live');
+
+            // 1) 线上数据库
+            const live = await fetchLiveGames();
+            if (live && live.length) {
+                games = live;
+                try {
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(games));
+                    localStorage.setItem(STORAGE_TIME, String(Date.now()));
+                } catch (e) { /* 缓存写不下就跳过 */ }
+                setDataStatus('live');
+                renderGames();
+                console.log('✅ 线上加载成功，共 ' + games.length + ' 款');
+                return;
+            }
+
+            // 2) 本地缓存
+            const cached = readCachedGames();
+            if (cached) {
+                games = cached;
+                setDataStatus('cache');
+                renderGames();
+                console.log('⚠️ 使用本地缓存，共 ' + games.length + ' 款');
+                return;
+            }
+
+            // 3) 同源静态备份
+            try {
+                const res = await fetch('data.json?v=' + Date.now(), { cache: 'no-store' });
+                if (res.ok) {
+                    const data = await res.json();
+                    if (Array.isArray(data) && data.length) {
+                        games = data;
+                        const lastMod = res.headers.get('last-modified');
+                        const modText = lastMod
+                            ? new Date(lastMod).toLocaleString('zh-CN', { hour12: false })
+                            : '';
+                        setDataStatus('static', modText);
+                        renderGames();
+                        console.log('⚠️ 使用 data.json 静态备份，共 ' + games.length + ' 款');
+                        return;
+                    }
+                }
+            } catch (e) {
+                console.warn('data.json 兜底失败:', e);
+            }
+
+            // 4) 彻底失败
+            setDataStatus('empty');
+            renderGames();
+            console.error('❌ 所有数据源都不可用');
+        }
+
+        function filterByTag(tag) {
+            activeTag = tag;
+            const banner = document.getElementById('filterBanner');
+            const tagName = document.getElementById('filterTagName');
+            if (activeTag) {
+                banner.classList.add('show');
+                tagName.textContent = activeTag;
+            } else {
+                banner.classList.remove('show');
+            }
+            renderGames();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function clearFilter() {
+            activeTag = null;
+            document.getElementById('filterBanner').classList.remove('show');
+            renderGames();
+        }
+
+        function renderGames() {
+        const keyword = searchInput.value.trim().toLowerCase();
+
+    // ===== 第一步：搜索过滤（匹配游戏名 + 所有标签） =====
+    let filtered = games.filter(g => {
+        if (!keyword) return true; // 搜索词为空，全部通过
+
+        // 匹配游戏名
+        if (g.name.toLowerCase().includes(keyword)) return true;
+
+        // 匹配所有标签字段
+        const allTags = [
+            ...splitTags(g.genre),
+            ...splitTags(g.playtime),
+            ...splitTags(g.developer),
+            ...splitTags(g.platform),
+            ...splitTags(g.tag),
+        ];
+        if (g.release_year) allTags.push(String(g.release_year));
+
+        return allTags.some(t => t.toLowerCase().includes(keyword));
+    });
+
+    // ===== 第二步：标签筛选（关键！这段你之前漏掉了） =====
+    if (activeTag) {
+        filtered = filtered.filter(g => {
+            const allTags = [
+                ...splitTags(g.genre),
+                ...splitTags(g.playtime),
+                ...splitTags(g.developer),
+                ...splitTags(g.platform),
+                ...splitTags(g.tag),
+            ];
+            if (g.release_year) allTags.push(String(g.release_year));
+            return allTags.includes(activeTag);
+        });
+    }
+
+            const sortMode = sortSelect.value;
+
+// 辅助：从 playtime 字符串里提取数字
+const parseHours = (str) => {
+    if (!str) return null;
+    const match = String(str).match(/(\d+(?:\.\d+)?)/);
+    return match ? parseFloat(match[1]) : null;
+};
+
+if (sortMode === 'high-to-low') {
+    filtered.sort((a, b) => b.score - a.score);
+} else if (sortMode === 'low-to-high') {
+    filtered.sort((a, b) => a.score - b.score);
+} else if (sortMode === 'playtime-asc') {
+    filtered.sort((a, b) => {
+        const ha = parseHours(a.playtime);
+        const hb = parseHours(b.playtime);
+        if (ha === null && hb === null) return 0;
+        if (ha === null) return 1;
+        if (hb === null) return -1;
+        return ha - hb;
+    });
+} else if (sortMode === 'playtime-desc') {
+    filtered.sort((a, b) => {
+        const ha = parseHours(a.playtime);
+        const hb = parseHours(b.playtime);
+        if (ha === null && hb === null) return 0;
+        if (ha === null) return 1;
+        if (hb === null) return -1;
+        return hb - ha;
+    });
+} else if (sortMode === 'year-desc') {
+    filtered.sort((a, b) => (b.release_year || 0) - (a.release_year || 0));
+} else if (sortMode === 'year-asc') {
+    filtered.sort((a, b) => (a.release_year || 0) - (b.release_year || 0));
+} else {
+    // 默认：按 id 升序排列
+    filtered.sort((a, b) => (a.id || 0) - (b.id || 0));
+}
+
+            if (filtered.length === 0) {
+                container.innerHTML = `<div class="empty-state">🔍 没有找到匹配的游戏</div>`;
+                countBadge.textContent = `0 款`;
+                return;
+            }
+
+            const html = filtered.map((game, index) => {
+                const tagClass = tagClassMap[game.tag] || 'tag-npc';
+                const tagName = game.tag ? game.tag : 'npc';
+                const scoreClass = tagName === '夯' ? 'hang' :
+                    tagName === '顶级' ? 'dingji' :
+                    tagName === '人上人' ? 'renshangren' :
+                    tagName === 'NPC' ? 'npc' :
+                    tagName === '拉' ? 'la' : 'lawanle';
+                const coverUrl = game.cover_thumb || game.cover || '';
+                const coverHtml = coverUrl ? `<img src="${coverUrl}" alt="${game.name}" />` :
+                    `<span class="placeholder">🎮</span>`;
+
+                const tagItems = [
+                    ...splitTags(game.genre),
+                    ...splitTags(game.playtime),
+                    ...splitTags(game.developer),
+                    ...splitTags(game.platform),
+                ];
+                if (game.release_year) {
+                    tagItems.push(String(game.release_year));
+                }
+
+                const tagsHtml = tagItems.length > 0 ?
+                    `<div class="game-tags">${tagItems.map(t => `<span class="tag-chip" data-tag="${t}">${t}</span>`).join(' ')}</div>` :
+                    '';
+
+                return `
+                        <div class="game-card" data-index="${index}">
+                            <div class="cover">${coverHtml}</div>
+                            <div class="info">
+                                <div class="main-content">
+                                    <div class="name">${game.name}</div>
+                                    <div class="score ${scoreClass}">${game.score}</div>
+                                </div>
+                                ${tagsHtml}
+                                <span class="tag ${tagClass}">${game.tag}</span>
+                            </div>
+                        </div>
+                    `;
+            }).join('');
+
+            container.innerHTML = html;
+            countBadge.textContent = `${filtered.length} 款`;
+
+            container.querySelectorAll('.tag-chip').forEach(el => {
+                el.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    filterByTag(this.dataset.tag);
+                });
+            });
+
+            container.querySelectorAll('.game-card .info .tag').forEach(el => {
+                el.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const tag = this.textContent.trim();
+                    if (tag) filterByTag(tag);
+                });
+            });
+
+            container.querySelectorAll('.game-card').forEach(el => {
+                el.addEventListener('click', function() {
+                    const idx = parseInt(this.dataset.index);
+                    const gameData = filtered[idx];
+                    if (gameData) openModal(gameData);
+                });
+            });
+        }
+
+        function openModal(game) {
+            const tagClass = tagClassMap[game.tag] || 'tag-npc';
+            const coverUrl = game.cover || game.cover_thumb || '';
+            const coverHtml = coverUrl ? `<img src="${coverUrl}" alt="${game.name}" />` :
+                `<div class="placeholder">🎮</div>`;
+
+            const detailItems = [
+                ...splitTags(game.genre),
+                ...splitTags(game.playtime),
+                ...splitTags(game.developer),
+                ...splitTags(game.platform),
+            ];
+            if (game.release_year) {
+                detailItems.push(String(game.release_year));
+            }
+
+            const detailTagsHtml = detailItems.length > 0 ?
+                `<div class="detail-tags">${detailItems.map(t => `<span class="tag-chip" data-tag="${t}">${t}</span>`).join(' ')}</div>` :
+                '';
+
+            const descriptionHtml = game.description ?
+                `<div class="game-description">📝 ${game.description}</div>` :
+                '';
+
+            const subDims = game.subDims || game.sub_dims || [
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ];
+            while (subDims.length < 8) subDims.push([]);
+
+            let rightHtml = '';
+            DIM_CONFIG.forEach((cfg, idx) => {
+                const dimScore = (game.dims && game.dims[idx] !== undefined) ? game.dims[idx] : 0;
+                const subScores = (subDims[idx] && Array.isArray(subDims[idx])) ? subDims[idx] : [];
+
+                let subHtml = '';
+                if (cfg.hasSub) {
+                    const hasValidData = subScores.length > 0 && subScores.some(s => s !== 0 && s !== undefined &&
+                    s !== null);
+                    if (hasValidData) {
+                        subHtml = subScores.map((s, si) => {
+                            const label = cfg.subLabels[si] || '子项';
+                            let cls = 'sub-score';
+                            if (s >= 8) cls += ' high';
+                            else if (s >= 6) cls += ' mid';
+                            else cls += ' low';
+                            return `<span class="sub-item"><span class="sub-label">${label}</span> <span class="${cls}">${typeof s === 'number' ? s.toFixed(1) : s}</span></span>`;
+                        }).join('');
+                    } else {
+                        subHtml = `<span class="sub-item" style="color:#94a3b8;font-size:12px;">—</span>`;
+                    }
+                }
+
+                const finalDisplay = typeof dimScore === 'number' ? dimScore.toFixed(1) : dimScore;
+                rightHtml += `
+                        <div class="dimension-block">
+                            <span class="dim-label">${cfg.label}</span>
+                            <div class="sub-items">${subHtml}</div>
+                            ${cfg.hasSub ? `<span class="dim-final">${finalDisplay}</span>` : `<span class="dim-final-only">${finalDisplay}</span>`}
+                        </div>
+                    `;
+            });
+
+            modalBody.innerHTML = `
+    <div class="modal-left">
+        <div class="game-title">${game.name}</div>
+        <div class="game-cover-wrap">${coverHtml}</div>
+        ${descriptionHtml}
+        <div class="game-footer">
+            <span class="score-label">星GN评分： <strong>${game.score.toFixed(2)}</strong></span>
+            <span class="game-tag-big ${tagClass}">${game.tag}</span>
+        </div>
+        ${detailTagsHtml}
+    </div>
+    <div class="modal-right">${rightHtml}</div>
+`;
+
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            document.querySelectorAll('.detail-tags .tag-chip').forEach(el => {
+                el.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    closeModal();
+                    setTimeout(() => filterByTag(this.dataset.tag), 200);
+                });
+            });
+
+            document.querySelector('.game-tag-big')?.addEventListener('click', function() {
+                const tag = this.textContent.trim();
+                if (tag) {
+                    closeModal();
+                    setTimeout(() => filterByTag(tag), 200);
+                }
+            });
+        }
+
+        function closeModal() {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function randomGame() {
+            if (games.length === 0) return;
+            triggerStarEffect();
+            setTimeout(() => {
+                const random = games[Math.floor(Math.random() * games.length)];
+                openModal(random);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 400);
+        }
+
+        function triggerStarEffect() {
+            const star = document.createElement('div');
+            star.className = 'star-glow';
+            star.textContent = '✦';
+            document.body.appendChild(star);
+
+            for (let i = 0; i < 4; i++) {
+                setTimeout(() => {
+                    const ring = document.createElement('div');
+                    ring.className = 'ripple-ring';
+                    const size = 40 + i * 30;
+                    ring.style.width = size + 'px';
+                    ring.style.height = size + 'px';
+                    ring.style.marginLeft = -(size / 2) + 'px';
+                    ring.style.marginTop = -(size / 2) + 'px';
+                    ring.style.borderColor = i === 0 ? '#fbbf24' : i === 1 ? '#fcd34d' : '#fde68a';
+                    ring.style.animationDuration = (1.0 + i * 0.2) + 's';
+                    document.body.appendChild(ring);
+                    setTimeout(() => ring.remove(), 1000);
+                }, i * 150);
+            }
+
+            const colors = ['#fbbf24', '#fcd34d', '#fde68a', '#93c5fd', '#fff'];
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const dot = document.createElement('div');
+                    dot.className = 'sparkle-dot';
+                    const angle = Math.random() * Math.PI * 2;
+                    const distance = 80 + Math.random() * 180;
+                    const x = 50 + (Math.cos(angle) * distance) / window.innerWidth * 100;
+                    const y = 50 + (Math.sin(angle) * distance) / window.innerHeight * 100;
+                    dot.style.left = x + '%';
+                    dot.style.top = y + '%';
+                    const size = 3 + Math.random() * 6;
+                    dot.style.width = size + 'px';
+                    dot.style.height = size + 'px';
+                    dot.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    dot.style.boxShadow = `0 0 ${6 + Math.random() * 10}px ${dot.style.background}`;
+                    dot.style.animationDuration = (0.5 + Math.random() * 0.4) + 's';
+                    document.body.appendChild(dot);
+                    setTimeout(() => dot.remove(), 1200);
+                }, i * 60);
+            }
+            setTimeout(() => star.remove(), 1200);
+        }
+
+        modalClose.addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        searchInput.addEventListener('input', renderGames);
+        sortSelect.addEventListener('change', renderGames);
+
+        loadData();
+
+                // 51.la 统计
+        var script = document.createElement('script');
+        script.src = 'https://sdk.51.la/js-sdk-pro.min.js';
+        script.async = true;
+        script.onload = function() {
+            LA.init({id:"3R3y3V3WUsYlhwH8",ck:"3R3y3V3WUsYlhwH8"});
+        };
+        document.body.appendChild(script);
+    </script>
+
+</body>
+</html>
