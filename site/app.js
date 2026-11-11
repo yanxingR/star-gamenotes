@@ -49,7 +49,7 @@
   };
 
   const STATUS = {
-    live: { text: "Supabase 实时", tip: "已连接 Supabase，显示数据库最新数据" },
+    live: { text: "数据库实时", tip: "已连接数据库，显示最新数据" },
     cache: { text: "本地缓存", tip: "数据库连接失败，显示上次同步的本地缓存" },
     static: { text: "静态快照", tip: "数据库连接失败，显示内置 data.js 快照" }
   };
