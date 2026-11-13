@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2026 星GN 玩家投票 · 游戏手札</title>
+<meta name="description" content="2026 星GN 玩家投票：选出你心中的年度最佳。">
+<meta name="theme-color" content="#070d1a">
+<meta property="og:type" content="website">
+<meta property="og:title" content="2026 星GN 玩家投票">
+<meta property="og:description" content="选出你心中的年度最佳，实时查看当前结果。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230a1424'/%3E%3Cpath d='M16 5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7L6 12.3l7.1-.7z' fill='%23f2c14e'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="vote.css">
+</head>
+<body class="vote-page">
+<canvas id="starfield" class="starfield" aria-hidden="true"></canvas>
+<div class="bg-aurora" aria-hidden="true"></div>
+<div class="bg-grain" aria-hidden="true"></div>
+
+<header class="site-header" id="siteHeader">
+  <a class="brand" href="index.html">
+    <span class="brand-star" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M12 2.6l2.7 6.1 6.6.6-5 4.5 1.5 6.5L12 16.9 6.2 20.3l1.5-6.5-5-4.5 6.6-.6z" fill="currentColor"/></svg>
+    </span>
+    <span class="brand-name">星<span>GN</span></span>
+    <span class="brand-sub">年度评选 · 玩家投票</span>
+  </a>
+  <nav class="site-nav" aria-label="主导航">
+    <a href="index.html">榜单</a>
+    <a href="vote.html" class="is-current">投票</a>
+  </nav>
+  <a class="version-switch" href="../site/">旧版 ↗</a>
+  <div class="header-meta">
+    <span class="pulse" aria-hidden="true"></span>
+    <span><b id="voteYearTop">2026</b> · 玩家投票</span>
+  </div>
+</header>
+
+<main class="vote-main">
+  <section class="vote-hero">
+    <p class="kicker">PLAYER'S CHOICE · <span id="voteYearKicker">2026</span></p>
+    <h1>2026 星GN 玩家投票</h1>
+    <p class="vote-lede">选出你心中的年度最佳</p>
+    <p class="vote-scope">投票范围：站内已收录的 2026 游戏；未收录不代表否定。</p>
+    <p class="vote-deadline" id="voteDeadline">投票截止：2026-12-31 23:59（北京时间）</p>
+    <p class="vote-official-note">玩家投票结果将作为 2026 星GN 正式评选的重要参考，正式评选会结合投票结果调整。</p>
+    <div class="vote-meta">
+      <span class="vote-progress">已选 <b id="voteCount">0</b> / <span id="voteTotal">6</span></span>
+      <span class="vote-status" id="voteStatus"><i></i><span>正在连接投票服务…</span><button class="vote-retry" id="voteRetry" type="button" hidden>重试</button></span>
+    </div>
+  </section>
+
+  <div class="vote-done" id="voteDone" hidden>
+    <strong>你已投过票</strong>
+    <span>可以随时回来修改；下面是 <b id="doneYear">2026</b> 年度玩家投票的实时结果。</span>
+  </div>
+
+  <div id="voteForm" class="vote-form"></div>
+
+  <section id="voteResults" class="vote-results">
+    <div class="section-head">
+      <div>
+        <p class="kicker">LIVE RESULTS</p>
+        <h2>2026 年度评选 · 实时结果</h2>
+      </div>
+      <div class="section-side">
+        <p class="section-desc" id="resultMeta">正在加载…</p>
+      </div>
+    </div>
+    <div id="resultList" class="result-list"></div>
+  </section>
+</main>
+
+<div class="vote-bar" id="voteBar">
+  <div class="vote-bar-progress">已选 <b id="barCount">0</b> / <span id="barTotal">6</span></div>
+  <button class="btn btn-primary" id="submitVote" type="button" disabled>提交投票</button>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-left">
+    <span class="footer-star" aria-hidden="true">✦</span>
+    <div>
+      <p class="footer-title">星GN · 年度评选</p>
+      <p class="footer-sub">玩家投票 · 2026</p>
+    </div>
+  </div>
+  <div class="footer-right">
+    <nav class="footer-nav" aria-label="页脚导航">
+      <a href="index.html">榜单</a>
+    </nav>
+    <p>结果实时更新</p>
+  </div>
+</footer>
+
+<div class="pick-backdrop" id="pickBackdrop" hidden></div>
+<div class="pick-modal" id="pickModal" role="dialog" aria-modal="true" aria-labelledby="pickTitle" hidden>
+  <div class="pick-panel">
+    <div class="pick-head">
+      <div>
+        <p class="pick-kicker" id="pickKicker">选择游戏 · 2026</p>
+        <h2 id="pickTitle">年度最佳游戏</h2>
+      </div>
+      <button class="pick-close" id="pickClose" type="button" aria-label="关闭">×</button>
+    </div>
+    <label class="pick-search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
+      <input id="pickSearch" type="search" placeholder="搜索 2026 年游戏、类型、厂商…" autocomplete="off" spellcheck="false">
+    </label>
+    <p class="pick-scope">仅显示站内已收录的 2026 游戏</p>
+    <div class="pick-grid" id="pickGrid"></div>
+    <div class="pick-foot">
+      <button class="pick-clear" id="pickClear" type="button">不投这个奖项</button>
+      <button class="pick-cancel" id="pickCancel" type="button">取消</button>
+    </div>
+  </div>
+</div>
+
+<div class="vote-toast" id="voteToast" role="status" aria-live="polite" hidden></div>
+
+<script src="data.js"></script>
+<script src="awards.js"></script>
+<script src="vote.js"></script>
+<!-- 51.LA 统计 -->
+<script charset="UTF-8" id="LA_COLLECT" src="https://sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id:"3R3y3V3WUsYlhwH8",ck:"3R3y3V3WUsYlhwH8"});</script>
+</body>
+</html>
