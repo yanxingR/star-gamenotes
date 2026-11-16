@@ -364,11 +364,16 @@
     ]);
   }
 
-  function ensureSupabase() {
-    if (window.supabase) return Promise.resolve(true);
+  /* 本地自带 SDK 优先（jsdelivr 在国内经常打不开），失败再退回公共 CDN。 */
+  const SUPABASE_SDK_SOURCES = [
+    "supabase.js",
+    "https://unpkg.com/@supabase/supabase-js@2"
+  ];
+
+  function loadSupabaseScript(src, ms) {
     return new Promise((resolve) => {
       const s = document.createElement("script");
-      s.src = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2";
+      s.src = src;
       s.async = true;
       let settled = false;
       const finish = (ok) => {
@@ -379,8 +384,16 @@
       s.onload = () => finish(!!window.supabase);
       s.onerror = () => finish(false);
       document.head.appendChild(s);
-      setTimeout(() => finish(!!window.supabase), 6500);
+      setTimeout(() => finish(!!window.supabase), ms);
     });
+  }
+
+  function ensureSupabase() {
+    if (window.supabase) return Promise.resolve(true);
+    return SUPABASE_SDK_SOURCES.reduce(
+      (chain, src) => chain.then((ok) => (ok ? true : loadSupabaseScript(src, 8000))),
+      Promise.resolve(false)
+    );
   }
 
   let supabaseClient = null;
