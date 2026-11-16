@@ -1,7 +1,7 @@
 /* Generated from data.json (original index page) — do not edit by hand. */
 window.GN_DATA = {
  "source": "原 index 页 · data.json",
- "generatedAt": "2026-11-11",
+ "generatedAt": "2026-11-16",
  "dims": [
   {
    "key": "craft",
@@ -253,7 +253,8 @@ window.GN_DATA = {
     "JRPG",
     "角色扮演",
     "横版",
-    "动作"
+    "动作",
+    "独立"
    ],
    "playtime": "60h+",
    "developer": "KEIZO",
@@ -316,7 +317,8 @@ window.GN_DATA = {
    "genre": [
     "类魂",
     "角色扮演",
-    "动作"
+    "动作",
+    "独立"
    ],
    "playtime": "18h+",
    "developer": "Aggro Crab",
@@ -576,7 +578,8 @@ window.GN_DATA = {
    "genre": [
     "卡牌",
     "策略",
-    "Roguelike"
+    "Roguelike",
+    "独立"
    ],
    "playtime": "",
    "developer": "LocalThunk",
@@ -642,7 +645,8 @@ window.GN_DATA = {
     "生存",
     "建造",
     "宠物培养",
-    "开放世界"
+    "开放世界",
+    "独立"
    ],
    "playtime": "60h+",
    "developer": "Pocket Pair",
@@ -1035,7 +1039,8 @@ window.GN_DATA = {
     "解谜",
     "类银",
     "像素风",
-    "电波系"
+    "电波系",
+    "独立"
    ],
    "playtime": "10h+",
    "developer": "Billy Basso",
@@ -1363,7 +1368,8 @@ window.GN_DATA = {
     "回合制",
     "即时战斗",
     "角色扮演",
-    "手绘风"
+    "手绘风",
+    "独立"
    ],
    "playtime": "35h+",
    "developer": "Sandfall",
@@ -1493,7 +1499,8 @@ window.GN_DATA = {
     "体育",
     "多人在线",
     "PVP",
-    "动作"
+    "动作",
+    "独立"
    ],
    "playtime": "",
    "developer": "EASY BRAIN",
@@ -1620,7 +1627,8 @@ window.GN_DATA = {
    "genre": [
     "视觉小说",
     "解谜",
-    "Galgame"
+    "Galgame",
+    "独立"
    ],
    "playtime": "12h+",
    "developer": "Acacia",
@@ -1684,7 +1692,8 @@ window.GN_DATA = {
     "平台跳跃",
     "横版",
     "解谜",
-    "类银"
+    "类银",
+    "独立"
    ],
    "playtime": "8h+",
    "developer": "AMATA",
@@ -1813,7 +1822,8 @@ window.GN_DATA = {
     "横版",
     "平台跳跃",
     "类银",
-    "宠物培养"
+    "宠物培养",
+    "独立"
    ],
    "playtime": "30h+",
    "developer": "moi rai games",
@@ -1880,7 +1890,8 @@ window.GN_DATA = {
     "平台跳跃",
     "动作",
     "类银",
-    "手绘风"
+    "手绘风",
+    "独立"
    ],
    "playtime": "50h+",
    "developer": "Team Cherry",
@@ -1948,7 +1959,8 @@ window.GN_DATA = {
     "平台跳跃",
     "动作",
     "类银",
-    "手绘风"
+    "手绘风",
+    "独立"
    ],
    "playtime": "45h+",
    "developer": "Team Cherry",
@@ -2272,7 +2284,8 @@ window.GN_DATA = {
     "角色扮演",
     "体育",
     "闯关",
-    "电波系"
+    "电波系",
+    "独立"
    ],
    "playtime": "8h+",
    "developer": "Sam Eng",
@@ -2336,7 +2349,8 @@ window.GN_DATA = {
    "genre": [
     "视觉小说",
     "策略",
-    "Galgame"
+    "Galgame",
+    "独立"
    ],
    "playtime": "12h+",
    "developer": "AdHoc Studio",
@@ -2664,7 +2678,8 @@ window.GN_DATA = {
    "genre": [
     "动作",
     "闯关",
-    "角色扮演"
+    "角色扮演",
+    "独立"
    ],
    "playtime": "10h+",
    "developer": "Crimson Dusk",
@@ -2792,7 +2807,8 @@ window.GN_DATA = {
     "策略",
     "Roguelike",
     "闯关",
-    "像素风"
+    "像素风",
+    "独立"
    ],
    "playtime": "",
    "developer": "Poncle",
@@ -3258,7 +3274,8 @@ window.GN_DATA = {
     "2D",
     "动作",
     "类魂",
-    "像素风"
+    "像素风",
+    "独立"
    ],
    "playtime": "15h+",
    "developer": "Yacht Club Games",
@@ -3460,7 +3477,8 @@ window.GN_DATA = {
     "射击",
     "动作",
     "闯关",
-    "手绘风"
+    "手绘风",
+    "独立"
    ],
    "playtime": "12h+",
    "developer": "Studio MDHR",
@@ -3591,7 +3609,8 @@ window.GN_DATA = {
     "平台跳跃",
     "类银",
     "动作",
-    "手绘风"
+    "手绘风",
+    "独立"
    ],
    "playtime": "20h+",
    "developer": "Red Candle",
@@ -3786,7 +3805,8 @@ window.GN_DATA = {
    "genre": [
     "视觉小说",
     "解谜",
-    "Galgame"
+    "Galgame",
+    "独立"
    ],
    "playtime": "12h+",
    "developer": "Team Tetrapod",
@@ -3976,7 +3996,8 @@ window.GN_DATA = {
     "2D",
     "闯关",
     "BOSSRUSH",
-    "像素风"
+    "像素风",
+    "独立"
    ],
    "playtime": "10h+",
    "developer": "Cup Dog Games",
@@ -4104,7 +4125,8 @@ window.GN_DATA = {
     "类魂",
     "角色扮演",
     "动作",
-    "开放世界"
+    "开放世界",
+    "独立"
    ],
    "playtime": "25h+",
    "developer": "Cold Symmetry",
@@ -4169,7 +4191,8 @@ window.GN_DATA = {
     "角色扮演",
     "策略",
     "模拟",
-    "战争"
+    "战争",
+    "独立"
    ],
    "playtime": "12h+",
    "developer": "Nick Nieuwoudt/Dominik Latos",
@@ -4426,7 +4449,8 @@ window.GN_DATA = {
     "Roguelike",
     "战旗",
     "闯关",
-    "电波系"
+    "电波系",
+    "独立"
    ],
    "playtime": "",
    "developer": "Edmund McMillen/Tyler Glaiel",
@@ -4557,7 +4581,8 @@ window.GN_DATA = {
     "平台跳跃",
     "动作",
     "类银",
-    "手绘风"
+    "手绘风",
+    "独立"
    ],
    "playtime": "10h+",
    "developer": "Kyle Thompson",
