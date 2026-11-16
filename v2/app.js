@@ -488,6 +488,18 @@
     });
   }
 
+  const INDIE_IDS = new Set(((AWARDS && AWARDS.indieIds) || []).map(Number));
+
+  function categoryAllows(catKey, g) {
+    if (catKey === "indie") {
+      return INDIE_IDS.has(Number(g.id)) || (g.genre || []).includes("独立");
+    }
+    const genre = (g.genre || []).join("/").toUpperCase();
+    if (catKey === "jrpg") return /角色扮演|JRPG|JPRG|ARPG/.test(genre);
+    if (catKey === "action") return /动作|ARPG/.test(genre);
+    return true;
+  }
+
   function currentVoteTop(catKey) {
     let best = null;
     voteCounts.forEach((votes, key) => {
@@ -497,6 +509,7 @@
       const g = byId.get(Number(key.slice(sep + 1)));
       if (!g) return;
       if (Number(g.year) !== Number(AWARDS.currentVoteYear)) return;
+      if (!categoryAllows(catKey, g)) return;
       if (!best || votes > best.votes || (votes === best.votes && g.score > best.g.score)) {
         best = { g, votes };
       }

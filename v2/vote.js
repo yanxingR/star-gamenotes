@@ -114,6 +114,7 @@
   const pickTitle = $("#pickTitle");
   const pickKicker = $("#pickKicker");
   const pickSearch = $("#pickSearch");
+  const pickScope = $("#pickScope");
   const pickGrid = $("#pickGrid");
   const pickClose = $("#pickClose");
   const pickCancel = $("#pickCancel");
@@ -127,8 +128,26 @@
 
   const year = Number(AWARDS.currentVoteYear);
   const categories = AWARDS.categories;
+  const INDIE_IDS = new Set((AWARDS.indieIds || []).map(Number));
   const DEADLINE = new Date(`${year}-12-31T23:59:59+08:00`);
   const DEADLINE_LABEL = `${year}-12-31 23:59`;
+
+  function categoryAllows(catKey, g) {
+    if (catKey === "indie") {
+      return INDIE_IDS.has(Number(g.id)) || (g.genre || []).includes("独立");
+    }
+    const genre = (g.genre || []).join("/").toUpperCase();
+    if (catKey === "jrpg") return /角色扮演|JRPG|JPRG|ARPG/.test(genre);
+    if (catKey === "action") return /动作|ARPG/.test(genre);
+    return true;
+  }
+
+  function categoryScopeLabel(catKey) {
+    if (catKey === "indie") return "独立游戏";
+    if (catKey === "jrpg") return "角色扮演类游戏";
+    if (catKey === "action") return "动作类游戏";
+    return "";
+  }
 
   function isVotingOpen() {
     return !serverClosed && Date.now() <= DEADLINE.getTime();
@@ -193,6 +212,12 @@
   let liveState = "loading";
   if (storedVoted && typeof storedVoted === "object") selected = storedVoted;
 
+  // 清理旧投票中不符合新奖项类型范围的选择
+  Object.keys(selected).forEach((key) => {
+    const g = byId.get(Number(selected[key]));
+    if (!g || !categoryAllows(key, g)) delete selected[key];
+  });
+
   let client = null;
   let serviceReady = false;
   let submitting = false;
@@ -237,6 +262,7 @@
       if (sep < 0 || key.slice(0, sep) !== catKey) return;
       const g = byId.get(Number(key.slice(sep + 1)));
       if (!g || Number(g.year) !== year) return;
+      if (!categoryAllows(catKey, g)) return;
       if (!best || votes > best.votes || (votes === best.votes && g.score > best.g.score)) {
         best = { g, votes };
       }
@@ -346,6 +372,12 @@
     pickReturn.el = document.activeElement;
     if (pickTitle) pickTitle.textContent = cat.name;
     if (pickKicker) pickKicker.textContent = `${cat.desc || "年度奖项"} · ${year}`;
+    if (pickScope) {
+      const scope = categoryScopeLabel(catKey);
+      pickScope.textContent = scope
+        ? `仅显示站内已收录的 2026 ${scope}；未收录不代表否定。`
+        : "仅显示站内已收录的 2026 游戏";
+    }
     if (pickSearch) pickSearch.value = "";
     renderPicker();
     if (pickModal) pickModal.hidden = false;
@@ -367,13 +399,14 @@
     if (!pickGrid) return;
     const q = pickSearch ? pickSearch.value.trim().toLowerCase() : "";
     const list = yearGames.filter((g) => {
+      if (!categoryAllows(pickCat, g)) return false;
       if (!q) return true;
       const hay = [g.name, g.developer, g.tag, String(g.year), ...g.genre].join(" ").toLowerCase();
       return hay.includes(q);
     });
 
     if (!list.length) {
-      pickGrid.innerHTML = `<p class="pick-empty">没有找到匹配的 ${year} 年游戏</p>`;
+      pickGrid.innerHTML = `<p class="pick-empty">没有找到符合条件的 ${year} 年游戏</p>`;
       return;
     }
 
@@ -542,6 +575,7 @@
     rows.forEach((row) => {
       const g = byId.get(Number(row.game_id));
       if (!g) return;
+      if (!categoryAllows(row.category, g)) return;
       const list = byCategory.get(row.category) || [];
       list.push({ g, votes: Number(row.votes) || 0 });
       byCategory.set(row.category, list);
@@ -632,6 +666,11 @@
         } else if (/RATE_LIMITED|rate limit|提交太频繁/i.test(msg)) {
           updateProgress();
           toast("提交太频繁，请稍后再试");
+        } else if (/too many votes/i.test(msg)) {
+          serviceReady = false;
+          setStatus("error", "投票服务需要更新");
+          updateProgress();
+          toast("奖项已拆成 7 个，请在 Supabase 重新执行 v2/supabase-votes.sql");
         } else if (
           error.code === "PGRST202" ||
           /submit_votes/i.test(msg)

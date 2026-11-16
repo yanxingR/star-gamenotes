@@ -78,7 +78,7 @@ begin
     raise exception 'invalid votes';
   end if;
 
-  if jsonb_array_length(p_votes) > 6 then
+  if jsonb_array_length(p_votes) > 7 then
     raise exception 'too many votes';
   end if;
 
@@ -128,6 +128,14 @@ end;
 $$;
 
 grant execute on function public.submit_votes(uuid, int, jsonb) to anon, authenticated;
+
+-- 2026 起「最佳艺术游戏」拆分为 art（最佳美术）和 av（最佳视听体验）。
+-- 把已有的 art 票复制到 av，保证老投票同时计入两个奖；重复执行不会重复插入。
+insert into public.votes (year, category, game_id, voter_id, created_at)
+select year, 'av', game_id, voter_id, created_at
+from public.votes
+where category = 'art'
+on conflict (year, category, voter_id) do nothing;
 
 -- 让 PostgREST 立即识别新表/视图/函数
 notify pgrst, 'reload schema';

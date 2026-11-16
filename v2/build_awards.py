@@ -24,7 +24,22 @@ CATEGORIES = [
     {"key": "action", "name": "年度极速流星",
      "desc": "星GN 年度最佳动作游戏"},
     {"key": "art", "name": "年度绮丽星云",
-     "desc": "星GN 年度最佳艺术游戏"},
+     "desc": "星GN 年度最佳美术游戏"},
+    {"key": "av", "name": "年度声光星海",
+     "desc": "星GN 年度最佳视听体验游戏"},
+]
+
+# 严格独立：独立团队，自发行/独立厂牌，非大厂主导，规模非 3A
+INDIE_STRICT = [
+    392, 416, 391, 367, 418, 368, 379, 372, 373,
+    393, 384, 399, 398, 386, 388, 404, 389,
+    413, 424, 427, 433, 431, 406, 426, 421,
+]
+
+# 广义独立：独立工作室，但由中型/大厂发行或 AA 规模；是否计入由站主决定
+INDIE_BROAD_EXTRA = [
+    429, 382, 405, 383, 390,
+    411, 432, 422, 438, 423,
 ]
 
 # 2025 届获奖名单（站主确定）
@@ -34,7 +49,8 @@ WINNERS_2025 = {
     "indie": 393,   # 空洞骑士：丝之歌
     "jrpg": 394,    # 空之轨迹 the 1st
     "action": 393,  # 空洞骑士：丝之歌
-    "art": 397,     # ARC Raiders
+    "art": 397,     # ARC Raiders（美术 9.5）
+    "av": 382,      # 双影奇境（视听 10；与 DISPATCH 并列，总分 8.67 优先）
 }
 
 # 新增后续年份时，在这里加一届固定名单；投票届留空 winners
@@ -55,6 +71,8 @@ payload = {
     "currentVoteYear": 2026,
     "categories": CATEGORIES,
     "editions": EDITIONS,
+    "indieIds": INDIE_STRICT,
+    "indieBroadIds": INDIE_STRICT + INDIE_BROAD_EXTRA,
 }
 
 with open(OUT, "w", encoding="utf-8") as f:
