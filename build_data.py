@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Build site/data.js from the original index page's data.json.
+"""Build v2/data.js from the original index page's data.json.
 
 Read-only on data.json. The original site's model is preserved:
 weights 15/10/25/18/7/10/10/5 and the story formula 0.4/0.6.
@@ -9,7 +9,7 @@ import datetime
 import statistics
 
 SRC = "data.json"
-OUT = "site/data.js"
+OUT = "v2/data.js"
 
 DIMS = [
     {"key": "craft", "label": "制作水准", "short": "制作", "weight": 0.15,
