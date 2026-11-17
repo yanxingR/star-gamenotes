@@ -1,4 +1,4 @@
-name: Sync data.json + site/data.js from Supabase
+name: Sync data.json + v2/data.js from Supabase
 
 # GitHub 的服务器能正常访问 supabase.co，这里定时把数据导出成静态文件，
 # 让 Pages 在数据库被墙/重置时也有数据可显示。
@@ -43,7 +43,7 @@ jobs:
           else
             # 同步刷新新版的静态兜底数据
             python3 build_data.py
-            git add data.json site/data.js
+            git add data.json v2/data.js
             git commit -m "chore: sync data ($(date -u +%Y-%m-%dT%H:%MZ))"
             git push
           fi
