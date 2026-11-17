@@ -1,6 +1,6 @@
 # v2 · 年度评选（2025 / 2026）+ 玩家投票
 
-这是一个独立的工作副本，原有 `site/`、根 `index.html`、`old.html`、工作流等都没有改动。
+这是一个独立的工作副本；v2 的「旧版」按钮直接跳 `../old.html`，old.html 的「新版」跳 `v2/`，根 `index.html` 跳 `v2/`。原 `site/` 已移除，不再作为版本入口。
 
 - 首页：`/v2/`（首屏最高分位置已换成奖项轮播）
 - 投票：`/v2/vote.html`（2026 星GN 玩家投票，当前领先和实时结果都在这页）
@@ -54,7 +54,7 @@
 - 当前投票使用**严格名单**；候选表见 `v2/indie-candidates.csv`，含 id、名称、年份、严格/广义、开发商。
 - Supabase 的 `games.genre` 也要追加「独立」：执行 `v2/add-indie-tag.sql`，会给严格名单 25 部追加 `/独立`，可重复执行。
 - 前端判断独立奖时同时接受「genre 含独立」和静态 `indieIds`，所以数据库标签更新后即使 `awards.js` 未重新生成，也能识别；新增独立游戏只要在 Supabase 打上「独立」标签即可。
-- 标签更新后，最好等 Actions 同步 `site/data.js`，再把 `site/data.js` 复制到 `v2/data.js` 作为离线兜底；`v2/data.js` 不会自动同步。
+- 标签更新后，等 Actions 同步 `v2/data.js` 即可；`v2/data.js` 现在由 `build_data.py` 直接生成，不再复制其他站的静态文件。
 - 33号远征队（Sandfall/Kepler）、MIO（Douze Dixièmes/Focus）、明末（505）等属于广义候选；丝之歌、小丑牌、动物井、米娜等在严格名单内。
 
 ## 奖项数据

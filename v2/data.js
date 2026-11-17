@@ -1,7 +1,7 @@
 /* Generated from data.json (original index page) — do not edit by hand. */
 window.GN_DATA = {
  "source": "原 index 页 · data.json",
- "generatedAt": "2026-11-11",
+ "generatedAt": "2026-11-17",
  "dims": [
   {
    "key": "craft",
