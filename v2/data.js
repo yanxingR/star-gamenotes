@@ -1,7 +1,7 @@
 /* Generated from data.json (original index page) — do not edit by hand. */
 window.GN_DATA = {
  "source": "原 index 页 · data.json",
- "generatedAt": "2026-11-17",
+ "generatedAt": "2026-11-21",
  "dims": [
   {
    "key": "craft",
@@ -98,9 +98,9 @@ window.GN_DATA = {
   }
  ],
  "stats": {
-  "count": 73,
-  "avg": 8.1549,
-  "median": 8.13,
+  "count": 74,
+  "avg": 8.1616,
+  "median": 8.14,
   "max": 9.31,
   "min": 6.59,
   "top": "天国：拯救2",
@@ -113,10 +113,10 @@ window.GN_DATA = {
   ],
   "tagCounts": {
    "夯": 12,
-   "顶级": 17,
+   "顶级": 18,
    "人上人": 20,
-   "NPC": 17,
-   "拉": 5,
+   "NPC": 16,
+   "拉": 6,
    "拉完了": 2
   },
   "yearMin": 2017,
@@ -124,14 +124,14 @@ window.GN_DATA = {
   "gamesThisYear": 30
  },
  "dimAvg": {
-  "craft": 8.4014,
-  "content": 7.5386,
-  "gameplay": 8.4521,
-  "story": 6.9821,
-  "immersion": 9.0274,
-  "art": 8.2397,
-  "audio": 8.6699,
-  "love": 8.9658
+  "craft": 8.4135,
+  "content": 7.5486,
+  "gameplay": 8.4527,
+  "story": 6.9855,
+  "immersion": 9.0135,
+  "art": 8.2635,
+  "audio": 8.6797,
+  "love": 8.9797
  },
  "games": [
   {
@@ -198,7 +198,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 61
+   "rank": 62
   },
   {
    "id": 367,
@@ -253,7 +253,8 @@ window.GN_DATA = {
     "JRPG",
     "角色扮演",
     "横版",
-    "动作"
+    "动作",
+    "独立"
    ],
    "playtime": "60h+",
    "developer": "KEIZO",
@@ -316,7 +317,8 @@ window.GN_DATA = {
    "genre": [
     "类魂",
     "角色扮演",
-    "动作"
+    "动作",
+    "独立"
    ],
    "playtime": "18h+",
    "developer": "Aggro Crab",
@@ -327,7 +329,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 52
+   "rank": 53
   },
   {
    "id": 369,
@@ -392,13 +394,13 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 28
+   "rank": 29
   },
   {
    "id": 370,
    "name": "FF7REMAKE",
    "score": 7.57,
-   "tag": "NPC",
+   "tag": "拉",
    "dims": [
     8.8,
     6.59,
@@ -458,7 +460,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 64
+   "rank": 65
   },
   {
    "id": 371,
@@ -522,7 +524,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 58
+   "rank": 59
   },
   {
    "id": 372,
@@ -576,7 +578,8 @@ window.GN_DATA = {
    "genre": [
     "卡牌",
     "策略",
-    "Roguelike"
+    "Roguelike",
+    "独立"
    ],
    "playtime": "",
    "developer": "LocalThunk",
@@ -587,7 +590,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 55
+   "rank": 56
   },
   {
    "id": 373,
@@ -642,7 +645,8 @@ window.GN_DATA = {
     "生存",
     "建造",
     "宠物培养",
-    "开放世界"
+    "开放世界",
+    "独立"
    ],
    "playtime": "60h+",
    "developer": "Pocket Pair",
@@ -652,7 +656,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 68
+   "rank": 69
   },
   {
    "id": 374,
@@ -717,7 +721,7 @@ window.GN_DATA = {
     "PS5",
     "NS"
    ],
-   "rank": 43
+   "rank": 44
   },
   {
    "id": 375,
@@ -782,7 +786,7 @@ window.GN_DATA = {
     "PS5",
     "NS"
    ],
-   "rank": 66
+   "rank": 67
   },
   {
    "id": 376,
@@ -937,18 +941,18 @@ window.GN_DATA = {
     ],
     [
      10.0,
-     10.0
-    ],
-    [
-     10.0
-    ],
-    [
-     10.0,
-     10.0
-    ],
-    [
-     10.0,
      9.0
+    ],
+    [
+     10.0
+    ],
+    [
+     10.0,
+     10.0
+    ],
+    [
+     9.0,
+     10.0
     ],
     [
      7.0
@@ -1035,7 +1039,8 @@ window.GN_DATA = {
     "解谜",
     "类银",
     "像素风",
-    "电波系"
+    "电波系",
+    "独立"
    ],
    "playtime": "10h+",
    "developer": "Billy Basso",
@@ -1046,7 +1051,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 54
+   "rank": 55
   },
   {
    "id": 380,
@@ -1111,7 +1116,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 60
+   "rank": 61
   },
   {
    "id": 381,
@@ -1307,7 +1312,7 @@ window.GN_DATA = {
     "PC",
     "PS5"
    ],
-   "rank": 47
+   "rank": 48
   },
   {
    "id": 384,
@@ -1363,7 +1368,8 @@ window.GN_DATA = {
     "回合制",
     "即时战斗",
     "角色扮演",
-    "手绘风"
+    "手绘风",
+    "独立"
    ],
    "playtime": "35h+",
    "developer": "Sandfall",
@@ -1438,7 +1444,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 34
+   "rank": 35
   },
   {
    "id": 386,
@@ -1493,7 +1499,8 @@ window.GN_DATA = {
     "体育",
     "多人在线",
     "PVP",
-    "动作"
+    "动作",
+    "独立"
    ],
    "playtime": "",
    "developer": "EASY BRAIN",
@@ -1503,7 +1510,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 63
+   "rank": 64
   },
   {
    "id": 387,
@@ -1566,7 +1573,7 @@ window.GN_DATA = {
     "PS5",
     "NS"
    ],
-   "rank": 29
+   "rank": 30
   },
   {
    "id": 388,
@@ -1620,7 +1627,8 @@ window.GN_DATA = {
    "genre": [
     "视觉小说",
     "解谜",
-    "Galgame"
+    "Galgame",
+    "独立"
    ],
    "playtime": "12h+",
    "developer": "Acacia",
@@ -1629,7 +1637,7 @@ window.GN_DATA = {
     "PC",
     "NS"
    ],
-   "rank": 65
+   "rank": 66
   },
   {
    "id": 389,
@@ -1684,7 +1692,8 @@ window.GN_DATA = {
     "平台跳跃",
     "横版",
     "解谜",
-    "类银"
+    "类银",
+    "独立"
    ],
    "playtime": "8h+",
    "developer": "AMATA",
@@ -1693,7 +1702,7 @@ window.GN_DATA = {
     "PC",
     "NS"
    ],
-   "rank": 72
+   "rank": 73
   },
   {
    "id": 390,
@@ -1757,7 +1766,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 56
+   "rank": 57
   },
   {
    "id": 391,
@@ -1813,7 +1822,8 @@ window.GN_DATA = {
     "横版",
     "平台跳跃",
     "类银",
-    "宠物培养"
+    "宠物培养",
+    "独立"
    ],
    "playtime": "30h+",
    "developer": "moi rai games",
@@ -1823,7 +1833,7 @@ window.GN_DATA = {
     "PS5",
     "NS"
    ],
-   "rank": 62
+   "rank": 63
   },
   {
    "id": 392,
@@ -1880,7 +1890,8 @@ window.GN_DATA = {
     "平台跳跃",
     "动作",
     "类银",
-    "手绘风"
+    "手绘风",
+    "独立"
    ],
    "playtime": "50h+",
    "developer": "Team Cherry",
@@ -1948,7 +1959,8 @@ window.GN_DATA = {
     "平台跳跃",
     "动作",
     "类银",
-    "手绘风"
+    "手绘风",
+    "独立"
    ],
    "playtime": "45h+",
    "developer": "Team Cherry",
@@ -2088,7 +2100,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 27
+   "rank": 28
   },
   {
    "id": 396,
@@ -2152,7 +2164,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 31
+   "rank": 32
   },
   {
    "id": 397,
@@ -2272,7 +2284,8 @@ window.GN_DATA = {
     "角色扮演",
     "体育",
     "闯关",
-    "电波系"
+    "电波系",
+    "独立"
    ],
    "playtime": "8h+",
    "developer": "Sam Eng",
@@ -2282,7 +2295,7 @@ window.GN_DATA = {
     "PS5",
     "NS"
    ],
-   "rank": 57
+   "rank": 58
   },
   {
    "id": 399,
@@ -2336,7 +2349,8 @@ window.GN_DATA = {
    "genre": [
     "视觉小说",
     "策略",
-    "Galgame"
+    "Galgame",
+    "独立"
    ],
    "playtime": "12h+",
    "developer": "AdHoc Studio",
@@ -2347,7 +2361,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 30
+   "rank": 31
   },
   {
    "id": 400,
@@ -2413,7 +2427,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 50
+   "rank": 51
   },
   {
    "id": 401,
@@ -2479,7 +2493,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 53
+   "rank": 54
   },
   {
    "id": 402,
@@ -2542,7 +2556,7 @@ window.GN_DATA = {
     "PC",
     "PS5"
    ],
-   "rank": 24
+   "rank": 25
   },
   {
    "id": 403,
@@ -2610,7 +2624,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 59
+   "rank": 60
   },
   {
    "id": 404,
@@ -2664,7 +2678,8 @@ window.GN_DATA = {
    "genre": [
     "动作",
     "闯关",
-    "角色扮演"
+    "角色扮演",
+    "独立"
    ],
    "playtime": "10h+",
    "developer": "Crimson Dusk",
@@ -2673,7 +2688,7 @@ window.GN_DATA = {
     "PC",
     "NS"
    ],
-   "rank": 70
+   "rank": 71
   },
   {
    "id": 405,
@@ -2736,7 +2751,7 @@ window.GN_DATA = {
     "PC",
     "NS"
    ],
-   "rank": 42
+   "rank": 43
   },
   {
    "id": 406,
@@ -2792,7 +2807,8 @@ window.GN_DATA = {
     "策略",
     "Roguelike",
     "闯关",
-    "像素风"
+    "像素风",
+    "独立"
    ],
    "playtime": "",
    "developer": "Poncle",
@@ -2803,7 +2819,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 49
+   "rank": 50
   },
   {
    "id": 407,
@@ -2869,7 +2885,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 18
+   "rank": 19
   },
   {
    "id": 408,
@@ -2934,7 +2950,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 26
+   "rank": 27
   },
   {
    "id": 409,
@@ -3000,7 +3016,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 38
+   "rank": 39
   },
   {
    "id": 410,
@@ -3068,7 +3084,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 44
+   "rank": 45
   },
   {
    "id": 411,
@@ -3203,7 +3219,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 19
+   "rank": 20
   },
   {
    "id": 413,
@@ -3258,7 +3274,8 @@ window.GN_DATA = {
     "2D",
     "动作",
     "类魂",
-    "像素风"
+    "像素风",
+    "独立"
    ],
    "playtime": "15h+",
    "developer": "Yacht Club Games",
@@ -3335,7 +3352,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 73
+   "rank": 74
   },
   {
    "id": 415,
@@ -3404,7 +3421,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 51
+   "rank": 52
   },
   {
    "id": 416,
@@ -3460,7 +3477,8 @@ window.GN_DATA = {
     "射击",
     "动作",
     "闯关",
-    "手绘风"
+    "手绘风",
+    "独立"
    ],
    "playtime": "12h+",
    "developer": "Studio MDHR",
@@ -3471,7 +3489,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 23
+   "rank": 24
   },
   {
    "id": 417,
@@ -3591,7 +3609,8 @@ window.GN_DATA = {
     "平台跳跃",
     "类银",
     "动作",
-    "手绘风"
+    "手绘风",
+    "独立"
    ],
    "playtime": "20h+",
    "developer": "Red Candle",
@@ -3601,7 +3620,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 20
+   "rank": 21
   },
   {
    "id": 419,
@@ -3666,7 +3685,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 39
+   "rank": 40
   },
   {
    "id": 420,
@@ -3732,7 +3751,7 @@ window.GN_DATA = {
     "PS5",
     "NS"
    ],
-   "rank": 40
+   "rank": 41
   },
   {
    "id": 421,
@@ -3786,7 +3805,8 @@ window.GN_DATA = {
    "genre": [
     "视觉小说",
     "解谜",
-    "Galgame"
+    "Galgame",
+    "独立"
    ],
    "playtime": "12h+",
    "developer": "Team Tetrapod",
@@ -3795,7 +3815,7 @@ window.GN_DATA = {
     "PC",
     "NS"
    ],
-   "rank": 69
+   "rank": 70
   },
   {
    "id": 422,
@@ -3858,7 +3878,7 @@ window.GN_DATA = {
    "platform": [
     "PC"
    ],
-   "rank": 32
+   "rank": 33
   },
   {
    "id": 423,
@@ -3921,7 +3941,7 @@ window.GN_DATA = {
     "PS5",
     "NS"
    ],
-   "rank": 71
+   "rank": 72
   },
   {
    "id": 424,
@@ -3976,7 +3996,8 @@ window.GN_DATA = {
     "2D",
     "闯关",
     "BOSSRUSH",
-    "像素风"
+    "像素风",
+    "独立"
    ],
    "playtime": "10h+",
    "developer": "Cup Dog Games",
@@ -3984,7 +4005,7 @@ window.GN_DATA = {
    "platform": [
     "PC"
    ],
-   "rank": 17
+   "rank": 18
   },
   {
    "id": 425,
@@ -4049,7 +4070,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 25
+   "rank": 26
   },
   {
    "id": 426,
@@ -4104,7 +4125,8 @@ window.GN_DATA = {
     "类魂",
     "角色扮演",
     "动作",
-    "开放世界"
+    "开放世界",
+    "独立"
    ],
    "playtime": "25h+",
    "developer": "Cold Symmetry",
@@ -4114,7 +4136,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 67
+   "rank": 68
   },
   {
    "id": 427,
@@ -4169,7 +4191,8 @@ window.GN_DATA = {
     "角色扮演",
     "策略",
     "模拟",
-    "战争"
+    "战争",
+    "独立"
    ],
    "playtime": "12h+",
    "developer": "Nick Nieuwoudt/Dominik Latos",
@@ -4177,7 +4200,7 @@ window.GN_DATA = {
    "platform": [
     "PC"
    ],
-   "rank": 37
+   "rank": 38
   },
   {
    "id": 428,
@@ -4241,7 +4264,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 35
+   "rank": 36
   },
   {
    "id": 429,
@@ -4306,7 +4329,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 36
+   "rank": 37
   },
   {
    "id": 430,
@@ -4426,7 +4449,8 @@ window.GN_DATA = {
     "Roguelike",
     "战旗",
     "闯关",
-    "电波系"
+    "电波系",
+    "独立"
    ],
    "playtime": "",
    "developer": "Edmund McMillen/Tyler Glaiel",
@@ -4435,7 +4459,7 @@ window.GN_DATA = {
     "PC",
     "NS"
    ],
-   "rank": 48
+   "rank": 49
   },
   {
    "id": 432,
@@ -4500,7 +4524,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 21
+   "rank": 22
   },
   {
    "id": 433,
@@ -4557,7 +4581,8 @@ window.GN_DATA = {
     "平台跳跃",
     "动作",
     "类银",
-    "手绘风"
+    "手绘风",
+    "独立"
    ],
    "playtime": "10h+",
    "developer": "Kyle Thompson",
@@ -4568,7 +4593,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 46
+   "rank": 47
   },
   {
    "id": 434,
@@ -4700,7 +4725,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 33
+   "rank": 34
   },
   {
    "id": 436,
@@ -4767,7 +4792,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 41
+   "rank": 42
   },
   {
    "id": 437,
@@ -4832,7 +4857,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 22
+   "rank": 23
   },
   {
    "id": 438,
@@ -4895,7 +4920,63 @@ window.GN_DATA = {
     "PC",
     "PS5"
    ],
-   "rank": 45
+   "rank": 46
+  },
+  {
+   "id": 439,
+   "name": "最终幻想共鸣",
+   "score": 8.65,
+   "tag": "顶级",
+   "dims": [
+    9.3,
+    8.28,
+    8.5,
+    7.24,
+    8.0,
+    10.0,
+    9.4,
+    10.0
+   ],
+   "subs": [
+    [
+     9.0,
+     9.5
+    ],
+    [
+     8.0,
+     9.0
+    ],
+    [
+     8.5
+    ],
+    [
+     7.5,
+     8.0
+    ],
+    [
+     8.0,
+     8.0
+    ],
+    [
+     10.0
+    ],
+    [
+     9.0,
+     10.0
+    ],
+    [
+     10.0
+    ]
+   ],
+   "cover": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3259780/710da43babb2043f9f6ad0e50023e31167d94708/library_header_2x.jpg",
+   "thumb": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3259780/21d8a7c692803448c79426fc88910d8658a058a8/library_capsule_2x.jpg",
+   "desc": "",
+   "genre": [],
+   "playtime": "",
+   "developer": "",
+   "year": null,
+   "platform": [],
+   "rank": 17
   }
  ]
 };

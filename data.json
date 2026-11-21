@@ -4086,5 +4086,61 @@
     "developer": "灵游坊",
     "release_year": 2026,
     "platform": "PC/PS5"
+  },
+  {
+    "name": "最终幻想共鸣",
+    "score": 8.65,
+    "tag": "顶级",
+    "dims": [
+      9.3,
+      8.28,
+      8.5,
+      7.24,
+      8.0,
+      10.0,
+      9.4,
+      10.0
+    ],
+    "sub_dims": [
+      [
+        9,
+        9.5
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        8.5
+      ],
+      [
+        7.5,
+        8
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        10
+      ],
+      [
+        9,
+        10
+      ],
+      [
+        10
+      ]
+    ],
+    "cover": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3259780/710da43babb2043f9f6ad0e50023e31167d94708/library_header_2x.jpg",
+    "cover_thumb": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3259780/21d8a7c692803448c79426fc88910d8658a058a8/library_capsule_2x.jpg",
+    "created_at": "2026-11-21T16:15:10.095709+00:00",
+    "id": 439,
+    "description": "",
+    "genre": "",
+    "playtime": "",
+    "developer": "",
+    "release_year": null,
+    "platform": ""
   }
 ]
