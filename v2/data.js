@@ -1,7 +1,7 @@
 /* Generated from data.json (original index page) — do not edit by hand. */
 window.GN_DATA = {
  "source": "原 index 页 · data.json",
- "generatedAt": "2026-11-21",
+ "generatedAt": "2026-11-22",
  "dims": [
   {
    "key": "craft",
@@ -98,9 +98,9 @@ window.GN_DATA = {
   }
  ],
  "stats": {
-  "count": 74,
-  "avg": 8.1616,
-  "median": 8.14,
+  "count": 75,
+  "avg": 8.1596,
+  "median": 8.13,
   "max": 9.31,
   "min": 6.59,
   "top": "天国：拯救2",
@@ -114,7 +114,7 @@ window.GN_DATA = {
   "tagCounts": {
    "夯": 12,
    "顶级": 18,
-   "人上人": 20,
+   "人上人": 21,
    "NPC": 16,
    "拉": 6,
    "拉完了": 2
@@ -124,14 +124,14 @@ window.GN_DATA = {
   "gamesThisYear": 30
  },
  "dimAvg": {
-  "craft": 8.4135,
-  "content": 7.5486,
-  "gameplay": 8.4527,
-  "story": 6.9855,
-  "immersion": 9.0135,
-  "art": 8.2635,
-  "audio": 8.6797,
-  "love": 8.9797
+  "craft": 8.424,
+  "content": 7.5609,
+  "gameplay": 8.4467,
+  "story": 6.9891,
+  "immersion": 9.0133,
+  "art": 8.2467,
+  "audio": 8.6573,
+  "love": 8.98
  },
  "games": [
   {
@@ -198,7 +198,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 62
+   "rank": 63
   },
   {
    "id": 367,
@@ -329,7 +329,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 53
+   "rank": 54
   },
   {
    "id": 369,
@@ -460,7 +460,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 65
+   "rank": 66
   },
   {
    "id": 371,
@@ -524,7 +524,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 59
+   "rank": 60
   },
   {
    "id": 372,
@@ -590,7 +590,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 56
+   "rank": 57
   },
   {
    "id": 373,
@@ -656,7 +656,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 69
+   "rank": 70
   },
   {
    "id": 374,
@@ -786,7 +786,7 @@ window.GN_DATA = {
     "PS5",
     "NS"
    ],
-   "rank": 67
+   "rank": 68
   },
   {
    "id": 376,
@@ -1051,7 +1051,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 55
+   "rank": 56
   },
   {
    "id": 380,
@@ -1116,7 +1116,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 61
+   "rank": 62
   },
   {
    "id": 381,
@@ -1312,7 +1312,7 @@ window.GN_DATA = {
     "PC",
     "PS5"
    ],
-   "rank": 48
+   "rank": 49
   },
   {
    "id": 384,
@@ -1510,7 +1510,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 64
+   "rank": 65
   },
   {
    "id": 387,
@@ -1637,7 +1637,7 @@ window.GN_DATA = {
     "PC",
     "NS"
    ],
-   "rank": 66
+   "rank": 67
   },
   {
    "id": 389,
@@ -1702,7 +1702,7 @@ window.GN_DATA = {
     "PC",
     "NS"
    ],
-   "rank": 73
+   "rank": 74
   },
   {
    "id": 390,
@@ -1766,7 +1766,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 57
+   "rank": 58
   },
   {
    "id": 391,
@@ -1833,7 +1833,7 @@ window.GN_DATA = {
     "PS5",
     "NS"
    ],
-   "rank": 63
+   "rank": 64
   },
   {
    "id": 392,
@@ -2295,7 +2295,7 @@ window.GN_DATA = {
     "PS5",
     "NS"
    ],
-   "rank": 58
+   "rank": 59
   },
   {
    "id": 399,
@@ -2427,7 +2427,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 51
+   "rank": 52
   },
   {
    "id": 401,
@@ -2493,7 +2493,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 54
+   "rank": 55
   },
   {
    "id": 402,
@@ -2624,7 +2624,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 60
+   "rank": 61
   },
   {
    "id": 404,
@@ -2688,7 +2688,7 @@ window.GN_DATA = {
     "PC",
     "NS"
    ],
-   "rank": 71
+   "rank": 72
   },
   {
    "id": 405,
@@ -2819,7 +2819,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 50
+   "rank": 51
   },
   {
    "id": 407,
@@ -3352,7 +3352,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 74
+   "rank": 75
   },
   {
    "id": 415,
@@ -3421,7 +3421,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 52
+   "rank": 53
   },
   {
    "id": 416,
@@ -3815,7 +3815,7 @@ window.GN_DATA = {
     "PC",
     "NS"
    ],
-   "rank": 70
+   "rank": 71
   },
   {
    "id": 422,
@@ -3941,7 +3941,7 @@ window.GN_DATA = {
     "PS5",
     "NS"
    ],
-   "rank": 72
+   "rank": 73
   },
   {
    "id": 424,
@@ -4136,7 +4136,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 68
+   "rank": 69
   },
   {
    "id": 427,
@@ -4459,7 +4459,7 @@ window.GN_DATA = {
     "PC",
     "NS"
    ],
-   "rank": 49
+   "rank": 50
   },
   {
    "id": 432,
@@ -4593,7 +4593,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 47
+   "rank": 48
   },
   {
    "id": 434,
@@ -4920,7 +4920,7 @@ window.GN_DATA = {
     "PC",
     "PS5"
    ],
-   "rank": 46
+   "rank": 47
   },
   {
    "id": 439,
@@ -4977,6 +4977,62 @@ window.GN_DATA = {
    "year": null,
    "platform": [],
    "rank": 17
+  },
+  {
+   "id": 440,
+   "name": "深空当铺：可能是偷的",
+   "score": 8.01,
+   "tag": "人上人",
+   "dims": [
+    9.2,
+    8.47,
+    8.0,
+    7.25,
+    9.0,
+    7.0,
+    7.0,
+    9.0
+   ],
+   "subs": [
+    [
+     8.0,
+     10.0
+    ],
+    [
+     9.0,
+     8.0
+    ],
+    [
+     8.0
+    ],
+    [
+     7.0,
+     9.0
+    ],
+    [
+     9.0,
+     9.0
+    ],
+    [
+     7.0
+    ],
+    [
+     9.0,
+     4.0
+    ],
+    [
+     9.0
+    ]
+   ],
+   "cover": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4348910/48defa4007ed91bbee9ead3a085d3ee82f545a6f/library_header_schinese_2x.jpg",
+   "thumb": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4348910/03318ef78895213d7aba3a7aaa973a2cb0ba6f03/library_capsule_schinese_2x.jpg",
+   "desc": "",
+   "genre": [],
+   "playtime": "",
+   "developer": "",
+   "year": null,
+   "platform": [],
+   "rank": 46
   }
  ]
 };
