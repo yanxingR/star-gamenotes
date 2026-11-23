@@ -1059,7 +1059,7 @@
                 🏷️ 当前筛选：<span id="filterTagName"></span>
                 <button class="clear-filter" onclick="clearFilter()">✕ 清除</button>
             </span>
-            <input type="text" id="searchInput" placeholder="🔍 搜索游戏..." />
+            <input type="text" id="searchInput" placeholder="🔍 搜索游戏名（中/英）..." />
             <select id="sortSelect">
     <option value="default">📋 默认顺序</option>
     <option value="high-to-low">⬇️ 最高分优先</option>
@@ -1303,6 +1303,7 @@
 
         // 匹配游戏名
         if (g.name.toLowerCase().includes(keyword)) return true;
+        if (g.name_en && g.name_en.toLowerCase().includes(keyword)) return true;
 
         // 匹配所有标签字段
         const allTags = [
@@ -1390,20 +1391,6 @@ if (sortMode === 'high-to-low') {
                 const coverHtml = coverUrl ? `<img src="${coverUrl}" alt="${game.name}" />` :
                     `<span class="placeholder">🎮</span>`;
 
-                const tagItems = [
-                    ...splitTags(game.genre),
-                    ...splitTags(game.playtime),
-                    ...splitTags(game.developer),
-                    ...splitTags(game.platform),
-                ];
-                if (game.release_year) {
-                    tagItems.push(String(game.release_year));
-                }
-
-                const tagsHtml = tagItems.length > 0 ?
-                    `<div class="game-tags">${tagItems.map(t => `<span class="tag-chip" data-tag="${t}">${t}</span>`).join(' ')}</div>` :
-                    '';
-
                 return `
                         <div class="game-card" data-index="${index}">
                             <div class="cover">${coverHtml}</div>
@@ -1412,7 +1399,6 @@ if (sortMode === 'high-to-low') {
                                     <div class="name">${game.name}</div>
                                     <div class="score ${scoreClass}">${game.score}</div>
                                 </div>
-                                ${tagsHtml}
                                 <span class="tag ${tagClass}">${game.tag}</span>
                             </div>
                         </div>
@@ -1451,24 +1437,6 @@ if (sortMode === 'high-to-low') {
             const coverUrl = game.cover || game.cover_thumb || '';
             const coverHtml = coverUrl ? `<img src="${coverUrl}" alt="${game.name}" />` :
                 `<div class="placeholder">🎮</div>`;
-
-            const detailItems = [
-                ...splitTags(game.genre),
-                ...splitTags(game.playtime),
-                ...splitTags(game.developer),
-                ...splitTags(game.platform),
-            ];
-            if (game.release_year) {
-                detailItems.push(String(game.release_year));
-            }
-
-            const detailTagsHtml = detailItems.length > 0 ?
-                `<div class="detail-tags">${detailItems.map(t => `<span class="tag-chip" data-tag="${t}">${t}</span>`).join(' ')}</div>` :
-                '';
-
-            const descriptionHtml = game.description ?
-                `<div class="game-description">📝 ${game.description}</div>` :
-                '';
 
             const subDims = game.subDims || game.sub_dims || [
                 [],
@@ -1519,26 +1487,16 @@ if (sortMode === 'high-to-low') {
     <div class="modal-left">
         <div class="game-title">${game.name}</div>
         <div class="game-cover-wrap">${coverHtml}</div>
-        ${descriptionHtml}
         <div class="game-footer">
             <span class="score-label">星GN评分： <strong>${game.score.toFixed(2)}</strong></span>
             <span class="game-tag-big ${tagClass}">${game.tag}</span>
         </div>
-        ${detailTagsHtml}
     </div>
     <div class="modal-right">${rightHtml}</div>
 `;
 
             modalOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
-
-            document.querySelectorAll('.detail-tags .tag-chip').forEach(el => {
-                el.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    closeModal();
-                    setTimeout(() => filterByTag(this.dataset.tag), 200);
-                });
-            });
 
             document.querySelector('.game-tag-big')?.addEventListener('click', function() {
                 const tag = this.textContent.trim();

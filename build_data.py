@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-"""Build v2/data.js from the original index page's data.json.
+"""Build v2/data.js from data.json.
 
-Read-only on data.json. The original site's model is preserved:
+Read-only on data.json. The scoring model is preserved:
 weights 15/10/25/18/7/10/10/5 and the story formula 0.4/0.6.
 """
 import json
@@ -53,6 +53,7 @@ for x in src:
     games.append({
         "id": int(x["id"]),
         "name": x["name"].strip(),
+        "name_en": (x.get("name_en") or "").strip(),
         "score": score,
         "tag": x.get("tag") or "NPC",
         "dims": dims,
