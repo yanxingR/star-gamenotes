@@ -171,6 +171,7 @@
     return {
       id: Number(x.id),
       name: String(x.name || "").trim(),
+      name_en: String(x.name_en || x.nameEn || "").trim(),
       score: Number(x.score) || 0,
       tag: x.tag || "NPC",
       cover: x.cover || "",
@@ -401,7 +402,7 @@
     const list = yearGames.filter((g) => {
       if (!categoryAllows(pickCat, g)) return false;
       if (!q) return true;
-      const hay = [g.name, g.developer, g.tag, String(g.year), ...g.genre].join(" ").toLowerCase();
+      const hay = [g.name, g.name_en, g.developer, g.tag, String(g.year), ...g.genre].join(" ").toLowerCase();
       return hay.includes(q);
     });
 

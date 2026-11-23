@@ -194,6 +194,7 @@
       return {
         id: toNum(x.id) != null ? toNum(x.id) : i + 1,
         name: String(x.name).trim(),
+        name_en: String(x.name_en || x.nameEn || "").trim(),
         score: toNum(x.score) != null ? toNum(x.score) : 0,
         tag: x.tag || "NPC",
         dims: d8.map((v) => (v == null ? 0 : v)),
@@ -901,6 +902,7 @@
   /* ---------- filtering / sorting ---------- */
   function tokensOf(g) {
     return [
+      g.name_en,
       g.tag,
       g.developer,
       String(g.year || ""),

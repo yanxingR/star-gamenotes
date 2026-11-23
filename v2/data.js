@@ -1,7 +1,7 @@
 /* Generated from data.json (original index page) — do not edit by hand. */
 window.GN_DATA = {
  "source": "原 index 页 · data.json",
- "generatedAt": "2026-11-22",
+ "generatedAt": "2026-11-23",
  "dims": [
   {
    "key": "craft",
@@ -99,7 +99,7 @@ window.GN_DATA = {
  ],
  "stats": {
   "count": 75,
-  "avg": 8.1596,
+  "avg": 8.1587,
   "median": 8.13,
   "max": 9.31,
   "min": 6.59,
@@ -121,11 +121,11 @@ window.GN_DATA = {
   },
   "yearMin": 2017,
   "yearMax": 2026,
-  "gamesThisYear": 30
+  "gamesThisYear": 32
  },
  "dimAvg": {
   "craft": 8.424,
-  "content": 7.5609,
+  "content": 7.5509,
   "gameplay": 8.4467,
   "story": 6.9891,
   "immersion": 9.0133,
@@ -137,6 +137,7 @@ window.GN_DATA = {
   {
    "id": 366,
    "name": "潜水员戴夫",
+   "name_en": "Dave the Diver",
    "score": 7.68,
    "tag": "NPC",
    "dims": [
@@ -203,6 +204,7 @@ window.GN_DATA = {
   {
    "id": 367,
    "name": "神之天平",
+   "name_en": "Astlibra Revision",
    "score": 9.05,
    "tag": "夯",
    "dims": [
@@ -268,6 +270,7 @@ window.GN_DATA = {
   {
    "id": 368,
    "name": "蟹蟹寻宝奇遇",
+   "name_en": "Another Crab's Treasure",
    "score": 7.85,
    "tag": "人上人",
    "dims": [
@@ -334,6 +337,7 @@ window.GN_DATA = {
   {
    "id": 369,
    "name": "暗喻幻想:ReFantazio",
+   "name_en": "Metaphor: ReFantazio",
    "score": 8.31,
    "tag": "人上人",
    "dims": [
@@ -399,6 +403,7 @@ window.GN_DATA = {
   {
    "id": 370,
    "name": "FF7REMAKE",
+   "name_en": "Final Fantasy VII Remake",
    "score": 7.57,
    "tag": "拉",
    "dims": [
@@ -465,6 +470,7 @@ window.GN_DATA = {
   {
    "id": 371,
    "name": "浪漫沙加2 七英雄的复仇",
+   "name_en": "Romancing SaGa 2: Revenge of the Seven",
    "score": 7.75,
    "tag": "NPC",
    "dims": [
@@ -529,6 +535,7 @@ window.GN_DATA = {
   {
    "id": 372,
    "name": "小丑牌",
+   "name_en": "Balatro",
    "score": 7.8,
    "tag": "顶级",
    "dims": [
@@ -595,6 +602,7 @@ window.GN_DATA = {
   {
    "id": 373,
    "name": "幻兽帕鲁",
+   "name_en": "Palworld",
    "score": 7.42,
    "tag": "人上人",
    "dims": [
@@ -661,6 +669,7 @@ window.GN_DATA = {
   {
    "id": 374,
    "name": "碧蓝幻想Relink",
+   "name_en": "Granblue Fantasy: Relink",
    "score": 8.02,
    "tag": "人上人",
    "dims": [
@@ -726,6 +735,7 @@ window.GN_DATA = {
   {
    "id": 375,
    "name": "Fate/Samurai Remnant",
+   "name_en": "Fate/Samurai Remnant",
    "score": 7.51,
    "tag": "NPC",
    "dims": [
@@ -791,6 +801,7 @@ window.GN_DATA = {
   {
    "id": 376,
    "name": "Persona 5 THE ROYAL",
+   "name_en": "Persona 5 Royal",
    "score": 8.73,
    "tag": "顶级",
    "dims": [
@@ -856,6 +867,7 @@ window.GN_DATA = {
   {
    "id": 377,
    "name": "真三国无双：起源",
+   "name_en": "Dynasty Warriors: Origins",
    "score": 8.85,
    "tag": "顶级",
    "dims": [
@@ -922,6 +934,7 @@ window.GN_DATA = {
   {
    "id": 378,
    "name": "天国：拯救2",
+   "name_en": "Kingdom Come: Deliverance II",
    "score": 9.31,
    "tag": "夯",
    "dims": [
@@ -987,6 +1000,7 @@ window.GN_DATA = {
   {
    "id": 379,
    "name": "动物井",
+   "name_en": "Animal Well",
    "score": 7.83,
    "tag": "夯",
    "dims": [
@@ -1056,6 +1070,7 @@ window.GN_DATA = {
   {
    "id": 380,
    "name": "怪物猎人：荒野",
+   "name_en": "Monster Hunter Wilds",
    "score": 7.7,
    "tag": "拉",
    "dims": [
@@ -1121,6 +1136,7 @@ window.GN_DATA = {
   {
    "id": 381,
    "name": "Lies of P",
+   "name_en": "Lies of P",
    "score": 8.76,
    "tag": "顶级",
    "dims": [
@@ -1186,6 +1202,7 @@ window.GN_DATA = {
   {
    "id": 382,
    "name": "双影奇境",
+   "name_en": "Split Fiction",
    "score": 8.67,
    "tag": "顶级",
    "dims": [
@@ -1254,6 +1271,7 @@ window.GN_DATA = {
   {
    "id": 383,
    "name": "无限机兵",
+   "name_en": "AI Limit",
    "score": 7.96,
    "tag": "顶级",
    "dims": [
@@ -1317,6 +1335,7 @@ window.GN_DATA = {
   {
    "id": 384,
    "name": "光与影：33号远征队",
+   "name_en": "Clair Obscur: Expedition 33",
    "score": 9.05,
    "tag": "夯",
    "dims": [
@@ -1384,6 +1403,7 @@ window.GN_DATA = {
   {
    "id": 385,
    "name": "艾尔登法环：黑夜君临",
+   "name_en": "Elden Ring: Nightreign",
    "score": 8.15,
    "tag": "人上人",
    "dims": [
@@ -1449,6 +1469,7 @@ window.GN_DATA = {
   {
    "id": 386,
    "name": "开球!REMATCH",
+   "name_en": "Rematch",
    "score": 7.62,
    "tag": "NPC",
    "dims": [
@@ -1515,6 +1536,7 @@ window.GN_DATA = {
   {
    "id": 387,
    "name": "剑星",
+   "name_en": "Stellar Blade",
    "score": 8.28,
    "tag": "人上人",
    "dims": [
@@ -1578,6 +1600,7 @@ window.GN_DATA = {
   {
    "id": 388,
    "name": "魔法少女的魔女审判",
+   "name_en": "The witch trial of the magical girl",
    "score": 7.54,
    "tag": "NPC",
    "dims": [
@@ -1642,6 +1665,7 @@ window.GN_DATA = {
   {
    "id": 389,
    "name": "Ooo",
+   "name_en": "Ooo",
    "score": 6.69,
    "tag": "人上人",
    "dims": [
@@ -1707,6 +1731,7 @@ window.GN_DATA = {
   {
    "id": 390,
    "name": "明末：渊虚之羽",
+   "name_en": "Wuchang: Fallen Feathers",
    "score": 7.79,
    "tag": "NPC",
    "dims": [
@@ -1771,6 +1796,7 @@ window.GN_DATA = {
   {
    "id": 391,
    "name": "怪物圣所",
+   "name_en": "Monster Sanctuary",
    "score": 7.64,
    "tag": "NPC",
    "dims": [
@@ -1823,7 +1849,8 @@ window.GN_DATA = {
     "平台跳跃",
     "类银",
     "宠物培养",
-    "独立"
+    "独立",
+    "回合制"
    ],
    "playtime": "30h+",
    "developer": "moi rai games",
@@ -1838,6 +1865,7 @@ window.GN_DATA = {
   {
    "id": 392,
    "name": "空洞骑士",
+   "name_en": "Hollow Knight",
    "score": 9.25,
    "tag": "夯",
    "dims": [
@@ -1907,6 +1935,7 @@ window.GN_DATA = {
   {
    "id": 393,
    "name": "空洞骑士：丝之歌",
+   "name_en": "Hollow Knight: Silksong",
    "score": 9.22,
    "tag": "夯",
    "dims": [
@@ -1976,6 +2005,7 @@ window.GN_DATA = {
   {
    "id": 394,
    "name": "空之轨迹 the 1st",
+   "name_en": "The Legend of Heroes: Trails in the Sky 1st Chapter",
    "score": 8.77,
    "tag": "顶级",
    "dims": [
@@ -2040,6 +2070,7 @@ window.GN_DATA = {
   {
    "id": 395,
    "name": "第一狂战士：卡赞",
+   "name_en": "The First Berserker: Khazan",
    "score": 8.34,
    "tag": "NPC",
    "dims": [
@@ -2105,6 +2136,7 @@ window.GN_DATA = {
   {
    "id": 396,
    "name": "战地风云6",
+   "name_en": "Battlefield 6",
    "score": 8.24,
    "tag": "NPC",
    "dims": [
@@ -2169,6 +2201,7 @@ window.GN_DATA = {
   {
    "id": 397,
    "name": "ARC Raiders",
+   "name_en": "ARC Raiders",
    "score": 8.66,
    "tag": "顶级",
    "dims": [
@@ -2234,6 +2267,7 @@ window.GN_DATA = {
   {
    "id": 398,
    "name": "Skate Story",
+   "name_en": "Skate Story",
    "score": 7.79,
    "tag": "NPC",
    "dims": [
@@ -2300,6 +2334,7 @@ window.GN_DATA = {
   {
    "id": 399,
    "name": "DISPATCH",
+   "name_en": "Dispatch",
    "score": 8.27,
    "tag": "人上人",
    "dims": [
@@ -2366,6 +2401,7 @@ window.GN_DATA = {
   {
    "id": 400,
    "name": "数码宝贝物语 时空异客",
+   "name_en": "Digimon Story: Time Stranger",
    "score": 7.86,
    "tag": "NPC",
    "dims": [
@@ -2432,6 +2468,7 @@ window.GN_DATA = {
   {
    "id": 401,
    "name": "噬血代码2",
+   "name_en": "Code Vein II",
    "score": 7.84,
    "tag": "NPC",
    "dims": [
@@ -2498,6 +2535,7 @@ window.GN_DATA = {
   {
    "id": 402,
    "name": "仁王3",
+   "name_en": "Nioh 3",
    "score": 8.43,
    "tag": "人上人",
    "dims": [
@@ -2561,6 +2599,7 @@ window.GN_DATA = {
   {
    "id": 403,
    "name": "生化危机 安魂曲",
+   "name_en": "Resident Evil Requiem",
    "score": 7.75,
    "tag": "拉",
    "dims": [
@@ -2629,6 +2668,7 @@ window.GN_DATA = {
   {
    "id": 404,
    "name": "炎姬",
+   "name_en": "Homura Hime",
    "score": 7.14,
    "tag": "拉",
    "dims": [
@@ -2693,6 +2733,7 @@ window.GN_DATA = {
   {
    "id": 405,
    "name": "终天教团",
+   "name_en": "The Hundred Line: Last Defense Academy",
    "score": 8.04,
    "tag": "人上人",
    "dims": [
@@ -2742,7 +2783,8 @@ window.GN_DATA = {
    "genre": [
     "视觉小说",
     "解谜",
-    "Galgame"
+    "Galgame",
+    "回合制"
    ],
    "playtime": "30h+",
    "developer": "小高和刚",
@@ -2756,6 +2798,7 @@ window.GN_DATA = {
   {
    "id": 406,
    "name": "吸血鬼爬行者：屠戮地牢的吸血鬼幸存者",
+   "name_en": "Vampire Crawlers",
    "score": 7.89,
    "tag": "顶级",
    "dims": [
@@ -2808,7 +2851,8 @@ window.GN_DATA = {
     "Roguelike",
     "闯关",
     "像素风",
-    "独立"
+    "独立",
+    "回合制"
    ],
    "playtime": "",
    "developer": "Poncle",
@@ -2824,6 +2868,7 @@ window.GN_DATA = {
   {
    "id": 407,
    "name": "红色沙漠",
+   "name_en": "Crimson Desert",
    "score": 8.57,
    "tag": "顶级",
    "dims": [
@@ -2890,6 +2935,7 @@ window.GN_DATA = {
   {
    "id": 408,
    "name": "PRAGMATA",
+   "name_en": "Pragmata",
    "score": 8.35,
    "tag": "人上人",
    "dims": [
@@ -2955,6 +3001,7 @@ window.GN_DATA = {
   {
    "id": 409,
    "name": "Monster Hunter Stories 3: 命运双龙",
+   "name_en": "Monster Hunter Stories 3: Twisted Reflection",
    "score": 8.08,
    "tag": "人上人",
    "dims": [
@@ -3021,6 +3068,7 @@ window.GN_DATA = {
   {
    "id": 410,
    "name": "闪电十一人 英雄们的胜利之路",
+   "name_en": "Inazuma Eleven: Victory Road",
    "score": 8.01,
    "tag": "NPC",
    "dims": [
@@ -3089,6 +3137,7 @@ window.GN_DATA = {
   {
    "id": 411,
    "name": "MlO:Memories in Orbit",
+   "name_en": "MIO: Memories in Orbit",
    "score": 9.1,
    "tag": "夯",
    "dims": [
@@ -3157,6 +3206,7 @@ window.GN_DATA = {
   {
    "id": 412,
    "name": "007 初露锋芒",
+   "name_en": "007 First Light",
    "score": 8.53,
    "tag": "顶级",
    "dims": [
@@ -3224,6 +3274,7 @@ window.GN_DATA = {
   {
    "id": 413,
    "name": "挖掘者米娜",
+   "name_en": "Mina the Hollower",
    "score": 8.82,
    "tag": "夯",
    "dims": [
@@ -3291,6 +3342,7 @@ window.GN_DATA = {
   {
    "id": 414,
    "name": "圣剑传说 VISIONS of MANA",
+   "name_en": "Visions of Mana",
    "score": 6.59,
    "tag": "拉完了",
    "dims": [
@@ -3357,6 +3409,7 @@ window.GN_DATA = {
   {
    "id": 415,
    "name": "冒险家艾略特的千年奇谭",
+   "name_en": "The Adventures of Elliot: The Millennium Tales",
    "score": 7.86,
    "tag": "NPC",
    "dims": [
@@ -3426,6 +3479,7 @@ window.GN_DATA = {
   {
    "id": 416,
    "name": "Cuphead",
+   "name_en": "Cuphead",
    "score": 8.45,
    "tag": "夯",
    "dims": [
@@ -3494,6 +3548,7 @@ window.GN_DATA = {
   {
    "id": 417,
    "name": "漫威蜘蛛侠2",
+   "name_en": "Marvel's Spider-Man 2",
    "score": 8.89,
    "tag": "顶级",
    "dims": [
@@ -3557,6 +3612,7 @@ window.GN_DATA = {
   {
    "id": 418,
    "name": "九日",
+   "name_en": "Nine Sols",
    "score": 8.5,
    "tag": "人上人",
    "dims": [
@@ -3625,6 +3681,7 @@ window.GN_DATA = {
   {
    "id": 419,
    "name": "装甲核心6 境界天火",
+   "name_en": "Armored Core VI: Fires of Rubicon",
    "score": 8.05,
    "tag": "NPC",
    "dims": [
@@ -3690,6 +3747,7 @@ window.GN_DATA = {
   {
    "id": 420,
    "name": "京都幻都-樱花幻舞-",
+   "name_en": "KYOTO XANADU -the Blooming Phantom-",
    "score": 8.05,
    "tag": "NPC",
    "dims": [
@@ -3756,6 +3814,7 @@ window.GN_DATA = {
   {
    "id": 421,
    "name": "Staffer Retro-异能追忆",
+   "name_en": "Staffer Retro: A Supernatural Mystery Quest",
    "score": 7.27,
    "tag": "拉",
    "dims": [
@@ -3820,6 +3879,7 @@ window.GN_DATA = {
   {
    "id": 422,
    "name": "纵横秘湾",
+   "name_en": "Corsair Cove",
    "score": 8.24,
    "tag": "顶级",
    "dims": [
@@ -3883,6 +3943,7 @@ window.GN_DATA = {
   {
    "id": 423,
    "name": "轮回之兽",
+   "name_en": "Beast of Reincarnation",
    "score": 6.94,
    "tag": "拉完了",
    "dims": [
@@ -3946,6 +4007,7 @@ window.GN_DATA = {
   {
    "id": 424,
    "name": "红眼露比",
+   "name_en": "Rubinite",
    "score": 8.6,
    "tag": "夯",
    "dims": [
@@ -4005,11 +4067,12 @@ window.GN_DATA = {
    "platform": [
     "PC"
    ],
-   "rank": 18
+   "rank": 17
   },
   {
    "id": 425,
    "name": "勇者斗恶龙VIl REIMAGINED",
+   "name_en": "Dragon Quest VII Reimagined",
    "score": 8.37,
    "tag": "顶级",
    "dims": [
@@ -4075,6 +4138,7 @@ window.GN_DATA = {
   {
    "id": 426,
    "name": "致命躯壳2",
+   "name_en": "Mortal Shell II",
    "score": 7.44,
    "tag": "拉",
    "dims": [
@@ -4141,6 +4205,7 @@ window.GN_DATA = {
   {
    "id": 427,
    "name": "铁巢重炮",
+   "name_en": "Iron Nest",
    "score": 8.13,
    "tag": "顶级",
    "dims": [
@@ -4205,6 +4270,7 @@ window.GN_DATA = {
   {
    "id": 428,
    "name": "鬼武者：剑之道",
+   "name_en": "Onimusha: Way of the Sword",
    "score": 8.15,
    "tag": "顶级",
    "dims": [
@@ -4269,6 +4335,7 @@ window.GN_DATA = {
   {
    "id": 429,
    "name": "巴别塔圣歌",
+   "name_en": "Chants of Sennaar",
    "score": 8.15,
    "tag": "顶级",
    "dims": [
@@ -4334,6 +4401,7 @@ window.GN_DATA = {
   {
    "id": 430,
    "name": "空之轨迹 the 2nd",
+   "name_en": "The Legend of Heroes: Trails in the Sky 2nd Chapter",
    "score": 9.02,
    "tag": "夯",
    "dims": [
@@ -4398,6 +4466,7 @@ window.GN_DATA = {
   {
    "id": 431,
    "name": "喵喵的结合",
+   "name_en": "Mewgenics",
    "score": 7.9,
    "tag": "人上人",
    "dims": [
@@ -4450,7 +4519,8 @@ window.GN_DATA = {
     "战旗",
     "闯关",
     "电波系",
-    "独立"
+    "独立",
+    "回合制"
    ],
    "playtime": "",
    "developer": "Edmund McMillen/Tyler Glaiel",
@@ -4464,6 +4534,7 @@ window.GN_DATA = {
   {
    "id": 432,
    "name": "黎明行者之血",
+   "name_en": "The Blood of Dawnwalker",
    "score": 8.46,
    "tag": "人上人",
    "dims": [
@@ -4529,6 +4600,7 @@ window.GN_DATA = {
   {
    "id": 433,
    "name": "黯井微光",
+   "name_en": "Well Dweller",
    "score": 7.97,
    "tag": "人上人",
    "dims": [
@@ -4598,6 +4670,7 @@ window.GN_DATA = {
   {
    "id": 434,
    "name": "空战奇兵8 希孚之翼",
+   "name_en": "Ace Combat 8: Wings of Theve",
    "score": 9.12,
    "tag": "夯",
    "dims": [
@@ -4666,6 +4739,7 @@ window.GN_DATA = {
   {
    "id": 435,
    "name": "动物园之星2",
+   "name_en": "Planet Zoo 2",
    "score": 8.18,
    "tag": "人上人",
    "dims": [
@@ -4730,6 +4804,7 @@ window.GN_DATA = {
   {
    "id": 436,
    "name": "恶魔城：贝尔蒙特的诅咒",
+   "name_en": "Castlevania: Belmont's Curse",
    "score": 8.05,
    "tag": "人上人",
    "dims": [
@@ -4797,6 +4872,7 @@ window.GN_DATA = {
   {
    "id": 437,
    "name": "使命召唤®：现代战争® 4",
+   "name_en": "Call of Duty: Modern Warfare 4",
    "score": 8.46,
    "tag": "人上人",
    "dims": [
@@ -4862,6 +4938,7 @@ window.GN_DATA = {
   {
    "id": 438,
    "name": "影之刃零",
+   "name_en": "Phantom Blade Zero",
    "score": 7.99,
    "tag": "人上人",
    "dims": [
@@ -4924,12 +5001,13 @@ window.GN_DATA = {
   },
   {
    "id": 439,
-   "name": "最终幻想共鸣",
-   "score": 8.65,
+   "name": "最终幻想：共鸣",
+   "name_en": "Final Fantasy Resonance",
+   "score": 8.58,
    "tag": "顶级",
    "dims": [
     9.3,
-    8.28,
+    7.53,
     8.5,
     7.24,
     8.0,
@@ -4944,7 +5022,7 @@ window.GN_DATA = {
     ],
     [
      8.0,
-     9.0
+     8.0
     ],
     [
      8.5
@@ -4971,16 +5049,20 @@ window.GN_DATA = {
    "cover": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3259780/710da43babb2043f9f6ad0e50023e31167d94708/library_header_2x.jpg",
    "thumb": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3259780/21d8a7c692803448c79426fc88910d8658a058a8/library_capsule_2x.jpg",
    "desc": "",
-   "genre": [],
+   "genre": [
+    "角色扮演",
+    "回合制"
+   ],
    "playtime": "",
    "developer": "",
-   "year": null,
+   "year": 2026,
    "platform": [],
-   "rank": 17
+   "rank": 18
   },
   {
    "id": 440,
    "name": "深空当铺：可能是偷的",
+   "name_en": "Probably Stolen",
    "score": 8.01,
    "tag": "人上人",
    "dims": [
@@ -5027,10 +5109,13 @@ window.GN_DATA = {
    "cover": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4348910/48defa4007ed91bbee9ead3a085d3ee82f545a6f/library_header_schinese_2x.jpg",
    "thumb": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4348910/03318ef78895213d7aba3a7aaa973a2cb0ba6f03/library_capsule_schinese_2x.jpg",
    "desc": "",
-   "genre": [],
+   "genre": [
+    "模拟经营",
+    "赛博朋克"
+   ],
    "playtime": "",
    "developer": "",
-   "year": null,
+   "year": 2026,
    "platform": [],
    "rank": 46
   }
