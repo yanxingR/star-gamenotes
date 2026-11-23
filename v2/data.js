@@ -99,8 +99,8 @@ window.GN_DATA = {
  ],
  "stats": {
   "count": 75,
-  "avg": 8.1587,
-  "median": 8.13,
+  "avg": 8.1925,
+  "median": 8.15,
   "max": 9.31,
   "min": 6.59,
   "top": "天国：拯救2",
@@ -126,11 +126,11 @@ window.GN_DATA = {
  "dimAvg": {
   "craft": 8.424,
   "content": 7.5509,
-  "gameplay": 8.4467,
-  "story": 6.9891,
+  "gameplay": 8.44,
+  "story": 7.1828,
   "immersion": 9.0133,
   "art": 8.2467,
-  "audio": 8.6573,
+  "audio": 8.6627,
   "love": 8.98
  },
  "games": [
@@ -199,7 +199,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 63
+   "rank": 64
   },
   {
    "id": 367,
@@ -332,7 +332,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 54
+   "rank": 57
   },
   {
    "id": 369,
@@ -398,7 +398,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 29
+   "rank": 30
   },
   {
    "id": 370,
@@ -530,22 +530,22 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 60
+   "rank": 61
   },
   {
    "id": 372,
    "name": "小丑牌",
    "name_en": "Balatro",
-   "score": 7.8,
+   "score": 8.68,
    "tag": "顶级",
    "dims": [
     9.6,
     9.41,
     9.0,
-    1.11,
+    5.79,
     10.0,
     9.0,
-    9.2,
+    9.6,
     9.0
    ],
    "subs": [
@@ -561,8 +561,8 @@ window.GN_DATA = {
      9.0
     ],
     [
-     1.0,
-     10.0
+     6.0,
+     8.0
     ],
     [
      5.0,
@@ -573,7 +573,7 @@ window.GN_DATA = {
     ],
     [
      10.0,
-     8.0
+     9.0
     ],
     [
      9.0
@@ -597,19 +597,19 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 57
+   "rank": 15
   },
   {
    "id": 373,
    "name": "幻兽帕鲁",
    "name_en": "Palworld",
-   "score": 7.42,
+   "score": 7.57,
    "tag": "人上人",
    "dims": [
     7.8,
     9.41,
     10.0,
-    3.29,
+    4.12,
     8.0,
     7.0,
     5.6,
@@ -628,7 +628,7 @@ window.GN_DATA = {
      10.0
     ],
     [
-     4.0,
+     5.0,
      6.0
     ],
     [
@@ -664,7 +664,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 70
+   "rank": 67
   },
   {
    "id": 374,
@@ -730,7 +730,7 @@ window.GN_DATA = {
     "PS5",
     "NS"
    ],
-   "rank": 44
+   "rank": 47
   },
   {
    "id": 375,
@@ -796,7 +796,7 @@ window.GN_DATA = {
     "PS5",
     "NS"
    ],
-   "rank": 68
+   "rank": 69
   },
   {
    "id": 376,
@@ -1001,13 +1001,13 @@ window.GN_DATA = {
    "id": 379,
    "name": "动物井",
    "name_en": "Animal Well",
-   "score": 7.83,
+   "score": 8.03,
    "tag": "夯",
    "dims": [
     10.0,
     6.64,
     7.0,
-    5.53,
+    6.64,
     10.0,
     8.0,
     9.2,
@@ -1026,7 +1026,7 @@ window.GN_DATA = {
      7.0
     ],
     [
-     5.0,
+     6.0,
      10.0
     ],
     [
@@ -1065,7 +1065,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 56
+   "rank": 46
   },
   {
    "id": 380,
@@ -1131,7 +1131,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 62
+   "rank": 63
   },
   {
    "id": 381,
@@ -1266,7 +1266,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 15
+   "rank": 16
   },
   {
    "id": 383,
@@ -1330,7 +1330,7 @@ window.GN_DATA = {
     "PC",
     "PS5"
    ],
-   "rank": 49
+   "rank": 52
   },
   {
    "id": 384,
@@ -1464,19 +1464,19 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 35
+   "rank": 37
   },
   {
    "id": 386,
    "name": "开球!REMATCH",
    "name_en": "Rematch",
-   "score": 7.62,
+   "score": 7.92,
    "tag": "NPC",
    "dims": [
     9.2,
     6.64,
     9.0,
-    4.14,
+    5.79,
     9.0,
     7.0,
     8.0,
@@ -1495,8 +1495,8 @@ window.GN_DATA = {
      9.0
     ],
     [
-     4.0,
-     9.0
+     6.0,
+     8.0
     ],
     [
      9.0,
@@ -1531,7 +1531,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 65
+   "rank": 53
   },
   {
    "id": 387,
@@ -1595,12 +1595,12 @@ window.GN_DATA = {
     "PS5",
     "NS"
    ],
-   "rank": 30
+   "rank": 31
   },
   {
    "id": 388,
    "name": "魔法少女的魔女审判",
-   "name_en": "The witch trial of the magical girl",
+   "name_en": "Magical Girl Witch Trial",
    "score": 7.54,
    "tag": "NPC",
    "dims": [
@@ -1660,19 +1660,19 @@ window.GN_DATA = {
     "PC",
     "NS"
    ],
-   "rank": 67
+   "rank": 68
   },
   {
    "id": 389,
    "name": "Ooo",
    "name_en": "Ooo",
-   "score": 6.69,
+   "score": 7.34,
    "tag": "人上人",
    "dims": [
     8.8,
     6.64,
     7.0,
-    2.21,
+    5.79,
     10.0,
     6.0,
     7.6,
@@ -1691,8 +1691,8 @@ window.GN_DATA = {
      7.0
     ],
     [
-     2.0,
-     10.0
+     6.0,
+     8.0
     ],
     [
      7.0,
@@ -1726,7 +1726,7 @@ window.GN_DATA = {
     "PC",
     "NS"
    ],
-   "rank": 74
+   "rank": 71
   },
   {
    "id": 390,
@@ -1791,7 +1791,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 58
+   "rank": 59
   },
   {
    "id": 391,
@@ -1860,7 +1860,7 @@ window.GN_DATA = {
     "PS5",
     "NS"
    ],
-   "rank": 64
+   "rank": 65
   },
   {
    "id": 392,
@@ -2131,7 +2131,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 28
+   "rank": 29
   },
   {
    "id": 396,
@@ -2196,7 +2196,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 32
+   "rank": 34
   },
   {
    "id": 397,
@@ -2262,7 +2262,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 16
+   "rank": 17
   },
   {
    "id": 398,
@@ -2329,7 +2329,7 @@ window.GN_DATA = {
     "PS5",
     "NS"
    ],
-   "rank": 59
+   "rank": 60
   },
   {
    "id": 399,
@@ -2396,7 +2396,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 31
+   "rank": 32
   },
   {
    "id": 400,
@@ -2463,7 +2463,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 52
+   "rank": 55
   },
   {
    "id": 401,
@@ -2530,7 +2530,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 55
+   "rank": 58
   },
   {
    "id": 402,
@@ -2594,7 +2594,7 @@ window.GN_DATA = {
     "PC",
     "PS5"
    ],
-   "rank": 25
+   "rank": 26
   },
   {
    "id": 403,
@@ -2663,7 +2663,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 61
+   "rank": 62
   },
   {
    "id": 404,
@@ -2728,7 +2728,7 @@ window.GN_DATA = {
     "PC",
     "NS"
    ],
-   "rank": 72
+   "rank": 73
   },
   {
    "id": 405,
@@ -2783,8 +2783,7 @@ window.GN_DATA = {
    "genre": [
     "视觉小说",
     "解谜",
-    "Galgame",
-    "回合制"
+    "Galgame"
    ],
    "playtime": "30h+",
    "developer": "小高和刚",
@@ -2793,19 +2792,19 @@ window.GN_DATA = {
     "PC",
     "NS"
    ],
-   "rank": 43
+   "rank": 45
   },
   {
    "id": 406,
    "name": "吸血鬼爬行者：屠戮地牢的吸血鬼幸存者",
    "name_en": "Vampire Crawlers",
-   "score": 7.89,
+   "score": 8.25,
    "tag": "顶级",
    "dims": [
     9.6,
     8.85,
-    9.5,
-    3.11,
+    9.0,
+    5.79,
     10.0,
     6.0,
     8.8,
@@ -2821,11 +2820,11 @@ window.GN_DATA = {
      10.0
     ],
     [
-     9.5
+     9.0
     ],
     [
-     3.0,
-     9.0
+     6.0,
+     8.0
     ],
     [
      7.0,
@@ -2863,7 +2862,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 51
+   "rank": 33
   },
   {
    "id": 407,
@@ -2930,7 +2929,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 19
+   "rank": 20
   },
   {
    "id": 408,
@@ -2996,7 +2995,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 27
+   "rank": 28
   },
   {
    "id": 409,
@@ -3063,7 +3062,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 39
+   "rank": 41
   },
   {
    "id": 410,
@@ -3132,7 +3131,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 45
+   "rank": 48
   },
   {
    "id": 411,
@@ -3269,7 +3268,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 20
+   "rank": 21
   },
   {
    "id": 413,
@@ -3474,7 +3473,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 53
+   "rank": 56
   },
   {
    "id": 416,
@@ -3543,7 +3542,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 24
+   "rank": 25
   },
   {
    "id": 417,
@@ -3676,7 +3675,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 21
+   "rank": 22
   },
   {
    "id": 419,
@@ -3742,7 +3741,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 40
+   "rank": 42
   },
   {
    "id": 420,
@@ -3809,7 +3808,7 @@ window.GN_DATA = {
     "PS5",
     "NS"
    ],
-   "rank": 41
+   "rank": 43
   },
   {
    "id": 421,
@@ -3874,7 +3873,7 @@ window.GN_DATA = {
     "PC",
     "NS"
    ],
-   "rank": 71
+   "rank": 72
   },
   {
    "id": 422,
@@ -3938,7 +3937,7 @@ window.GN_DATA = {
    "platform": [
     "PC"
    ],
-   "rank": 33
+   "rank": 35
   },
   {
    "id": 423,
@@ -4002,7 +4001,7 @@ window.GN_DATA = {
     "PS5",
     "NS"
    ],
-   "rank": 73
+   "rank": 74
   },
   {
    "id": 424,
@@ -4067,7 +4066,7 @@ window.GN_DATA = {
    "platform": [
     "PC"
    ],
-   "rank": 17
+   "rank": 18
   },
   {
    "id": 425,
@@ -4133,7 +4132,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 26
+   "rank": 27
   },
   {
    "id": 426,
@@ -4200,7 +4199,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 69
+   "rank": 70
   },
   {
    "id": 427,
@@ -4265,7 +4264,7 @@ window.GN_DATA = {
    "platform": [
     "PC"
    ],
-   "rank": 38
+   "rank": 40
   },
   {
    "id": 428,
@@ -4330,7 +4329,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 36
+   "rank": 38
   },
   {
    "id": 429,
@@ -4396,7 +4395,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 37
+   "rank": 39
   },
   {
    "id": 430,
@@ -4529,7 +4528,7 @@ window.GN_DATA = {
     "PC",
     "NS"
    ],
-   "rank": 50
+   "rank": 54
   },
   {
    "id": 432,
@@ -4595,7 +4594,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 22
+   "rank": 23
   },
   {
    "id": 433,
@@ -4665,7 +4664,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 48
+   "rank": 51
   },
   {
    "id": 434,
@@ -4799,7 +4798,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 34
+   "rank": 36
   },
   {
    "id": 436,
@@ -4867,7 +4866,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 42
+   "rank": 44
   },
   {
    "id": 437,
@@ -4933,7 +4932,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 23
+   "rank": 24
   },
   {
    "id": 438,
@@ -4997,7 +4996,7 @@ window.GN_DATA = {
     "PC",
     "PS5"
    ],
-   "rank": 47
+   "rank": 50
   },
   {
    "id": 439,
@@ -5048,16 +5047,22 @@ window.GN_DATA = {
    ],
    "cover": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3259780/710da43babb2043f9f6ad0e50023e31167d94708/library_header_2x.jpg",
    "thumb": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3259780/21d8a7c692803448c79426fc88910d8658a058a8/library_capsule_2x.jpg",
-   "desc": "",
+   "desc": "历代英雄的命运在水晶中交汇，在名为“共鸣”的宿命羁绊下，重奏一场跨越时空的幻想史诗",
    "genre": [
+    "JRPG",
     "角色扮演",
     "回合制"
    ],
-   "playtime": "",
-   "developer": "",
+   "playtime": "50h+",
+   "developer": "Square Enix/Lancarse",
    "year": 2026,
-   "platform": [],
-   "rank": 18
+   "platform": [
+    "PC",
+    "PS5",
+    "Xbox",
+    "NS"
+   ],
+   "rank": 19
   },
   {
    "id": 440,
@@ -5108,16 +5113,20 @@ window.GN_DATA = {
    ],
    "cover": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4348910/48defa4007ed91bbee9ead3a085d3ee82f545a6f/library_header_schinese_2x.jpg",
    "thumb": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4348910/03318ef78895213d7aba3a7aaa973a2cb0ba6f03/library_capsule_schinese_2x.jpg",
-   "desc": "",
+   "desc": "在法外之地的宇宙边缘经营一家不问出处的当铺，每一件“可能是偷得”的奇珍异宝背后，都藏着一段星际狂徒的秘密",
    "genre": [
     "模拟经营",
-    "赛博朋克"
+    "策略",
+    "Roguelike",
+    "独立"
    ],
    "playtime": "",
-   "developer": "",
+   "developer": "Questing Goose Studio",
    "year": 2026,
-   "platform": [],
-   "rank": 46
+   "platform": [
+    "PC"
+   ],
+   "rank": 49
   }
  ]
 };
