@@ -1,7 +1,7 @@
 /* Generated from data.json (original index page) — do not edit by hand. */
 window.GN_DATA = {
  "source": "原 index 页 · data.json",
- "generatedAt": "2026-11-23",
+ "generatedAt": "2026-11-25",
  "dims": [
   {
    "key": "craft",
@@ -98,8 +98,8 @@ window.GN_DATA = {
   }
  ],
  "stats": {
-  "count": 75,
-  "avg": 8.1925,
+  "count": 76,
+  "avg": 8.1891,
   "median": 8.15,
   "max": 9.31,
   "min": 6.59,
@@ -114,24 +114,24 @@ window.GN_DATA = {
   "tagCounts": {
    "夯": 12,
    "顶级": 18,
-   "人上人": 21,
+   "人上人": 22,
    "NPC": 16,
    "拉": 6,
    "拉完了": 2
   },
   "yearMin": 2017,
   "yearMax": 2026,
-  "gamesThisYear": 32
+  "gamesThisYear": 33
  },
  "dimAvg": {
-  "craft": 8.424,
-  "content": 7.5509,
-  "gameplay": 8.44,
-  "story": 7.1828,
-  "immersion": 9.0133,
-  "art": 8.2467,
-  "audio": 8.6627,
-  "love": 8.98
+  "craft": 8.4289,
+  "content": 7.5389,
+  "gameplay": 8.4211,
+  "story": 7.2109,
+  "immersion": 9.0,
+  "art": 8.2368,
+  "audio": 8.6487,
+  "love": 8.9803
  },
  "games": [
   {
@@ -199,7 +199,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 64
+   "rank": 65
   },
   {
    "id": 367,
@@ -332,7 +332,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 57
+   "rank": 58
   },
   {
    "id": 369,
@@ -465,7 +465,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 66
+   "rank": 67
   },
   {
    "id": 371,
@@ -530,7 +530,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 61
+   "rank": 62
   },
   {
    "id": 372,
@@ -664,7 +664,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 67
+   "rank": 68
   },
   {
    "id": 374,
@@ -796,7 +796,7 @@ window.GN_DATA = {
     "PS5",
     "NS"
    ],
-   "rank": 69
+   "rank": 70
   },
   {
    "id": 376,
@@ -1131,7 +1131,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 63
+   "rank": 64
   },
   {
    "id": 381,
@@ -1531,7 +1531,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 53
+   "rank": 54
   },
   {
    "id": 387,
@@ -1660,7 +1660,7 @@ window.GN_DATA = {
     "PC",
     "NS"
    ],
-   "rank": 68
+   "rank": 69
   },
   {
    "id": 389,
@@ -1726,7 +1726,7 @@ window.GN_DATA = {
     "PC",
     "NS"
    ],
-   "rank": 71
+   "rank": 72
   },
   {
    "id": 390,
@@ -1791,7 +1791,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 59
+   "rank": 60
   },
   {
    "id": 391,
@@ -1860,7 +1860,7 @@ window.GN_DATA = {
     "PS5",
     "NS"
    ],
-   "rank": 65
+   "rank": 66
   },
   {
    "id": 392,
@@ -2329,7 +2329,7 @@ window.GN_DATA = {
     "PS5",
     "NS"
    ],
-   "rank": 60
+   "rank": 61
   },
   {
    "id": 399,
@@ -2463,7 +2463,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 55
+   "rank": 56
   },
   {
    "id": 401,
@@ -2530,7 +2530,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 58
+   "rank": 59
   },
   {
    "id": 402,
@@ -2663,7 +2663,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 62
+   "rank": 63
   },
   {
    "id": 404,
@@ -2728,7 +2728,7 @@ window.GN_DATA = {
     "PC",
     "NS"
    ],
-   "rank": 73
+   "rank": 74
   },
   {
    "id": 405,
@@ -3403,7 +3403,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 75
+   "rank": 76
   },
   {
    "id": 415,
@@ -3473,7 +3473,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 56
+   "rank": 57
   },
   {
    "id": 416,
@@ -3873,7 +3873,7 @@ window.GN_DATA = {
     "PC",
     "NS"
    ],
-   "rank": 72
+   "rank": 73
   },
   {
    "id": 422,
@@ -4001,7 +4001,7 @@ window.GN_DATA = {
     "PS5",
     "NS"
    ],
-   "rank": 74
+   "rank": 75
   },
   {
    "id": 424,
@@ -4199,7 +4199,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 70
+   "rank": 71
   },
   {
    "id": 427,
@@ -4528,7 +4528,7 @@ window.GN_DATA = {
     "PC",
     "NS"
    ],
-   "rank": 54
+   "rank": 55
   },
   {
    "id": 432,
@@ -5127,6 +5127,71 @@ window.GN_DATA = {
     "PC"
    ],
    "rank": 49
+  },
+  {
+   "id": 441,
+   "name": "异病侦探",
+   "name_en": "Psycho-Sleuth",
+   "score": 7.93,
+   "tag": "人上人",
+   "dims": [
+    8.8,
+    6.64,
+    7.0,
+    9.32,
+    8.0,
+    7.5,
+    7.6,
+    9.0
+   ],
+   "subs": [
+    [
+     7.0,
+     10.0
+    ],
+    [
+     6.0,
+     10.0
+    ],
+    [
+     7.0
+    ],
+    [
+     9.0,
+     9.0
+    ],
+    [
+     8.0,
+     8.0
+    ],
+    [
+     7.5
+    ],
+    [
+     8.0,
+     7.0
+    ],
+    [
+     9.0
+    ]
+   ],
+   "cover": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3432860/b627a0cebcf59f2021489eb7e3fad7a3854fc360/library_header_schinese_2x.jpg",
+   "thumb": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3432860/bf94c1146caebd083d8b6d65d74028b35d757036/library_600x900_schinese_2x.jpg",
+   "desc": "",
+   "genre": [
+    "视觉小说",
+    "推理",
+    "解谜",
+    "Galgame",
+    "独立"
+   ],
+   "playtime": "15h+",
+   "developer": "PHOSEPO",
+   "year": 2026,
+   "platform": [
+    "PC"
+   ],
+   "rank": 53
   }
  ]
 };
