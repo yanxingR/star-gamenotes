@@ -1,7 +1,7 @@
 /* Generated from data.json (original index page) — do not edit by hand. */
 window.GN_DATA = {
  "source": "原 index 页 · data.json",
- "generatedAt": "2026-11-25",
+ "generatedAt": "2026-11-26",
  "dims": [
   {
    "key": "craft",
@@ -99,7 +99,7 @@ window.GN_DATA = {
  ],
  "stats": {
   "count": 76,
-  "avg": 8.1891,
+  "avg": 8.1872,
   "median": 8.15,
   "max": 9.31,
   "min": 6.59,
@@ -113,8 +113,8 @@ window.GN_DATA = {
   ],
   "tagCounts": {
    "夯": 12,
-   "顶级": 18,
-   "人上人": 22,
+   "顶级": 19,
+   "人上人": 21,
    "NPC": 16,
    "拉": 6,
    "拉完了": 2
@@ -125,12 +125,12 @@ window.GN_DATA = {
  },
  "dimAvg": {
   "craft": 8.4289,
-  "content": 7.5389,
-  "gameplay": 8.4211,
+  "content": 7.5462,
+  "gameplay": 8.4079,
   "story": 7.2109,
-  "immersion": 9.0,
+  "immersion": 9.0132,
   "art": 8.2368,
-  "audio": 8.6487,
+  "audio": 8.6461,
   "love": 8.9803
  },
  "games": [
@@ -332,7 +332,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 58
+   "rank": 57
   },
   {
    "id": 369,
@@ -1531,7 +1531,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 54
+   "rank": 53
   },
   {
    "id": 387,
@@ -1791,7 +1791,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 60
+   "rank": 59
   },
   {
    "id": 391,
@@ -2329,7 +2329,7 @@ window.GN_DATA = {
     "PS5",
     "NS"
    ],
-   "rank": 61
+   "rank": 60
   },
   {
    "id": 399,
@@ -2463,7 +2463,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 56
+   "rank": 55
   },
   {
    "id": 401,
@@ -2530,7 +2530,7 @@ window.GN_DATA = {
     "PS5",
     "Xbox"
    ],
-   "rank": 59
+   "rank": 58
   },
   {
    "id": 402,
@@ -3473,7 +3473,7 @@ window.GN_DATA = {
     "Xbox",
     "NS"
    ],
-   "rank": 57
+   "rank": 56
   },
   {
    "id": 416,
@@ -4528,7 +4528,7 @@ window.GN_DATA = {
     "PC",
     "NS"
    ],
-   "rank": 55
+   "rank": 54
   },
   {
    "id": 432,
@@ -5132,16 +5132,16 @@ window.GN_DATA = {
    "id": 441,
    "name": "异病侦探",
    "name_en": "Psycho-Sleuth",
-   "score": 7.93,
-   "tag": "人上人",
+   "score": 7.79,
+   "tag": "顶级",
    "dims": [
     8.8,
-    6.64,
-    7.0,
+    7.19,
+    6.0,
     9.32,
-    8.0,
+    9.0,
     7.5,
-    7.6,
+    7.4,
     9.0
    ],
    "subs": [
@@ -5150,11 +5150,11 @@ window.GN_DATA = {
      10.0
     ],
     [
-     6.0,
+     6.5,
      10.0
     ],
     [
-     7.0
+     6.0
     ],
     [
      9.0,
@@ -5162,14 +5162,14 @@ window.GN_DATA = {
     ],
     [
      8.0,
-     8.0
+     9.0
     ],
     [
      7.5
     ],
     [
-     8.0,
-     7.0
+     7.0,
+     8.0
     ],
     [
      9.0
@@ -5191,7 +5191,7 @@ window.GN_DATA = {
    "platform": [
     "PC"
    ],
-   "rank": 53
+   "rank": 61
   }
  ]
 };
