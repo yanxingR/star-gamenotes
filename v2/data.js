@@ -1,7 +1,7 @@
 /* Generated from data.json (original index page) — do not edit by hand. */
 window.GN_DATA = {
  "source": "原 index 页 · data.json",
- "generatedAt": "2026-11-26",
+ "generatedAt": "2026-11-27",
  "dims": [
   {
    "key": "craft",
@@ -5177,7 +5177,7 @@ window.GN_DATA = {
    ],
    "cover": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3432860/b627a0cebcf59f2021489eb7e3fad7a3854fc360/library_header_schinese_2x.jpg",
    "thumb": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3432860/bf94c1146caebd083d8b6d65d74028b35d757036/library_600x900_schinese_2x.jpg",
-   "desc": "",
+   "desc": "一款将各种“认知精神疾病”转化为诡计与超能力的设定系本格推理游戏，玩家需通过搜集线索与论辩对决，在扭曲现实的命案中找出真凶",
    "genre": [
     "视觉小说",
     "推理",
